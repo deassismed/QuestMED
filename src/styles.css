@@ -68,6 +68,7 @@ button {
   justify-content: space-between;
   gap: 14px;
   padding-top: 8px;
+  padding-right: 118px;
 }
 
 .eyebrow {
@@ -88,8 +89,9 @@ h1 {
 
 .timer-card {
   align-items: center;
-  background: #fff;
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(214, 229, 226, 0.88);
   border-radius: 8px;
   box-shadow: 0 10px 26px rgba(31, 104, 105, 0.1);
   color: var(--primary-dark);
@@ -101,6 +103,10 @@ h1 {
   min-height: 52px;
   min-width: 104px;
   padding: 10px 12px;
+  position: fixed;
+  right: max(18px, calc((100vw - 460px) / 2 + 18px));
+  top: calc(18px + env(safe-area-inset-top));
+  z-index: 11;
 }
 
 .meta-row {
@@ -397,6 +403,7 @@ h1 {
 
   .timer-card {
     min-width: 92px;
+    right: 14px;
   }
 
   .option-button {
