@@ -842,6 +842,7 @@ export default function App() {
     transform: `translate3d(0, ${drag.offset}px, 0)`,
     transition: drag.transition ? `transform ${DRAG_TRANSITION_MS}ms cubic-bezier(0.18, 0.82, 0.22, 1)` : "none",
   };
+  const stageClassName = ["phone-stage", drag.isDragging || drag.transition ? "is-feed-moving" : ""].join(" ");
 
   if (session.flowStep === "finished") {
     return (
@@ -894,7 +895,7 @@ export default function App() {
   return (
     <main className="app-shell secure-surface">
       <section
-        className="phone-stage"
+        className={stageClassName}
         aria-label="QuestMED"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}

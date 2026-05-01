@@ -172,10 +172,31 @@ h2 {
   position: relative;
 }
 
+.question-feed::after {
+  background: rgba(247, 251, 251, 0.38);
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 120ms ease;
+  z-index: 3;
+}
+
 .question-feed-track {
   height: 100%;
   position: relative;
+  transition: filter 120ms ease, opacity 120ms ease;
   will-change: transform;
+}
+
+.phone-stage.is-feed-moving .question-feed::after {
+  opacity: 1;
+}
+
+.phone-stage.is-feed-moving .question-feed-track {
+  filter: blur(8px);
+  opacity: 0.76;
 }
 
 .feed-page-slot {
