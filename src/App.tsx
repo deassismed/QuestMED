@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Check,
-  Clock3,
   Lightbulb,
   Lock,
+  Pause,
   Play,
   RotateCcw,
   Scissors,
@@ -14,7 +14,7 @@ import {
 import { dailyQuestions, type Option, type Question } from "./data/questions";
 
 const QUESTION_LIMIT = 10;
-const QUESTION_SECONDS = 95;
+const QUESTION_SECONDS = 180;
 const DRAG_START_THRESHOLD = 46;
 const DRAG_COMMIT_RATIO = 0.42;
 const DRAG_COMMIT_MIN_DISTANCE = 132;
@@ -46,6 +46,7 @@ type QuestionRuntimeState = {
   showHintModal: boolean;
   showStats: boolean;
   showVideoPrompt: boolean;
+  isPaused: boolean;
   timeLeft: number;
 };
 
@@ -87,7 +88,15 @@ function createQuestionState(): QuestionRuntimeState {
     showHintModal: false,
     showStats: false,
     showVideoPrompt: false,
+    isPaused: false,
     timeLeft: QUESTION_SECONDS,
+  };
+}
+
+function normalizeQuestionState(state: QuestionRuntimeState | undefined): QuestionRuntimeState {
+  return {
+    ...createQuestionState(),
+    ...state,
   };
 }
 
@@ -199,9 +208,9 @@ export default function App() {
   const transitionTimeoutRef = useRef<number | null>(null);
 
   const question = dailyQuestions[session.currentIndex];
-  const questionState = session.questionStates[session.currentIndex] ?? createQuestionState();
+  const questionState = normalizeQuestionState(session.questionStates[session.currentIndex]);
   const questionLocked =
-    questionState.isConfirmed || questionState.isExpired || session.flowStep !== "question";
+    questionState.isConfirmed || questionState.isExpired || questionState.isPaused || session.flowStep !== "question";
 
   function setDragState(nextDrag: DragState) {
     dragRef.current = nextDrag;
@@ -226,7 +235,7 @@ export default function App() {
   }, [session.currentIndex]);
 
   useEffect(() => {
-    if (questionLocked || questionState.timeLeft === 0) {
+    if (questionLocked || questionState.isPaused || questionState.timeLeft === 0) {
       return;
     }
 
@@ -239,7 +248,12 @@ export default function App() {
         const activeQuestion = dailyQuestions[current.currentIndex];
         const activeQuestionState = current.questionStates[current.currentIndex];
 
-        if (!activeQuestionState || activeQuestionState.isConfirmed || activeQuestionState.isExpired) {
+        if (
+          !activeQuestionState ||
+          activeQuestionState.isConfirmed ||
+          activeQuestionState.isExpired ||
+          activeQuestionState.isPaused
+        ) {
           return current;
         }
 
@@ -274,7 +288,7 @@ export default function App() {
     }, 1000);
 
     return () => window.clearInterval(timer);
-  }, [questionLocked, questionState.timeLeft, session.currentIndex]);
+  }, [questionLocked, questionState.isPaused, questionState.timeLeft, session.currentIndex]);
 
   useEffect(() => {
     function warn(message: string) {
@@ -406,7 +420,7 @@ export default function App() {
       target instanceof HTMLElement &&
       Boolean(
         target.closest(
-          ".floating-tool-button, .floating-confirm-button, .video-prompt-card button, .close-modal-button, iframe, a",
+          ".floating-tool-button, .timer-card, .floating-confirm-button, .video-prompt-card button, .close-modal-button, iframe, a",
         ),
       )
     );
@@ -450,7 +464,12 @@ export default function App() {
   }
 
   function startGesture(x: number, y: number, target: EventTarget | null) {
-    if (session.flowStep !== "question" || questionState.showHintModal || shouldIgnoreSwipeTarget(target)) {
+    if (
+      questionState.isPaused ||
+      session.flowStep !== "question" ||
+      questionState.showHintModal ||
+      shouldIgnoreSwipeTarget(target)
+    ) {
       gestureStartRef.current = null;
       return;
     }
@@ -461,7 +480,7 @@ export default function App() {
   function moveGesture(x: number, y: number, target: EventTarget | null, preventDefault: () => void) {
     const gestureStart = gestureStartRef.current;
 
-    if (!gestureStart || session.flowStep !== "question" || questionState.showHintModal) {
+    if (!gestureStart || questionState.isPaused || session.flowStep !== "question" || questionState.showHintModal) {
       return;
     }
 
@@ -635,6 +654,18 @@ export default function App() {
     }));
   }
 
+  function toggleTimerPause() {
+    if (session.flowStep !== "question" || questionState.isConfirmed || questionState.isExpired) {
+      return;
+    }
+
+    updateActiveQuestion((state) => ({
+      ...state,
+      isPaused: !state.isPaused,
+    }));
+    setDragState(idleDrag);
+  }
+
   function closeHint() {
     updateActiveQuestion((state) => ({
       ...state,
@@ -674,13 +705,17 @@ export default function App() {
 
   function renderQuestionPage(index: number, position: "active" | "neighbor") {
     const targetQuestion = dailyQuestions[index];
-    const targetState = session.questionStates[index] ?? createQuestionState();
+    const targetState = normalizeQuestionState(session.questionStates[index]);
     const targetAnswer = session.answers.find((answer) => answer.questionId === targetQuestion.id);
     const targetStatus = getAnswerStatus(targetQuestion, targetState);
     const targetProgress = Math.min(index + 1, QUESTION_LIMIT);
     const isActive = position === "active";
     const targetLocked =
-      targetState.isConfirmed || targetState.isExpired || session.flowStep !== "question" || !isActive;
+      targetState.isConfirmed ||
+      targetState.isExpired ||
+      targetState.isPaused ||
+      session.flowStep !== "question" ||
+      !isActive;
 
     return (
       <article
@@ -691,7 +726,7 @@ export default function App() {
         <header className="topbar">
           <div>
             <p className="eyebrow">QuestMED</p>
-            <h1>Questao</h1>
+            <h1>Questao {targetProgress}</h1>
           </div>
           <div className="floating-tools" aria-label="Ferramentas da questao">
             <FloatingToolButton
@@ -712,10 +747,24 @@ export default function App() {
             >
               <Scissors size={21} aria-hidden="true" />
             </FloatingToolButton>
-            <div className={`timer-card ${targetState.isExpired ? "expired" : ""}`} aria-label="Cronometro regressivo">
-              <Clock3 size={18} aria-hidden="true" />
+            <button
+              aria-label={targetState.isPaused ? "Continuar cronometro" : "Pausar cronometro"}
+              className={[
+                "timer-card",
+                targetState.isExpired ? "expired" : "",
+                targetState.isPaused ? "paused" : "",
+              ].join(" ")}
+              disabled={!isActive || targetState.isConfirmed || targetState.isExpired}
+              onClick={toggleTimerPause}
+              type="button"
+            >
+              {targetState.isPaused ? (
+                <Play size={18} aria-hidden="true" />
+              ) : (
+                <Pause size={18} aria-hidden="true" />
+              )}
               <span>{formatTimer(targetState.timeLeft)}</span>
-            </div>
+            </button>
           </div>
         </header>
 
@@ -843,7 +892,11 @@ export default function App() {
     transform: `translate3d(0, ${drag.offset}px, 0)`,
     transition: drag.transition ? `transform ${DRAG_TRANSITION_MS}ms cubic-bezier(0.18, 0.82, 0.22, 1)` : "none",
   };
-  const stageClassName = ["phone-stage", drag.isDragging || drag.transition ? "is-feed-moving" : ""].join(" ");
+  const stageClassName = [
+    "phone-stage",
+    drag.isDragging || drag.transition ? "is-feed-moving" : "",
+    questionState.isPaused ? "is-timer-paused" : "",
+  ].join(" ");
 
   if (session.flowStep === "finished") {
     return (
@@ -958,9 +1011,10 @@ export default function App() {
             disabled={!canConfirm}
             onClick={confirmAnswer}
             type="button"
+            aria-label="Confirmar alternativa"
+            title="Confirmar alternativa"
           >
-            <Check size={20} aria-hidden="true" />
-            Confirmar alternativa
+            <Check size={28} aria-hidden="true" />
           </button>
         )}
       </section>
