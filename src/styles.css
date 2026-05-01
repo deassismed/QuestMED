@@ -76,7 +76,7 @@ button {
   justify-content: space-between;
   gap: 14px;
   padding-top: 8px;
-  padding-right: 210px;
+  flex: 0 0 auto;
 }
 
 .eyebrow {
@@ -109,10 +109,8 @@ h2 {
   display: grid;
   gap: 8px;
   grid-template-columns: 48px 48px minmax(98px, auto);
-  position: fixed;
-  right: max(18px, calc((100vw - 460px) / 2 + 18px));
-  top: calc(18px + env(safe-area-inset-top));
-  z-index: 11;
+  flex: 0 0 auto;
+  z-index: 2;
 }
 
 .floating-tool-button,
@@ -169,7 +167,6 @@ h2 {
 
 .question-feed {
   flex: 1;
-  margin-top: 20px;
   min-height: 0;
   overflow: hidden;
   position: relative;
@@ -187,6 +184,8 @@ h2 {
 }
 
 .feed-page {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   min-height: 0;
 }
@@ -196,11 +195,13 @@ h2 {
 }
 
 .question-page-scroll {
-  height: 100%;
+  flex: 1;
+  height: auto;
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
   padding-bottom: calc(22px + env(safe-area-inset-bottom));
+  padding-top: 20px;
   scrollbar-width: none;
   touch-action: pan-y;
 }
@@ -815,15 +816,9 @@ h2 {
     font-size: 1.9rem;
   }
 
-  .topbar {
-    padding-right: 180px;
-  }
-
   .floating-tools {
     gap: 6px;
     grid-template-columns: 42px 42px minmax(92px, auto);
-    min-width: 92px;
-    right: 14px;
   }
 
   .floating-tool-button,

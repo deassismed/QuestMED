@@ -15,9 +15,10 @@ import { dailyQuestions, type Option, type Question } from "./data/questions";
 
 const QUESTION_LIMIT = 10;
 const QUESTION_SECONDS = 95;
-const DRAG_START_THRESHOLD = 10;
-const DRAG_COMMIT_RATIO = 0.24;
-const DRAG_COMMIT_VELOCITY = 0.45;
+const DRAG_START_THRESHOLD = 46;
+const DRAG_COMMIT_RATIO = 0.42;
+const DRAG_COMMIT_MIN_DISTANCE = 132;
+const DRAG_COMMIT_VELOCITY = 1.15;
 const DRAG_TRANSITION_MS = 240;
 
 const questionCount = Math.min(QUESTION_LIMIT, dailyQuestions.length);
@@ -499,9 +500,10 @@ export default function App() {
     const viewportHeight = activeScrollRef.current?.clientHeight ?? window.innerHeight;
     const elapsed = Math.max(performance.now() - gestureStart.time, 1);
     const velocity = (y - gestureStart.y) / elapsed;
+    const dragDistance = Math.abs(currentDrag.offset);
     const shouldCommit =
-      Math.abs(currentDrag.offset) > viewportHeight * DRAG_COMMIT_RATIO ||
-      Math.abs(velocity) > DRAG_COMMIT_VELOCITY;
+      dragDistance > viewportHeight * DRAG_COMMIT_RATIO ||
+      (dragDistance > DRAG_COMMIT_MIN_DISTANCE && Math.abs(velocity) > DRAG_COMMIT_VELOCITY);
 
     swipeHandledRef.current = true;
     window.setTimeout(() => {
@@ -685,6 +687,37 @@ export default function App() {
         className={["feed-page", isActive ? "active" : "neighbor"].join(" ")}
         key={`${targetQuestion.id}-${position}`}
       >
+        <header className="topbar">
+          <div>
+            <p className="eyebrow">QuestMED</p>
+            <h1>Questao</h1>
+          </div>
+          <div className="floating-tools" aria-label="Ferramentas da questao">
+            <FloatingToolButton
+              active={targetState.usedHint}
+              ariaLabel="Mostrar dica"
+              disabled={targetLocked}
+              onClick={openHint}
+              tooltip="Abre uma dica. Se usada, a questao passa a valer metade."
+            >
+              <Lightbulb size={21} aria-hidden="true" />
+            </FloatingToolButton>
+            <FloatingToolButton
+              active={targetState.eliminatedOptionIds.length > 0}
+              ariaLabel="Eliminar duas alternativas"
+              disabled={targetLocked || targetState.eliminatedOptionIds.length > 0}
+              onClick={eliminateOptions}
+              tooltip="Elimina duas alternativas incorretas."
+            >
+              <Scissors size={21} aria-hidden="true" />
+            </FloatingToolButton>
+            <div className={`timer-card ${targetState.isExpired ? "expired" : ""}`} aria-label="Cronometro regressivo">
+              <Clock3 size={18} aria-hidden="true" />
+              <span>{formatTimer(targetState.timeLeft)}</span>
+            </div>
+          </div>
+        </header>
+
         <div className="question-page-scroll" ref={isActive ? activeScrollRef : undefined}>
           <div className="meta-row">
             <span className="id-pill">{targetQuestion.id}</span>
@@ -872,37 +905,6 @@ export default function App() {
         onTouchStart={handleTouchStart}
       >
         {session.printWarning && <SecurityToast message={session.printWarning} />}
-
-        <header className="topbar">
-          <div>
-            <p className="eyebrow">QuestMED</p>
-            <h1>Questao</h1>
-          </div>
-          <div className="floating-tools" aria-label="Ferramentas da questao">
-            <FloatingToolButton
-              active={questionState.usedHint}
-              ariaLabel="Mostrar dica"
-              disabled={questionLocked}
-              onClick={openHint}
-              tooltip="Abre uma dica. Se usada, a questao passa a valer metade."
-            >
-              <Lightbulb size={21} aria-hidden="true" />
-            </FloatingToolButton>
-            <FloatingToolButton
-              active={questionState.eliminatedOptionIds.length > 0}
-              ariaLabel="Eliminar duas alternativas"
-              disabled={questionLocked || questionState.eliminatedOptionIds.length > 0}
-              onClick={eliminateOptions}
-              tooltip="Elimina duas alternativas incorretas."
-            >
-              <Scissors size={21} aria-hidden="true" />
-            </FloatingToolButton>
-            <div className={`timer-card ${questionState.isExpired ? "expired" : ""}`} aria-label="Cronometro regressivo">
-              <Clock3 size={18} aria-hidden="true" />
-              <span>{formatTimer(questionState.timeLeft)}</span>
-            </div>
-          </div>
-        </header>
 
         <section className="question-feed" aria-label="Questoes">
           <div className="question-feed-track" style={feedStyle}>
