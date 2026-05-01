@@ -216,7 +216,11 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    activeScrollRef.current?.scrollTo({ top: 0 });
+    const frame = window.requestAnimationFrame(() => {
+      activeScrollRef.current?.scrollTo({ top: 0 });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
   }, [session.currentIndex]);
 
   useEffect(() => {
