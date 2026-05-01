@@ -173,7 +173,7 @@ h2 {
 }
 
 .question-feed::after {
-  background: rgba(247, 251, 251, 0.38);
+  background: rgba(247, 251, 251, 0.18);
   content: "";
   inset: 0;
   opacity: 0;
@@ -195,8 +195,8 @@ h2 {
 }
 
 .phone-stage.is-feed-moving .question-feed-track {
-  filter: blur(8px);
-  opacity: 0.76;
+  filter: blur(3px);
+  opacity: 0.88;
 }
 
 .feed-page-slot {
