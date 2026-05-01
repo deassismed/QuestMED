@@ -218,6 +218,7 @@ export default function App() {
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "auto" });
       activeScrollRef.current?.scrollTo({ top: 0 });
     });
 

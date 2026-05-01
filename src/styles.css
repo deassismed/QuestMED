@@ -29,11 +29,15 @@
 html,
 body,
 #root {
+  height: 100%;
   min-height: 100%;
+  overflow: hidden;
 }
 
 body {
   margin: 0;
+  position: fixed;
+  width: 100%;
 }
 
 button {
@@ -46,7 +50,8 @@ button {
 }
 
 .app-shell {
-  min-height: 100vh;
+  height: 100dvh;
+  min-height: 100dvh;
   background:
     radial-gradient(circle at top left, rgba(54, 170, 157, 0.18), transparent 34rem),
     linear-gradient(145deg, #f6fbfb 0%, #edf6f3 48%, #f8faf8 100%);
@@ -58,8 +63,8 @@ button {
 
 .phone-stage {
   width: min(100%, 460px);
-  min-height: 100vh;
-  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
   background: var(--bg);
   display: flex;
   flex-direction: column;
@@ -818,12 +823,19 @@ h2 {
     border: 1px solid rgba(194, 216, 212, 0.9);
     border-radius: 32px;
     box-shadow: var(--shadow);
-    min-height: calc(100vh - 56px);
+    height: calc(100dvh - 56px);
+    min-height: 0;
   }
 
   .floating-confirm-button {
     bottom: calc(46px + env(safe-area-inset-bottom));
     width: min(424px, calc(100vw - 92px));
+  }
+}
+
+@media (max-width: 699px) {
+  .phone-stage {
+    padding-top: max(calc(18px + env(safe-area-inset-top)), 52px);
   }
 }
 
