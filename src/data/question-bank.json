@@ -1,29 +1,4 @@
-export type Area =
-  | "Cl\u00ednica M\u00e9dica"
-  | "Cirurgia"
-  | "Pediatria"
-  | "Ginecologia e Obstetr\u00edcia"
-  | "Medicina Preventiva";
-
-export type Option = {
-  id: "A" | "B" | "C" | "D";
-  text: string;
-};
-
-export type Question = {
-  id: string;
-  area: Area;
-  statement: string;
-  options: Option[];
-  correctOptionId: Option["id"];
-  hint: string;
-  statistics: Record<Option["id"], number>;
-  explanationTitle: string;
-  explanation?: string;
-  videoId?: string;
-};
-
-export const dailyQuestions: Question[] = [
+[
   {
     "id": "quest01.PUC-SOROCABA.2019",
     "area": "Clínica Médica",
@@ -9891,4 +9866,4 @@ export const dailyQuestions: Question[] = [
     "explanationTitle": "Cefaleia",
     "explanation": "Cefaleia nova e progressiva em idosa com comorbidade oncológica (nódulo pulmonar) = red flag → exame de imagem (RM ou TC)."
   }
-];
+]
