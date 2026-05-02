@@ -966,9 +966,7 @@ export default function App() {
           <span className="finish-icon">
             <Sparkles size={30} aria-hidden="true" />
           </span>
-          <p className="eyebrow">QuestMED</p>
-          <h1>Resultado</h1>
-          <p>Voce concluiu as 10 questoes de hoje.</p>
+          <strong>QUESTMED</strong>
         </div>
 
         <section className="summary-grid" aria-label="Estatisticas finais">
@@ -1051,7 +1049,7 @@ export default function App() {
         <header className="topbar">
           <div>
             <p className="eyebrow">QuestMED</p>
-            <h1>Questao {targetProgress}</h1>
+            <h1>Quest {targetProgress}</h1>
           </div>
           <div className="floating-tools" aria-label="Ferramentas da questao">
             <button

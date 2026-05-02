@@ -947,14 +947,16 @@ h2 {
 }
 
 .finish-hero {
-  display: grid;
-  gap: 8px;
+  align-items: center;
+  display: flex;
+  gap: 14px;
   padding-top: 24px;
 }
 
-.finish-hero p:last-child {
-  color: var(--muted);
-  margin: 0;
+.finish-hero strong {
+  color: var(--primary-dark);
+  font-size: 1.75rem;
+  line-height: 1;
 }
 
 .finish-icon {
