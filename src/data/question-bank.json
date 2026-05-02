@@ -6,7 +6,7 @@
     "options": [
       {
         "id": "A",
-        "text": "N?o Escore CURB-65 avalia o local de tratamento e o risco de mortalidade, sendo que para escore que soma 2 pontos, o tratamento deve ser ambulatorial e a mortalidade será de 9,2%."
+        "text": "O Escore CURB-65 avalia o local de tratamento e o risco de mortalidade, sendo que para escore que soma 2 pontos, o tratamento deve ser ambulatorial e a mortalidade será de 9,2%."
       },
       {
         "id": "B",
@@ -14,11 +14,11 @@
       },
       {
         "id": "C",
-        "text": "N?o escore de CURB-65 que soma 0 ou 1 ponto orienta que o tratamento seja realizado ambulatorialmente e a mortalidade nesses casos seria de 1,5%."
+        "text": "O escore de CURB-65 que soma 0 ou 1 ponto orienta que o tratamento seja realizado ambulatorialmente e a mortalidade nesses casos seria de 1,5%."
       },
       {
         "id": "D",
-        "text": "N?o tratamento ambulatorial com amoxicilina administrada via oral é adequado e não apresenta falhas terapêuticas."
+        "text": "O tratamento ambulatorial com amoxicilina administrada via oral é adequado e não apresenta falhas terapêuticas."
       }
     ],
     "correctOptionId": "C",
@@ -200,7 +200,7 @@
   {
     "id": "quest07.PSU-GO.2024",
     "area": "Clínica Médica",
-    "statement": "Paciente, 75 anos de idade, sexo masculino, história prévia de infarto anterior extenso e quadro clínico atual compatível com insuficiência cardíaca de classe funcional III (NYHA). N?o eletrocardiograma de 12 derivações revela a presença de bloqueio do ramo esquerdo, com duração do QRS igual a 160 ms, e o ecocardiograma transtorácico mostra uma fração de ejeção do ventrículo esquerdo de 28%. Qual medida terapêutica teve a sua eficácia na redução do risco de morte súbita por arritmia ventricular maligna, demonstrada por ensaio clínico randomizado de alto nível de evidência científica, para o paciente em questão?",
+    "statement": "Paciente, 75 anos de idade, sexo masculino, história prévia de infarto anterior extenso e quadro clínico atual compatível com insuficiência cardíaca de classe funcional III (NYHA). O eletrocardiograma de 12 derivações revela a presença de bloqueio do ramo esquerdo, com duração do QRS igual a 160 ms, e o ecocardiograma transtorácico mostra uma fração de ejeção do ventrículo esquerdo de 28%. Qual medida terapêutica teve a sua eficácia na redução do risco de morte súbita por arritmia ventricular maligna, demonstrada por ensaio clínico randomizado de alto nível de evidência científica, para o paciente em questão?",
     "options": [
       {
         "id": "A",
@@ -332,7 +332,7 @@
   {
     "id": "quest11.SMS-SP.2017",
     "area": "Clínica Médica",
-    "statement": "Paciente do sexo feminino, 76 anos, ex-tabagista, é portadora de hipertensão arterial sistêmica controlada com medicamentos. Refere que há 12 dias apresentou quadro gripal, permanecendo mais cansada desde então. Há três dias apresenta tosse produtiva, com expectoração amarelo-esverdeada, piora do estado geral e febre de 38,5°C. N?o exame físico da admissão mostra: paciente prostrada; taquipneica com FR = 32 ipm; dessaturação leve em ar ambiente; PA = 80 x 40 mmHg; FC = pulso = 100 bpm. A ausculta pulmonar revela estertores subcrepitantes em terço inferior do hemitórax direito, sibilos expiratórios difusos e roncos. Assinale a alternativa que contém a conduta correta em relação a essa paciente:",
+    "statement": "Paciente do sexo feminino, 76 anos, ex-tabagista, é portadora de hipertensão arterial sistêmica controlada com medicamentos. Refere que há 12 dias apresentou quadro gripal, permanecendo mais cansada desde então. Há três dias apresenta tosse produtiva, com expectoração amarelo-esverdeada, piora do estado geral e febre de 38,5°C. O exame físico da admissão mostra: paciente prostrada; taquipneica com FR = 32 ipm; dessaturação leve em ar ambiente; PA = 80 x 40 mmHg; FC = pulso = 100 bpm. A ausculta pulmonar revela estertores subcrepitantes em terço inferior do hemitórax direito, sibilos expiratórios difusos e roncos. Assinale a alternativa que contém a conduta correta em relação a essa paciente:",
     "options": [
       {
         "id": "A",
@@ -410,7 +410,7 @@
       },
       {
         "id": "C",
-        "text": "A legionelose deve ser suspeitada em pacientes com pneumonia e sintomas gastrointestinais, associado a hipernatremia, hiperfosfatemia e hipercalcemia. N?o tratamento de escolha é a combinação de Vancomicina e Meropenem."
+        "text": "A legionelose deve ser suspeitada em pacientes com pneumonia e sintomas gastrointestinais, associado a hipernatremia, hiperfosfatemia e hipercalcemia. O tratamento de escolha é a combinação de Vancomicina e Meropenem."
       },
       {
         "id": "D",
@@ -468,7 +468,7 @@
     "options": [
       {
         "id": "A",
-        "text": "N?o diagnóstico mais provável é de doença pulmonar obstrutiva crônica, entretanto, a possibilidade de asma não pode ser excluída, sendo necessário confirmação através de teste de caminhada de 6 minutos e broncoprovocação com metacolina."
+        "text": "O diagnóstico mais provável é de doença pulmonar obstrutiva crônica, entretanto, a possibilidade de asma não pode ser excluída, sendo necessário confirmação através de teste de caminhada de 6 minutos e broncoprovocação com metacolina."
       },
       {
         "id": "B",
@@ -497,7 +497,7 @@
   {
     "id": "quest16.FAMEMA.2024",
     "area": "Clínica Médica",
-    "statement": "Homem de 57 anos apresenta quadro de síndrome coronariana aguda com elevação de ST de V1 a V4. A angiografia coronária percutânea (ACP) revela: oclusão da artéria descendente anterior esquerda (ADAE) proximal sem fluxo de vaso colateral; circunflexa esquerda e coronária direita estão patentes, sem obstrução significativa. A intervenção percutânea primária restaura o fluxo da ADAE. Exame físico após a intervenção coronária: pressão arterial: 120 x 70 mmHg; frequência cardíaca: 70 bpm; ausculta pulmonar com estertores bibasiliares, sem sibilos; cardíaco: 4ª bulha proeminente e sopro holossistólico apical grau II/VI; extremidades estão normais. Ecocardiografia: fração de ejeção ventricular esquerda de 34% com acinesia ântero-apical e regurgitação mitral moderada. N?o tratamento atual consiste em aspirina em baixa dose, clopidogrel, atorvastatina, metoprolol e lisinopril. Antes da alta hospitalar, qual intervenção tem maior probabilidade de reduzir ainda mais a mortalidade desse paciente?",
+    "statement": "Homem de 57 anos apresenta quadro de síndrome coronariana aguda com elevação de ST de V1 a V4. A angiografia coronária percutânea (ACP) revela: oclusão da artéria descendente anterior esquerda (ADAE) proximal sem fluxo de vaso colateral; circunflexa esquerda e coronária direita estão patentes, sem obstrução significativa. A intervenção percutânea primária restaura o fluxo da ADAE. Exame físico após a intervenção coronária: pressão arterial: 120 x 70 mmHg; frequência cardíaca: 70 bpm; ausculta pulmonar com estertores bibasiliares, sem sibilos; cardíaco: 4ª bulha proeminente e sopro holossistólico apical grau II/VI; extremidades estão normais. Ecocardiografia: fração de ejeção ventricular esquerda de 34% com acinesia ântero-apical e regurgitação mitral moderada. O tratamento atual consiste em aspirina em baixa dose, clopidogrel, atorvastatina, metoprolol e lisinopril. Antes da alta hospitalar, qual intervenção tem maior probabilidade de reduzir ainda mais a mortalidade desse paciente?",
     "options": [
       {
         "id": "A",
@@ -530,7 +530,7 @@
   {
     "id": "quest17.SES-DF.2026",
     "area": "Clínica Médica",
-    "statement": "Um paciente de 60 anos de idade apresentou dispneia progressiva aos esforços, ortopneia e edema de membros inferiores. N?o exame físico mostrou B3 presente e turgência jugular elevada. A radiografia de tórax evidenciou cardiomegalia difusa. Nesse caso, qual é o exame de escolha para avaliar com precisão as funções sistólica e diastólica do ventrículo esquerdo nesse paciente?",
+    "statement": "Um paciente de 60 anos de idade apresentou dispneia progressiva aos esforços, ortopneia e edema de membros inferiores. O exame físico mostrou B3 presente e turgência jugular elevada. A radiografia de tórax evidenciou cardiomegalia difusa. Nesse caso, qual é o exame de escolha para avaliar com precisão as funções sistólica e diastólica do ventrículo esquerdo nesse paciente?",
     "options": [
       {
         "id": "A",
@@ -728,7 +728,7 @@
   {
     "id": "quest23.AMP.2018",
     "area": "Clínica Médica",
-    "statement": "Paciente do sexo feminino, com 58 anos de idade, relata dispneia aos esforços e ortopneia de início há 6 meses, de intensidade progressiva. Relata que nos últimos 2 meses apresenta edema de membros inferiores, bilateralmente. História de hipertensão arterial, em uso de atenolol 50 mg ao dia, e diabetes em uso de glimepirida 4 mg antes do café da manhã. Ao exame apresenta-se com PA = 148/92 mmHg, FR = 28, ausculta pulmonar com estertores em terços inferiores bilateralmente e edema de membros inferiores +. A paciente traz ecocardiograma que evidencia fração de ejeção do ventrículo esquerdo de 54%, com alteração de relaxamento e hipertrofia do VE. Parcial de urina normal, creatinina sérica = 1 mg/dl, albumina sérica = 4 g/dL. Considerando o diagnóstico mais provável, analise as assertivas abaixo: I. N?o uso de bloqueador do receptor de angiotensina, como a candesartana, reduz as hospitalizações e mortalidade pela doença; II. N?o uso de inibidor de fosfodiesterase-5 reduz a pressão de enchimento do ventrículo direito, e assim, melhora a classe funcional dos pacientes; III. A digoxina não tem papel no tratamento desta paciente pois não há evidência de redução da mortalidade com o uso desta. Estão corretas as assertivas:",
+    "statement": "Paciente do sexo feminino, com 58 anos de idade, relata dispneia aos esforços e ortopneia de início há 6 meses, de intensidade progressiva. Relata que nos últimos 2 meses apresenta edema de membros inferiores, bilateralmente. História de hipertensão arterial, em uso de atenolol 50 mg ao dia, e diabetes em uso de glimepirida 4 mg antes do café da manhã. Ao exame apresenta-se com PA = 148/92 mmHg, FR = 28, ausculta pulmonar com estertores em terços inferiores bilateralmente e edema de membros inferiores +. A paciente traz ecocardiograma que evidencia fração de ejeção do ventrículo esquerdo de 54%, com alteração de relaxamento e hipertrofia do VE. Parcial de urina normal, creatinina sérica = 1 mg/dl, albumina sérica = 4 g/dL. Considerando o diagnóstico mais provável, analise as assertivas abaixo: I. O uso de bloqueador do receptor de angiotensina, como a candesartana, reduz as hospitalizações e mortalidade pela doença; II. O uso de inibidor de fosfodiesterase-5 reduz a pressão de enchimento do ventrículo direito, e assim, melhora a classe funcional dos pacientes; III. A digoxina não tem papel no tratamento desta paciente pois não há evidência de redução da mortalidade com o uso desta. Estão corretas as assertivas:",
     "options": [
       {
         "id": "A",
@@ -794,7 +794,7 @@
   {
     "id": "quest25.FMUSP-RP.2018",
     "area": "Clínica Médica",
-    "statement": "Mulher, 67 anos, refere dispneia progressiva e tosse seca matutina há 7 anos. Usou antibióticos duas vezes no último ano por aumento da expectoração e piora de dispneia. Fuma 1 maço de cigarro por dia há 50 anos. Exame físico: bom estado geral, corada, hidratada, cianótica (+/4+), consciente, orientada. Ausculta cardíaca e pulmonar normais; Saturação N?o₂ 86% (ar ambiente). FC: 82 bpm; PA: 132 x 64 mmHg. Espirometria pós-broncodilatador: VEF1: 0,66 L (24% do previsto); CVF: 1,94 (56% do previsto); VEF1/CVF: 0,34 (43% do previsto). Qual seria o benefício do uso crônico de broncodilatador de ação prolongada?",
+    "statement": "Mulher, 67 anos, refere dispneia progressiva e tosse seca matutina há 7 anos. Usou antibióticos duas vezes no último ano por aumento da expectoração e piora de dispneia. Fuma 1 maço de cigarro por dia há 50 anos. Exame físico: bom estado geral, corada, hidratada, cianótica (+/4+), consciente, orientada. Ausculta cardíaca e pulmonar normais; Saturação O₂ 86% (ar ambiente). FC: 82 bpm; PA: 132 x 64 mmHg. Espirometria pós-broncodilatador: VEF1: 0,66 L (24% do previsto); CVF: 1,94 (56% do previsto); VEF1/CVF: 0,34 (43% do previsto). Qual seria o benefício do uso crônico de broncodilatador de ação prolongada?",
     "options": [
       {
         "id": "A",
@@ -1074,7 +1074,7 @@
       },
       {
         "id": "D",
-        "text": "N?o paciente apresenta insuficiência cardíaca congestiva com fração de ejeção preservada do ventrículo esquerdo."
+        "text": "O paciente apresenta insuficiência cardíaca congestiva com fração de ejeção preservada do ventrículo esquerdo."
       }
     ],
     "correctOptionId": "D",
@@ -1095,7 +1095,7 @@
     "options": [
       {
         "id": "A",
-        "text": "N?o oxigênio suplementar deve ser oferecido com máscara de Venturi, a fim de atingir um alvo de saturação entre 88% e 92%."
+        "text": "O oxigênio suplementar deve ser oferecido com máscara de Venturi, a fim de atingir um alvo de saturação entre 88% e 92%."
       },
       {
         "id": "B",
@@ -1103,7 +1103,7 @@
       },
       {
         "id": "C",
-        "text": "N?o suporte ventilatório para o paciente deve ser realizado utilizando máscara com reservatório, a fim de ofertar FiO₂ máxima."
+        "text": "O suporte ventilatório para o paciente deve ser realizado utilizando máscara com reservatório, a fim de ofertar FiO₂ máxima."
       },
       {
         "id": "D",
@@ -1227,19 +1227,19 @@
     "options": [
       {
         "id": "A",
-        "text": "N?o uso inadequado dos dispositivos inalatórios é muito raro e decorre de dificuldades relacionadas ao paciente e aos médicos."
+        "text": "O uso inadequado dos dispositivos inalatórios é muito raro e decorre de dificuldades relacionadas ao paciente e aos médicos."
       },
       {
         "id": "B",
-        "text": "N?o uso inadequado dos dispositivos inalatórios é muito frequente e decorre de dificuldades relacionadas ao paciente e aos médicos."
+        "text": "O uso inadequado dos dispositivos inalatórios é muito frequente e decorre de dificuldades relacionadas ao paciente e aos médicos."
       },
       {
         "id": "C",
-        "text": "N?o uso inadequado dos dispositivos inalatórios é muito frequente e decorre de dificuldades relacionadas ao paciente, mas nunca dos médicos."
+        "text": "O uso inadequado dos dispositivos inalatórios é muito frequente e decorre de dificuldades relacionadas ao paciente, mas nunca dos médicos."
       },
       {
         "id": "D",
-        "text": "N?o uso inadequado dos dispositivos inalatórios é impossível, não decorre de dificuldades relacionadas ao paciente e aos médicos."
+        "text": "O uso inadequado dos dispositivos inalatórios é impossível, não decorre de dificuldades relacionadas ao paciente e aos médicos."
       }
     ],
     "correctOptionId": "B",
@@ -1532,7 +1532,7 @@
       },
       {
         "id": "C",
-        "text": "Pressão positiva das vias aéreas com dois níveis noturnos, inspiratória com 18 cm H₂N?o e expiratória de 12 cm H₂N?o."
+        "text": "Pressão positiva das vias aéreas com dois níveis noturnos, inspiratória com 18 cm H₂O e expiratória de 12 cm H₂O."
       },
       {
         "id": "D",
@@ -1553,7 +1553,7 @@
   {
     "id": "quest48.SCM-BH.2025",
     "area": "Clínica Médica",
-    "statement": "Paciente do sexo feminino, 38 anos, procurou o pronto atendimento devido à febre alta (39°C) há 4 dias, acompanhada de tosse produtiva com expectoração amarelada, cansaço progressivo e dor torácica em região lateral direita, que piora ao respirar profundamente. Relata também falta de ar nos últimos dois dias, especialmente ao realizar atividades leves, como subir escadas. Nega episódios semelhantes no passado. Paciente previamente hígida. Ao exame: febril (38,5°C), frequência cardíaca de 110 bpm, frequência respiratória de 19 irpm, pressão arterial 125/80 mmHg, saturação de N?o₂ de 93% em ar ambiente. Ausculta pulmonar: presença de crepitações na base do hemitórax direito e diminuição do murmúrio vesicular na mesma região. Exames: Hb: 11,8; GL: 17.900; neutrófilos: 13.480; plaquetas: 112.000. Ureia: 38; Cr: 0,98. PCR: 2,8; procalcitonina negativa. Radiografia de tórax: opacidade em base de pulmão direito, sugestiva de consolidação lobar. Sobre o diagnóstico e tratamento, assinale a alternativa CORRETA.",
+    "statement": "Paciente do sexo feminino, 38 anos, procurou o pronto atendimento devido à febre alta (39°C) há 4 dias, acompanhada de tosse produtiva com expectoração amarelada, cansaço progressivo e dor torácica em região lateral direita, que piora ao respirar profundamente. Relata também falta de ar nos últimos dois dias, especialmente ao realizar atividades leves, como subir escadas. Nega episódios semelhantes no passado. Paciente previamente hígida. Ao exame: febril (38,5°C), frequência cardíaca de 110 bpm, frequência respiratória de 19 irpm, pressão arterial 125/80 mmHg, saturação de O₂ de 93% em ar ambiente. Ausculta pulmonar: presença de crepitações na base do hemitórax direito e diminuição do murmúrio vesicular na mesma região. Exames: Hb: 11,8; GL: 17.900; neutrófilos: 13.480; plaquetas: 112.000. Ureia: 38; Cr: 0,98. PCR: 2,8; procalcitonina negativa. Radiografia de tórax: opacidade em base de pulmão direito, sugestiva de consolidação lobar. Sobre o diagnóstico e tratamento, assinale a alternativa CORRETA.",
     "options": [
       {
         "id": "A",
@@ -1561,7 +1561,7 @@
       },
       {
         "id": "B",
-        "text": "A paciente tem diagnóstico de pneumonia adquirida na comunidade, devendo iniciar terapia oral, sendo uma opção Levofloxacino. N?o tratamento deve ser ambulatorial por cinco dias."
+        "text": "A paciente tem diagnóstico de pneumonia adquirida na comunidade, devendo iniciar terapia oral, sendo uma opção Levofloxacino. O tratamento deve ser ambulatorial por cinco dias."
       },
       {
         "id": "C",
@@ -1685,7 +1685,7 @@
   {
     "id": "quest52.HECI.2016",
     "area": "Clínica Médica",
-    "statement": "Paciente de 29 anos relata que há 5 dias iniciou quadro de hiporexia, seguida de tosse inicialmente seca com evolução posterior para tosse produtiva e expectoração amarelada. Paciente apresentou ainda dor torácica leve, ventilatório dependente, dispneia discreta e febre. Paciente desconhece comorbidades e nunca esteve internado. Ao exame físico paciente está consciente e orientado, corado, hidratado, acianótico, afebril. FC: 98 bpm; PA: 112/76 mmHg; MV+ com crepitações finas em base esquerda; FR: 22 irpm, sem esforço respiratório; sat N?o₂ 96%. Os exames realizados no Pronto Socorro evidenciaram: Hb: 14,2; Ht: 46%; Leuc: 21200; bt: 17%, seg: 68%, linf: 15%; P.Laq: 188000; Ur: 30; Cr: 1,0; Na: 136; K: 4,1; Lac: 1,9 (VR: <2); PCR: 130 (VR: <8); Gasometria Arterial: pH: 7,36; bic: 21; pCO₂: 38; pO₂: 86; satO₂: 97%. A radiografia de tórax evidenciava uma consolidação com broncograma aéreo em base de pulmão esquerdo. Considerando o caso descrito, assinale a MELHOR opção de tratamento para esse paciente.",
+    "statement": "Paciente de 29 anos relata que há 5 dias iniciou quadro de hiporexia, seguida de tosse inicialmente seca com evolução posterior para tosse produtiva e expectoração amarelada. Paciente apresentou ainda dor torácica leve, ventilatório dependente, dispneia discreta e febre. Paciente desconhece comorbidades e nunca esteve internado. Ao exame físico paciente está consciente e orientado, corado, hidratado, acianótico, afebril. FC: 98 bpm; PA: 112/76 mmHg; MV+ com crepitações finas em base esquerda; FR: 22 irpm, sem esforço respiratório; sat O₂ 96%. Os exames realizados no Pronto Socorro evidenciaram: Hb: 14,2; Ht: 46%; Leuc: 21200; bt: 17%, seg: 68%, linf: 15%; P.Laq: 188000; Ur: 30; Cr: 1,0; Na: 136; K: 4,1; Lac: 1,9 (VR: <2); PCR: 130 (VR: <8); Gasometria Arterial: pH: 7,36; bic: 21; pCO₂: 38; pO₂: 86; satO₂: 97%. A radiografia de tórax evidenciava uma consolidação com broncograma aéreo em base de pulmão esquerdo. Considerando o caso descrito, assinale a MELHOR opção de tratamento para esse paciente.",
     "options": [
       {
         "id": "A",
@@ -1784,7 +1784,7 @@
   {
     "id": "quest55.UNIFESP.2018",
     "area": "Clínica Médica",
-    "statement": "Homem, 56 anos de idade, hipertenso, chega ao pronto-socorro com quadro de tosse com expectoração amarelada, dispneia e febre há três dias. Nas últimas três horas vem se apresentando sonolento. Sinais vitais: PA = 80 x 30 mmHg; FC = 130 bpm; TEC = 4 seg; saturação N?o₂ = 90%; FR = 30 irpm; Glasgow = 13; temperatura axilar = 38°C; peso corporal = 80 kg. Qual a antibioticoterapia de escolha, sabendo que o paciente não tem história de internação hospitalar?",
+    "statement": "Homem, 56 anos de idade, hipertenso, chega ao pronto-socorro com quadro de tosse com expectoração amarelada, dispneia e febre há três dias. Nas últimas três horas vem se apresentando sonolento. Sinais vitais: PA = 80 x 30 mmHg; FC = 130 bpm; TEC = 4 seg; saturação O₂ = 90%; FR = 30 irpm; Glasgow = 13; temperatura axilar = 38°C; peso corporal = 80 kg. Qual a antibioticoterapia de escolha, sabendo que o paciente não tem história de internação hospitalar?",
     "options": [
       {
         "id": "A",
@@ -1821,7 +1821,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Filipe é um piloto espanhol de 55 anos que desenvolveu miocardiopatia dilatada c/ FEVE 42% após um episódio de miocardite há 5 anos. Mantém dispneia aos esforços habituais mesmo c/ uso de enalapril 20 mg/2x/dia e carvedilol 25 mg/2x/dia. N?o próximo passo é acrescentar digoxina 0,25 mg/dia."
+        "text": "Filipe é um piloto espanhol de 55 anos que desenvolveu miocardiopatia dilatada c/ FEVE 42% após um episódio de miocardite há 5 anos. Mantém dispneia aos esforços habituais mesmo c/ uso de enalapril 20 mg/2x/dia e carvedilol 25 mg/2x/dia. O próximo passo é acrescentar digoxina 0,25 mg/dia."
       },
       {
         "id": "B",
@@ -2151,7 +2151,7 @@
     "options": [
       {
         "id": "A",
-        "text": "N?o tratamento empírico deve ser evitado na maioria dos casos, objetivando-se diminuir a seleção de germes resistentes, principalmente no ambiente hospitalar."
+        "text": "O tratamento empírico deve ser evitado na maioria dos casos, objetivando-se diminuir a seleção de germes resistentes, principalmente no ambiente hospitalar."
       },
       {
         "id": "B",
@@ -2213,7 +2213,7 @@
   {
     "id": "quest68.SUS-SP.2017",
     "area": "Clínica Médica",
-    "statement": "Uma mulher de 59 anos, tabagista desde os 16 anos, hipertensa, em uso de losartana 100 mg/dia, queixa-se de tosse há 8 meses. Tem sobrepeso leve e vida sedentária. Nega dispneia, dor torácica ou abdominal, pirose ou emagrecimento. Refere ter tido, há mais de 10 anos, dois episódios de alergia cutânea urticariforme com antibióticos que não lembra o nome. N?o exame físico é normal. Testes pulmonares mostram volume expiratório forçado no 1º segundo - VEF1 = 75% do esperado e a razão VEF1/capacidade vital forçada - CVF = 65%. Após broncodilatador, ocorre aumento apenas do VEF1 para 82%. A radiografia de tórax é normal. A causa mais provável da tosse nessa paciente é:",
+    "statement": "Uma mulher de 59 anos, tabagista desde os 16 anos, hipertensa, em uso de losartana 100 mg/dia, queixa-se de tosse há 8 meses. Tem sobrepeso leve e vida sedentária. Nega dispneia, dor torácica ou abdominal, pirose ou emagrecimento. Refere ter tido, há mais de 10 anos, dois episódios de alergia cutânea urticariforme com antibióticos que não lembra o nome. O exame físico é normal. Testes pulmonares mostram volume expiratório forçado no 1º segundo - VEF1 = 75% do esperado e a razão VEF1/capacidade vital forçada - CVF = 65%. Após broncodilatador, ocorre aumento apenas do VEF1 para 82%. A radiografia de tórax é normal. A causa mais provável da tosse nessa paciente é:",
     "options": [
       {
         "id": "A",
@@ -2477,15 +2477,15 @@
   {
     "id": "quest76.SMS-SP.2018",
     "area": "Clínica Médica",
-    "statement": "Homem, 68 anos, diabético e hipertenso, queixa-se de tosse com expectoração amarelada e febre de até 38 graus há 4 dias. Faz uso de anlodipina, metformina e glimepirida e não teve internação hospitalar recente. N?o exame físico revela o paciente em regular estado geral, consciente e orientado, taquipneico (FR = 34 ipm), com pressão arterial de 90 x 50 mmHg, e taquicárdico (FC = 112 bpm). A radiografia de tórax evidenciou consolidação com broncograma aéreo em base do pulmão esquerdo. N?o agente etiológico mais provável e prevalente, responsável pelo quadro descrito, é:",
+    "statement": "Homem, 68 anos, diabético e hipertenso, queixa-se de tosse com expectoração amarelada e febre de até 38 graus há 4 dias. Faz uso de anlodipina, metformina e glimepirida e não teve internação hospitalar recente. O exame físico revela o paciente em regular estado geral, consciente e orientado, taquipneico (FR = 34 ipm), com pressão arterial de 90 x 50 mmHg, e taquicárdico (FC = 112 bpm). A radiografia de tórax evidenciou consolidação com broncograma aéreo em base do pulmão esquerdo. O agente etiológico mais provável e prevalente, responsável pelo quadro descrito, é:",
     "options": [
       {
         "id": "A",
-        "text": "N?o Staphylococcus aureus."
+        "text": "O Staphylococcus aureus."
       },
       {
         "id": "B",
-        "text": "N?o Streptococcus pneumoniae."
+        "text": "O Streptococcus pneumoniae."
       },
       {
         "id": "C",
@@ -2493,7 +2493,7 @@
       },
       {
         "id": "D",
-        "text": "N?o Haemophilus influenzae."
+        "text": "O Haemophilus influenzae."
       }
     ],
     "correctOptionId": "B",
@@ -2658,7 +2658,7 @@
       },
       {
         "id": "D",
-        "text": "N?o paciente apresenta insuficiência cardíaca congestiva com fração de ejeção preservada do ventrículo esquerdo."
+        "text": "O paciente apresenta insuficiência cardíaca congestiva com fração de ejeção preservada do ventrículo esquerdo."
       }
     ],
     "correctOptionId": "D",
@@ -2774,7 +2774,7 @@
   {
     "id": "quest85.UERJ.2024",
     "area": "Clínica Médica",
-    "statement": "Jovem de 25 anos, sem comorbidades, procura a atenção primária à saúde (APS) por cefaleia persistente. Relata início do quadro há cerca de um mês, com cefaleia hemicraniana à direita, diária, que atrapalha o seu sono e melhora parcialmente com uso de analgésicos comuns. Paciente apresenta fotofobia, fonofobia e náuseas, ocasionalmente, e nega vômitos, febre, alterações do estado mental ou turvação visual. N?o exame neurológico não apresenta alterações. A característica do quadro descrito considerada sinal de alarme para causas secundárias de cefaleia é:",
+    "statement": "Jovem de 25 anos, sem comorbidades, procura a atenção primária à saúde (APS) por cefaleia persistente. Relata início do quadro há cerca de um mês, com cefaleia hemicraniana à direita, diária, que atrapalha o seu sono e melhora parcialmente com uso de analgésicos comuns. Paciente apresenta fotofobia, fonofobia e náuseas, ocasionalmente, e nega vômitos, febre, alterações do estado mental ou turvação visual. O exame neurológico não apresenta alterações. A característica do quadro descrito considerada sinal de alarme para causas secundárias de cefaleia é:",
     "options": [
       {
         "id": "A",
@@ -2840,7 +2840,7 @@
   {
     "id": "quest87.SES-GO.2026",
     "area": "Clínica Médica",
-    "statement": "A Classificação Internacional das Cefaleias descreve 14 grupos de cefaleias, sendo os 4 primeiros grupos pertencentes às Cefaleias Primárias e os demais, às Cefaleias Secundárias. N?o grupo 1 descreve os vários subtipos das migrâneas, que são doenças que geram sintomas que vão além da dor. Qual é o processo fisiopatológico que se manifesta clinicamente como aura?",
+    "statement": "A Classificação Internacional das Cefaleias descreve 14 grupos de cefaleias, sendo os 4 primeiros grupos pertencentes às Cefaleias Primárias e os demais, às Cefaleias Secundárias. O grupo 1 descreve os vários subtipos das migrâneas, que são doenças que geram sintomas que vão além da dor. Qual é o processo fisiopatológico que se manifesta clinicamente como aura?",
     "options": [
       {
         "id": "A",
@@ -2906,7 +2906,7 @@
   {
     "id": "quest89.UFCSPA.2026",
     "area": "Clínica Médica",
-    "statement": "Paciente feminina, 55 anos, vem à consulta na UBS com queixa de dor crônica de enxaqueca. A médica da atenção primária prescreve amitriptilina, uma vez que possui boa experiência clínica com esse medicamento e encontra respaldo em evidências científicas que sustentam a sua conduta. Sobre a amitriptilina, analise as afirmativas e assinale a alternativa correta. I. Promove a inibição da recaptação da noradrenalina e, mais fortemente, da serotonina, com importante ação sobre receptores colinérgicos, 4-adrenergicos e histaminérgicos tipo H1. II. N?o efeito analgésico se dá pelo bloqueio dos canais de sódio, de forma semelhante aos anestésicos locais. III. Para a manutenção do tratamento da depressão, as doses variam entre 25 e 50mg/dia. IV. É recomendado realizar ECG basal antes do seu início.",
+    "statement": "Paciente feminina, 55 anos, vem à consulta na UBS com queixa de dor crônica de enxaqueca. A médica da atenção primária prescreve amitriptilina, uma vez que possui boa experiência clínica com esse medicamento e encontra respaldo em evidências científicas que sustentam a sua conduta. Sobre a amitriptilina, analise as afirmativas e assinale a alternativa correta. I. Promove a inibição da recaptação da noradrenalina e, mais fortemente, da serotonina, com importante ação sobre receptores colinérgicos, 4-adrenergicos e histaminérgicos tipo H1. II. O efeito analgésico se dá pelo bloqueio dos canais de sódio, de forma semelhante aos anestésicos locais. III. Para a manutenção do tratamento da depressão, as doses variam entre 25 e 50mg/dia. IV. É recomendado realizar ECG basal antes do seu início.",
     "options": [
       {
         "id": "A",
@@ -3302,7 +3302,7 @@
   {
     "id": "quest01.FMUSP-RP.2018",
     "area": "Clínica Médica",
-    "statement": "Um senhor de 45 anos procura sua unidade de Saúde da Família queixando-se de dor na região lombar esquerda e parte posterior da coxa isolateral, com piora a caminhar. N?o quadro iniciou há 1 semana, um dia depois de ter feito esforço físico para pintar sua garagem. N?o paciente nega trauma local, emagrecimento ou febre. N?o exame físico não evidencia déficit sensitivo ou motor. Assinale a alternativa que melhor indica a conduta para esse paciente:",
+    "statement": "Um senhor de 45 anos procura sua unidade de Saúde da Família queixando-se de dor na região lombar esquerda e parte posterior da coxa isolateral, com piora a caminhar. O quadro iniciou há 1 semana, um dia depois de ter feito esforço físico para pintar sua garagem. O paciente nega trauma local, emagrecimento ou febre. O exame físico não evidencia déficit sensitivo ou motor. Assinale a alternativa que melhor indica a conduta para esse paciente:",
     "options": [
       {
         "id": "A",
@@ -3566,7 +3566,7 @@
   {
     "id": "quest09.FMUSP-RP.2020",
     "area": "Clínica Médica",
-    "statement": "Mulher de 35 anos com quadro de dor lombar esquerda aos esforços e com irradiação para a região glútea e membro inferior esquerdo há 5 dias. Nega antecedente pessoal de litíase urinária e refere história familiar (irmão do avô paterno). Refere parestesia intermitente. Procurou UPA onde solicitaram exame de urina e ultrassom. N?o exame de urina evidenciou densidade de 1030, pH de 8,0, leucócitos de 5 por campo, hemácias de 5 por campo e presença de cristais. N?o ultrassom evidenciou imagem de 0,3 cm no cálice inferior, sem sombra acústica posterior, interrogando cálculo urinário e ausência de dilatação no trato urinário. Após prescrever analgesia adequada, qual a melhor conduta?",
+    "statement": "Mulher de 35 anos com quadro de dor lombar esquerda aos esforços e com irradiação para a região glútea e membro inferior esquerdo há 5 dias. Nega antecedente pessoal de litíase urinária e refere história familiar (irmão do avô paterno). Refere parestesia intermitente. Procurou UPA onde solicitaram exame de urina e ultrassom. O exame de urina evidenciou densidade de 1030, pH de 8,0, leucócitos de 5 por campo, hemácias de 5 por campo e presença de cristais. O ultrassom evidenciou imagem de 0,3 cm no cálice inferior, sem sombra acústica posterior, interrogando cálculo urinário e ausência de dilatação no trato urinário. Após prescrever analgesia adequada, qual a melhor conduta?",
     "options": [
       {
         "id": "A",
@@ -3764,7 +3764,7 @@
   {
     "id": "quest15.SCM-RP.2017",
     "area": "Clínica Médica",
-    "statement": "Mulher de 35 anos de idade, de antecedentes apenas síndrome metabólica, em tratamento não farmacológico, tem dor lombar vespertina sem outros sintomas associados. N?o exame físico é normal. Qual é a conduta mais apropriada neste momento?",
+    "statement": "Mulher de 35 anos de idade, de antecedentes apenas síndrome metabólica, em tratamento não farmacológico, tem dor lombar vespertina sem outros sintomas associados. O exame físico é normal. Qual é a conduta mais apropriada neste momento?",
     "options": [
       {
         "id": "A",
@@ -3797,7 +3797,7 @@
   {
     "id": "quest16.UEL.2024",
     "area": "Clínica Médica",
-    "statement": "Homem, 50 anos, previamente hígido, sem comorbidades, há 4 meses teve início insidioso de lombalgia, às vezes com irradiação para a nádega direita. A dor é pior pela manhã, ao acordar. Ficar em pé por mais de 30 minutos causa exacerbação da dor, que é aliviada quando deita. Nega febre ou perda de peso. Exame físico: Lasègue negativo, exame neurológico normal, quadris com mobilidade normal e sem dor às rotações interna e externa. N?o paciente sente dor à extensão da coluna lombar e à palpação da coluna vertebral, em topografia de L3 e L4. Com base nesses dados semiológicos, assinale a alternativa que apresenta, corretamente, o diagnóstico mais provável.",
+    "statement": "Homem, 50 anos, previamente hígido, sem comorbidades, há 4 meses teve início insidioso de lombalgia, às vezes com irradiação para a nádega direita. A dor é pior pela manhã, ao acordar. Ficar em pé por mais de 30 minutos causa exacerbação da dor, que é aliviada quando deita. Nega febre ou perda de peso. Exame físico: Lasègue negativo, exame neurológico normal, quadris com mobilidade normal e sem dor às rotações interna e externa. O paciente sente dor à extensão da coluna lombar e à palpação da coluna vertebral, em topografia de L3 e L4. Com base nesses dados semiológicos, assinale a alternativa que apresenta, corretamente, o diagnóstico mais provável.",
     "options": [
       {
         "id": "A",
@@ -3896,7 +3896,7 @@
   {
     "id": "quest19.REVALIDA.2025",
     "area": "Clínica Médica",
-    "statement": "Homem de 45 anos, trabalhador da construção civil, comparece a uma unidade básica de saúde (UBS) devido à dor lombar iniciada há um mês, com piora progressiva, irradiada para o membro inferior direito, com maior intensidade ao final do expediente de trabalho, especialmente após carregar materiais pesados. Nega histórico de trauma, febre, perda de peso ou outros sintomas sistêmicos. Ao exame físico, há dor à palpação de musculatura paravertebral bilateral na região lombar, sem alterações neurológicas. Não há restrição de movimentos e a flexão está preservada. N?o exame de força e sensibilidade nos membros inferiores está normal, e os reflexos patelar e aquileu estão preservados. Lasègue negativo bilateralmente. Quais são as condutas adequadas a serem adotadas nesse caso?",
+    "statement": "Homem de 45 anos, trabalhador da construção civil, comparece a uma unidade básica de saúde (UBS) devido à dor lombar iniciada há um mês, com piora progressiva, irradiada para o membro inferior direito, com maior intensidade ao final do expediente de trabalho, especialmente após carregar materiais pesados. Nega histórico de trauma, febre, perda de peso ou outros sintomas sistêmicos. Ao exame físico, há dor à palpação de musculatura paravertebral bilateral na região lombar, sem alterações neurológicas. Não há restrição de movimentos e a flexão está preservada. O exame de força e sensibilidade nos membros inferiores está normal, e os reflexos patelar e aquileu estão preservados. Lasègue negativo bilateralmente. Quais são as condutas adequadas a serem adotadas nesse caso?",
     "options": [
       {
         "id": "A",
@@ -4160,7 +4160,7 @@
   {
     "id": "quest27.ENARE.2025",
     "area": "Clínica Médica",
-    "statement": "Durante o atendimento ambulatorial, José, de 68 anos, queixou-se de dor toracolombar de intensidade moderada, constante, iniciada há 3 semanas. Foi associada a dormência nas duas pernas, havendo piora da dor quando ele ficava muito tempo em pé e melhora quando se sentava ou se deitava. N?o paciente já estava em tratamento para diabetes mellitus há 10 anos, com elevação recente da dose de metformina para 2 g/dia. Segundo ele, a glicemia estava bem controlada, mas o tabagismo e o alcoolismo persistiam (75 maços x ano e 40 g de álcool por dia). Na anamnese dirigida, revelou-se constipação de início recente, sem mudança do volume ou consistência das fezes. Não houve qualquer outra queixa ou sintoma relatado. No exame físico, notam-se dor à palpação da musculatura paravertebral bilateralmente, bem como dor em queimação agravada em flexão de quadril e coxa. Sinais de Lasègue e Kernig positivos bilateralmente. N?o restante do exame físico não mostrou alterações. Considerando o quadro exposto, é correto afirmar que:",
+    "statement": "Durante o atendimento ambulatorial, José, de 68 anos, queixou-se de dor toracolombar de intensidade moderada, constante, iniciada há 3 semanas. Foi associada a dormência nas duas pernas, havendo piora da dor quando ele ficava muito tempo em pé e melhora quando se sentava ou se deitava. O paciente já estava em tratamento para diabetes mellitus há 10 anos, com elevação recente da dose de metformina para 2 g/dia. Segundo ele, a glicemia estava bem controlada, mas o tabagismo e o alcoolismo persistiam (75 maços x ano e 40 g de álcool por dia). Na anamnese dirigida, revelou-se constipação de início recente, sem mudança do volume ou consistência das fezes. Não houve qualquer outra queixa ou sintoma relatado. No exame físico, notam-se dor à palpação da musculatura paravertebral bilateralmente, bem como dor em queimação agravada em flexão de quadril e coxa. Sinais de Lasègue e Kernig positivos bilateralmente. O restante do exame físico não mostrou alterações. Considerando o quadro exposto, é correto afirmar que:",
     "options": [
       {
         "id": "A",
@@ -4176,7 +4176,7 @@
       },
       {
         "id": "D",
-        "text": "A dor lombar em pessoa acima de 50 anos deve ser sempre investigada, independentemente dos sintomas e sinais associados. N?o principal exame é a ressonância nuclear magnética (RNM) de coluna lombar com contraste venoso."
+        "text": "A dor lombar em pessoa acima de 50 anos deve ser sempre investigada, independentemente dos sintomas e sinais associados. O principal exame é a ressonância nuclear magnética (RNM) de coluna lombar com contraste venoso."
       }
     ],
     "correctOptionId": "C",
@@ -4193,7 +4193,7 @@
   {
     "id": "quest28.UNIRIO.2018",
     "area": "Clínica Médica",
-    "statement": "Arrumadeira de hotel com 35 anos, obesa, procura atendimento com história de uma semana de dor lombar incapacitante. Ao ser examinada, não se detectaram maiores problemas, exceto seu peso. N?o próximo passo será:",
+    "statement": "Arrumadeira de hotel com 35 anos, obesa, procura atendimento com história de uma semana de dor lombar incapacitante. Ao ser examinada, não se detectaram maiores problemas, exceto seu peso. O próximo passo será:",
     "options": [
       {
         "id": "A",
@@ -4230,15 +4230,15 @@
     "options": [
       {
         "id": "A",
-        "text": "N?o quadro é de lombalgia mecânica e deve ser prescrito analgésico opioide por via oral, além de terapias complementares como acupuntura."
+        "text": "O quadro é de lombalgia mecânica e deve ser prescrito analgésico opioide por via oral, além de terapias complementares como acupuntura."
       },
       {
         "id": "B",
-        "text": "N?o quadro decorre de hérnia discal e deve ser prescrito anti-inflamatório hormonal intramuscular associado à fisioterapia."
+        "text": "O quadro decorre de hérnia discal e deve ser prescrito anti-inflamatório hormonal intramuscular associado à fisioterapia."
       },
       {
         "id": "C",
-        "text": "N?o quadro é de lombalgia mecânica, o tratamento precisa de otimização e pode ser radiografada a coluna, sem a necessidade de outras avaliações."
+        "text": "O quadro é de lombalgia mecânica, o tratamento precisa de otimização e pode ser radiografada a coluna, sem a necessidade de outras avaliações."
       },
       {
         "id": "D",
@@ -4259,7 +4259,7 @@
   {
     "id": "quest30.SES-GO.2022",
     "area": "Clínica Médica",
-    "statement": "A dor lombar baixa, ou lombalgia, é a maior representante das síndromes dolorosas da coluna vertebral, seguida da cervicalgia. N?o fator que favorece ou corrobora para o aparecimento dessa condição clínica é:",
+    "statement": "A dor lombar baixa, ou lombalgia, é a maior representante das síndromes dolorosas da coluna vertebral, seguida da cervicalgia. O fator que favorece ou corrobora para o aparecimento dessa condição clínica é:",
     "options": [
       {
         "id": "A",
@@ -4358,7 +4358,7 @@
   {
     "id": "quest33.FMUSP.2020",
     "area": "Clínica Médica",
-    "statement": "Homem de 42 anos de idade com antecedente de hipertensão arterial, apresenta dor lombar crônica há cinco anos, após levantar peso no ambiente de trabalho. No episódio inicial apresentou dor intensa e súbita associada à limitação de movimentos que levou a afastamento do trabalho por um período de 10 dias. Voltou a trabalhar, porém manteve dor lombar contínua, de intensidade leve a moderada, com irradiação para ambas as coxas de forma difusa e piora com esforços. Vários períodos de afastamento laboral desde então, sempre com manutenção das queixas. Há 6 meses refere dor moderada a intensa com irradiação para ambos os membros inferiores e grande limitação para atividades diárias, sem qualquer melhora com uso de anti-inflamatórios ou analgésicos. Faz uso eventual de tramadol, porém nega melhora significativa. Nega febre ou perda de peso. N?o exame clínico é normal exceto por dor à flexão e extensão lombar. N?o exame neurológico é normal. Paciente traz exame de ressonância magnética realizado há 2 meses com desidratação discal L4-L5 e L5-S1, com discretas protrusões discais nestes níveis sem conflito radicular. Qual é a principal hipótese diagnóstica?",
+    "statement": "Homem de 42 anos de idade com antecedente de hipertensão arterial, apresenta dor lombar crônica há cinco anos, após levantar peso no ambiente de trabalho. No episódio inicial apresentou dor intensa e súbita associada à limitação de movimentos que levou a afastamento do trabalho por um período de 10 dias. Voltou a trabalhar, porém manteve dor lombar contínua, de intensidade leve a moderada, com irradiação para ambas as coxas de forma difusa e piora com esforços. Vários períodos de afastamento laboral desde então, sempre com manutenção das queixas. Há 6 meses refere dor moderada a intensa com irradiação para ambos os membros inferiores e grande limitação para atividades diárias, sem qualquer melhora com uso de anti-inflamatórios ou analgésicos. Faz uso eventual de tramadol, porém nega melhora significativa. Nega febre ou perda de peso. O exame clínico é normal exceto por dor à flexão e extensão lombar. O exame neurológico é normal. Paciente traz exame de ressonância magnética realizado há 2 meses com desidratação discal L4-L5 e L5-S1, com discretas protrusões discais nestes níveis sem conflito radicular. Qual é a principal hipótese diagnóstica?",
     "options": [
       {
         "id": "A",
@@ -4432,7 +4432,7 @@
       },
       {
         "id": "B",
-        "text": "N?o exame físico para lombalgia passou a ter menor valor diagnóstico com o crescente uso de exames de imagem."
+        "text": "O exame físico para lombalgia passou a ter menor valor diagnóstico com o crescente uso de exames de imagem."
       },
       {
         "id": "C",
@@ -4457,7 +4457,7 @@
   {
     "id": "quest36.EINSTEIN.2018",
     "area": "Clínica Médica",
-    "statement": "Homem, 78 anos, com dor lombar em pressão, diária e contínua nos últimos quatro meses. Quadro se iniciou após queda da própria altura e procura atendimento médico por persistência dos sintomas neste período. Comorbidades: diabetes e câncer de próstata. N?o exame físico é normal. Os sinais de alarme que indicam necessidade de exame de imagem lombar neste paciente:",
+    "statement": "Homem, 78 anos, com dor lombar em pressão, diária e contínua nos últimos quatro meses. Quadro se iniciou após queda da própria altura e procura atendimento médico por persistência dos sintomas neste período. Comorbidades: diabetes e câncer de próstata. O exame físico é normal. Os sinais de alarme que indicam necessidade de exame de imagem lombar neste paciente:",
     "options": [
       {
         "id": "A",
@@ -4535,7 +4535,7 @@
       },
       {
         "id": "C",
-        "text": "N?o uso de corticosteroides injetáveis é indicado nas lombalgias em que não há sinais de compressão de raiz nervosa."
+        "text": "O uso de corticosteroides injetáveis é indicado nas lombalgias em que não há sinais de compressão de raiz nervosa."
       },
       {
         "id": "D",
@@ -4622,7 +4622,7 @@
   {
     "id": "1",
     "area": "Clínica Médica",
-    "statement": "Mulher, 76 anos de idade, procura atendimento na UBS por episódios de dor intensa em hemiface esquerda principalmente em região maxilar e de mandíbula, graduando até 8/10 na escala de dor. N?o quadro se repete há 3 anos, associado a sensação de choques e é precipitado pela mastigação ou frio. Tem hipertensão arterial sistêmica em uso de hidroclorotiazida e enalapril. Ao exame, apresenta-se em bom estado geral, com sinais vitais estáveis, com alodinia térmica em hemiface esquerda. Demais exames segmentares sem alterações. N?o exame complementar mais adequado para o diagnóstico etiológico nesse caso:",
+    "statement": "Mulher, 76 anos de idade, procura atendimento na UBS por episódios de dor intensa em hemiface esquerda principalmente em região maxilar e de mandíbula, graduando até 8/10 na escala de dor. O quadro se repete há 3 anos, associado a sensação de choques e é precipitado pela mastigação ou frio. Tem hipertensão arterial sistêmica em uso de hidroclorotiazida e enalapril. Ao exame, apresenta-se em bom estado geral, com sinais vitais estáveis, com alodinia térmica em hemiface esquerda. Demais exames segmentares sem alterações. O exame complementar mais adequado para o diagnóstico etiológico nesse caso:",
     "options": [
       {
         "id": "A",
@@ -4650,7 +4650,7 @@
       "D": 10
     },
     "explanationTitle": "Neuralgia do Trigêmeo",
-    "explanation": "N?o quadro é típico de neuralgia do trigêmeo; a RM de crânio é o exame de escolha para investigar causas secundárias (compressão vascular ou tumoral)."
+    "explanation": "O quadro é típico de neuralgia do trigêmeo; a RM de crânio é o exame de escolha para investigar causas secundárias (compressão vascular ou tumoral)."
   },
   {
     "id": "2",
@@ -4659,7 +4659,7 @@
     "options": [
       {
         "id": "A",
-        "text": "N?o tipo mais comum é a migrânea com aura."
+        "text": "O tipo mais comum é a migrânea com aura."
       },
       {
         "id": "B",
@@ -4716,12 +4716,12 @@
       "D": 10
     },
     "explanationTitle": "Migrânea",
-    "explanation": "N?o quadro preenche todos os critérios ICHD-3 de migrânea sem aura (unilateral pulsátil + náuseas + foto/fonofobia + piora com atividade)."
+    "explanation": "O quadro preenche todos os critérios ICHD-3 de migrânea sem aura (unilateral pulsátil + náuseas + foto/fonofobia + piora com atividade)."
   },
   {
     "id": "4",
     "area": "Clínica Médica",
-    "statement": "Mulher de 23 anos de idade vem ao Pronto-Socorro com cefaleia contínua há quatro dias. A dor inicialmente era temporal esquerda de moderada intensidade, mas hoje passou a ser holocraniana, de forte intensidade, e associada a náuseas e fotofobia. Nestes quatro dias, medicou-se apenas com dipirona. Refere que tem cefaleia com características semelhantes, mas de fraca intensidade, pelo menos duas a três vezes por mês. Não usa nenhuma medicação contínua. Sem antecedentes patológicos relevantes. N?o exame clínico (incluindo o exame neurológico) é normal. Na chegada ao Pronto-Socorro recebeu dipirona, cetoprofeno e metoclopramida endovenosa, sem melhora após duas horas. Qual alternativa representa a melhor opção terapêutica?",
+    "statement": "Mulher de 23 anos de idade vem ao Pronto-Socorro com cefaleia contínua há quatro dias. A dor inicialmente era temporal esquerda de moderada intensidade, mas hoje passou a ser holocraniana, de forte intensidade, e associada a náuseas e fotofobia. Nestes quatro dias, medicou-se apenas com dipirona. Refere que tem cefaleia com características semelhantes, mas de fraca intensidade, pelo menos duas a três vezes por mês. Não usa nenhuma medicação contínua. Sem antecedentes patológicos relevantes. O exame clínico (incluindo o exame neurológico) é normal. Na chegada ao Pronto-Socorro recebeu dipirona, cetoprofeno e metoclopramida endovenosa, sem melhora após duas horas. Qual alternativa representa a melhor opção terapêutica?",
     "options": [
       {
         "id": "A",
@@ -4919,7 +4919,7 @@
   {
     "id": "10",
     "area": "Clínica Médica",
-    "statement": "Paciente do sexo masculino, de 36 anos, vem queixando-se de cefaleia que piora após sentar-se ou manter-se de pé por algum tempo. A dor é de caráter holocraniano, associada à disacusia. Refere melhora da dor cerca de 15 minutos após deitar-se. N?o diagnóstico mais provável é:",
+    "statement": "Paciente do sexo masculino, de 36 anos, vem queixando-se de cefaleia que piora após sentar-se ou manter-se de pé por algum tempo. A dor é de caráter holocraniano, associada à disacusia. Refere melhora da dor cerca de 15 minutos após deitar-se. O diagnóstico mais provável é:",
     "options": [
       {
         "id": "A",
@@ -4956,11 +4956,11 @@
     "options": [
       {
         "id": "A",
-        "text": "N?o tratamento ideal deve ser feito com relaxantes musculares."
+        "text": "O tratamento ideal deve ser feito com relaxantes musculares."
       },
       {
         "id": "B",
-        "text": "N?o quadro sugere arterite temporal, sendo a corticoterapia a primeira opção."
+        "text": "O quadro sugere arterite temporal, sendo a corticoterapia a primeira opção."
       },
       {
         "id": "C",
@@ -4968,7 +4968,7 @@
       },
       {
         "id": "D",
-        "text": "N?o tratamento preventivo para essa paciente deve ser feito com betabloqueador ou topiramato."
+        "text": "O tratamento preventivo para essa paciente deve ser feito com betabloqueador ou topiramato."
       }
     ],
     "correctOptionId": "D",
@@ -5117,7 +5117,7 @@
   {
     "id": "quest16.SCM-BH.2023",
     "area": "Clínica Médica",
-    "statement": "Mulher de 25 anos queixa-se de crises de cefaleia unilateral, latejante, intensa, com duração de 2 dias, associada a fotofobia e náuseas. Cerca de 30 minutos antes das crises, apresenta zumbido e vertigem, que cessam após o início da dor. Tem apresentado 3 crises ao mês, durante as quais não consegue estudar ou trabalhar. Faz uso de anticoncepcional oral combinado para a prevenção de gravidez. Possui vida agitada com horários irregulares para se alimentar e dormir. N?o exame físico é normal. Assinale a alternativa que apresenta uma conduta INCORRETA nesse caso:",
+    "statement": "Mulher de 25 anos queixa-se de crises de cefaleia unilateral, latejante, intensa, com duração de 2 dias, associada a fotofobia e náuseas. Cerca de 30 minutos antes das crises, apresenta zumbido e vertigem, que cessam após o início da dor. Tem apresentado 3 crises ao mês, durante as quais não consegue estudar ou trabalhar. Faz uso de anticoncepcional oral combinado para a prevenção de gravidez. Possui vida agitada com horários irregulares para se alimentar e dormir. O exame físico é normal. Assinale a alternativa que apresenta uma conduta INCORRETA nesse caso:",
     "options": [
       {
         "id": "A",
@@ -5187,19 +5187,19 @@
     "options": [
       {
         "id": "A",
-        "text": "Não pode haver foto e/ou fonofobia, náuseas e vômitos estão ausentes. N?o exame neurológico é normal, hipertonia e hiperestesia da musculatura pericraniana podem estar presentes."
+        "text": "Não pode haver foto e/ou fonofobia, náuseas e vômitos estão ausentes. O exame neurológico é normal, hipertonia e hiperestesia da musculatura pericraniana podem estar presentes."
       },
       {
         "id": "B",
-        "text": "Pode haver foto e/ou fonofobia, mas náuseas e vômitos estão ausentes. N?o exame neurológico é anormal, hipertonia e hiperestesia da musculatura pericraniana podem estar presentes."
+        "text": "Pode haver foto e/ou fonofobia, mas náuseas e vômitos estão ausentes. O exame neurológico é anormal, hipertonia e hiperestesia da musculatura pericraniana podem estar presentes."
       },
       {
         "id": "C",
-        "text": "Pode haver foto e/ou fonofobia, mas náuseas e vômitos estão presentes. N?o exame neurológico é normal, hipertonia e hiperestesia da musculatura pericraniana podem estar presentes."
+        "text": "Pode haver foto e/ou fonofobia, mas náuseas e vômitos estão presentes. O exame neurológico é normal, hipertonia e hiperestesia da musculatura pericraniana podem estar presentes."
       },
       {
         "id": "D",
-        "text": "Pode haver foto e/ou fonofobia, mas náuseas e vômitos estão ausentes. N?o exame neurológico é normal, hipertonia e hiperestesia da musculatura pericraniana podem estar presentes."
+        "text": "Pode haver foto e/ou fonofobia, mas náuseas e vômitos estão ausentes. O exame neurológico é normal, hipertonia e hiperestesia da musculatura pericraniana podem estar presentes."
       }
     ],
     "correctOptionId": "D",
@@ -5352,7 +5352,7 @@
     "options": [
       {
         "id": "A",
-        "text": "N?o consumo de alguns alimentos como carne de porco e café não influenciam no desencadeamento da dor."
+        "text": "O consumo de alguns alimentos como carne de porco e café não influenciam no desencadeamento da dor."
       },
       {
         "id": "B",
@@ -5381,7 +5381,7 @@
   {
     "id": "quest24.HC-UFG.2015",
     "area": "Clínica Médica",
-    "statement": "N?o diagnóstico das cefaleias depende da realização de anamnese e exames clínicos geral e neurológico completos e criteriosos. Estes critérios são fundamentais para classificar as cefaleias em primárias e secundárias. Neste sentido, as cefaleias:",
+    "statement": "O diagnóstico das cefaleias depende da realização de anamnese e exames clínicos geral e neurológico completos e criteriosos. Estes critérios são fundamentais para classificar as cefaleias em primárias e secundárias. Neste sentido, as cefaleias:",
     "options": [
       {
         "id": "A",
@@ -5492,7 +5492,7 @@
       },
       {
         "id": "C",
-        "text": "N?o achado de hipertensão arterial em um paciente que vem à Emergência por cefaleia é fator que afasta causas graves de cefaleia."
+        "text": "O achado de hipertensão arterial em um paciente que vem à Emergência por cefaleia é fator que afasta causas graves de cefaleia."
       },
       {
         "id": "D",
@@ -5546,7 +5546,7 @@
   {
     "id": "quest29.SES-PE.2023",
     "area": "Clínica Médica",
-    "statement": "Uma paciente de 25 anos, portadora de enxaqueca desde a puberdade, observou aumento da frequência das crises, o que relacionava à tensão durante a preparação para o concurso da residência médica. Passou a usar paracetamol-codeína com frequência quase diária nos últimos seis meses. Há 20 dias, a cefaleia se tornou praticamente contínua e não está melhorando com o aumento da dose dos analgésicos. N?o exame neurológico é totalmente normal e não há outros sintomas sistêmicos. Qual seria a melhor conduta neste momento?",
+    "statement": "Uma paciente de 25 anos, portadora de enxaqueca desde a puberdade, observou aumento da frequência das crises, o que relacionava à tensão durante a preparação para o concurso da residência médica. Passou a usar paracetamol-codeína com frequência quase diária nos últimos seis meses. Há 20 dias, a cefaleia se tornou praticamente contínua e não está melhorando com o aumento da dose dos analgésicos. O exame neurológico é totalmente normal e não há outros sintomas sistêmicos. Qual seria a melhor conduta neste momento?",
     "options": [
       {
         "id": "A",
@@ -5678,7 +5678,7 @@
   {
     "id": "quest33.HOS.2026",
     "area": "Clínica Médica",
-    "statement": "Paciente do sexo feminino de 28 anos procura atendimento por crises recorrentes de cefaleia há 2 anos. Refere dor unilateral, pulsátil, de forte intensidade, acompanhada de náuseas, fotofobia e fonofobia. As crises duram entre 12 e 24 horas e ocorrem 4 a 5 vezes por mês, impactando suas atividades laborais. Ela relata que analgésicos simples e anti-inflamatórios aliviam parcialmente os sintomas, mas não previnem a recorrência. N?o exame neurológico está normal. Considerando o caso descrito, assinale a alternativa correta.",
+    "statement": "Paciente do sexo feminino de 28 anos procura atendimento por crises recorrentes de cefaleia há 2 anos. Refere dor unilateral, pulsátil, de forte intensidade, acompanhada de náuseas, fotofobia e fonofobia. As crises duram entre 12 e 24 horas e ocorrem 4 a 5 vezes por mês, impactando suas atividades laborais. Ela relata que analgésicos simples e anti-inflamatórios aliviam parcialmente os sintomas, mas não previnem a recorrência. O exame neurológico está normal. Considerando o caso descrito, assinale a alternativa correta.",
     "options": [
       {
         "id": "A",
@@ -5686,15 +5686,15 @@
       },
       {
         "id": "B",
-        "text": "N?o tratamento de escolha para prevenir crises é o uso diário de triptanos."
+        "text": "O tratamento de escolha para prevenir crises é o uso diário de triptanos."
       },
       {
         "id": "C",
-        "text": "N?o tratamento profilático pode incluir betabloqueadores, antidepresivos tricíclicos ou anticonvulsivantes."
+        "text": "O tratamento profilático pode incluir betabloqueadores, antidepresivos tricíclicos ou anticonvulsivantes."
       },
       {
         "id": "D",
-        "text": "N?o exame neurológico geralmente é alterado durante as crises de enxaqueca."
+        "text": "O exame neurológico geralmente é alterado durante as crises de enxaqueca."
       }
     ],
     "correctOptionId": "C",
@@ -5822,7 +5822,7 @@
       },
       {
         "id": "C",
-        "text": "N?o consumo de bebidas alcoólicas é um fator desencadeante."
+        "text": "O consumo de bebidas alcoólicas é um fator desencadeante."
       },
       {
         "id": "D",
@@ -5838,12 +5838,12 @@
       "D": 70
     },
     "explanationTitle": "Cefaleia em Salvas",
-    "explanation": "N?o quadro é de cefaleia em salvas; hemicrania contínua é outro diagnóstico (responde à indometacina)."
+    "explanation": "O quadro é de cefaleia em salvas; hemicrania contínua é outro diagnóstico (responde à indometacina)."
   },
   {
     "id": "quest38.EINSTEIN.2015",
     "area": "Pediatria",
-    "statement": "Menina de 10 anos de idade é trazida ao ambulatório com história, há 2 anos, de cefaleia. A dor aparece geralmente quando a criança está mais cansada, afeta toda a cabeça e muitas vezes pulsa. Algumas vezes é necessário o uso de paracetamol para obter a melhora e em outras, após breve período de sono, a dor melhora. A avó e uma tia também apresentam cefaleias frequentes. N?o exame físico da criança é absolutamente normal. A conduta para este caso é:",
+    "statement": "Menina de 10 anos de idade é trazida ao ambulatório com história, há 2 anos, de cefaleia. A dor aparece geralmente quando a criança está mais cansada, afeta toda a cabeça e muitas vezes pulsa. Algumas vezes é necessário o uso de paracetamol para obter a melhora e em outras, após breve período de sono, a dor melhora. A avó e uma tia também apresentam cefaleias frequentes. O exame físico da criança é absolutamente normal. A conduta para este caso é:",
     "options": [
       {
         "id": "A",
@@ -5942,7 +5942,7 @@
   {
     "id": "quest41.UEL.2023",
     "area": "Pediatria",
-    "statement": "Paciente feminina, 15 anos de idade, procura ajuda devido a queixa de piora na frequência da sua enxaqueca. As crises, agora, estão ocorrendo a cada três dias, no último mês, e a paciente está com o humor deprimido. Ela usa medicamentos para asma e é obesa. Não faz uso de anticoncepcionais. Com base nesse caso, atribua V (verdadeiro) ou F (falso) às afirmativas a seguir. ( ) N?o topiramato está associado com perda de peso e é uma boa opção no tratamento. ( ) A amitriptilina não está associada com ganho de peso. ( ) N?o propranolol não piora a asma. ( ) A flunarizina pode causar depressão. ( ) N?o naratriptano não é usado rotineiramente na prevenção das crises de enxaqueca. Assinale a alternativa que contém, de cima para baixo, a sequência correta.",
+    "statement": "Paciente feminina, 15 anos de idade, procura ajuda devido a queixa de piora na frequência da sua enxaqueca. As crises, agora, estão ocorrendo a cada três dias, no último mês, e a paciente está com o humor deprimido. Ela usa medicamentos para asma e é obesa. Não faz uso de anticoncepcionais. Com base nesse caso, atribua V (verdadeiro) ou F (falso) às afirmativas a seguir. ( ) O topiramato está associado com perda de peso e é uma boa opção no tratamento. ( ) A amitriptilina não está associada com ganho de peso. ( ) O propranolol não piora a asma. ( ) A flunarizina pode causar depressão. ( ) O naratriptano não é usado rotineiramente na prevenção das crises de enxaqueca. Assinale a alternativa que contém, de cima para baixo, a sequência correta.",
     "options": [
       {
         "id": "A",
@@ -5975,7 +5975,7 @@
   {
     "id": "quest42.SUS-BA.2023",
     "area": "Clínica Médica",
-    "statement": "Mulher, 76 anos de idade, procura atendimento na UBS por episódios de dor intensa em hemiface esquerda principalmente em região maxilar e de mandíbula, graduando até 8/10 na escala de dor. N?o quadro se repete há 3 anos, associado a sensação de choques e é precipitado pela mastigação ou frio. Tem hipertensão arterial sistêmica em uso de hidroclorotiazida e enalapril. Ao exame, apresenta-se em bom estado geral, com sinais vitais estáveis, com alodinia térmica em hemiface esquerda. Demais exames segmentares sem alterações. Considerando o caso clínico descrito, indique o diagnóstico mais provável:",
+    "statement": "Mulher, 76 anos de idade, procura atendimento na UBS por episódios de dor intensa em hemiface esquerda principalmente em região maxilar e de mandíbula, graduando até 8/10 na escala de dor. O quadro se repete há 3 anos, associado a sensação de choques e é precipitado pela mastigação ou frio. Tem hipertensão arterial sistêmica em uso de hidroclorotiazida e enalapril. Ao exame, apresenta-se em bom estado geral, com sinais vitais estáveis, com alodinia térmica em hemiface esquerda. Demais exames segmentares sem alterações. Considerando o caso clínico descrito, indique o diagnóstico mais provável:",
     "options": [
       {
         "id": "A",
@@ -6074,7 +6074,7 @@
   {
     "id": "quest45.UNESP.2016",
     "area": "Clínica Médica",
-    "statement": "Homem de 57 anos, hipertenso, apresenta cefaleia latejante no hemicrânio direito há dois anos. Queixa-se ainda de fotofobia e fonofobia, náuseas e tontura acompanhando o quadro álgico. A cefaleia dura de 1 a 2 horas, às vezes ocorre por dias seguidos. Fundo de olho não mostrou papiledema, atrofia ou neurite, mas há alteração que o médico não soube identificar. N?o diagnóstico mais provável e a conduta correta são, nessa ordem:",
+    "statement": "Homem de 57 anos, hipertenso, apresenta cefaleia latejante no hemicrânio direito há dois anos. Queixa-se ainda de fotofobia e fonofobia, náuseas e tontura acompanhando o quadro álgico. A cefaleia dura de 1 a 2 horas, às vezes ocorre por dias seguidos. Fundo de olho não mostrou papiledema, atrofia ou neurite, mas há alteração que o médico não soube identificar. O diagnóstico mais provável e a conduta correta são, nessa ordem:",
     "options": [
       {
         "id": "A",
@@ -6177,19 +6177,19 @@
     "options": [
       {
         "id": "A",
-        "text": "Trata-se de enxaqueca. É necessário realizar TAC, pois a dor é de moderada a forte intensidade e causas secundárias devem ser excluídas. N?o tratamento da crise aguda pode ser feito com AINEs, triptanos e antieméticos."
+        "text": "Trata-se de enxaqueca. É necessário realizar TAC, pois a dor é de moderada a forte intensidade e causas secundárias devem ser excluídas. O tratamento da crise aguda pode ser feito com AINEs, triptanos e antieméticos."
       },
       {
         "id": "B",
-        "text": "Trata-se de enxaqueca. Não é necessário realizar exame de imagem. N?o tratamento da crise aguda pode ser feito com triptanos, AINEs e antieméticos. É necessário realizar tratamento profilático, pois a paciente apresenta uma crise por mês."
+        "text": "Trata-se de enxaqueca. Não é necessário realizar exame de imagem. O tratamento da crise aguda pode ser feito com triptanos, AINEs e antieméticos. É necessário realizar tratamento profilático, pois a paciente apresenta uma crise por mês."
       },
       {
         "id": "C",
-        "text": "Trata-se de cefaleia tensional. Não é necessário realizar exames de imagem. N?o tratamento da crise aguda consiste em usar analgésicos simples."
+        "text": "Trata-se de cefaleia tensional. Não é necessário realizar exames de imagem. O tratamento da crise aguda consiste em usar analgésicos simples."
       },
       {
         "id": "D",
-        "text": "Trata-se de cefaleia em salvas. É necessário realizar exame de imagem para exclusão de outras causas. N?o tratamento pode ser feito com N?o₂ e encaminhamento obrigatório ao neurologista."
+        "text": "Trata-se de cefaleia em salvas. É necessário realizar exame de imagem para exclusão de outras causas. O tratamento pode ser feito com O₂ e encaminhamento obrigatório ao neurologista."
       }
     ],
     "correctOptionId": "D",
@@ -6338,7 +6338,7 @@
   {
     "id": "quest53.HOS.2018",
     "area": "Clínica Médica",
-    "statement": "Homem, 53 anos, refere cefaleia diária, de forte intensidade, há 15 dias. Tem apresentado dois episódios diários de dor, praticamente nos mesmos horários. Um deles sempre ocorre no período noturno, acordando-o do sono. Refere que a dor é unilateral, acometendo o lado esquerdo da cabeça e dura por volta de 1 hora. Associado ao quadro, relata hiperemia do olho esquerdo, lacrimejamento intenso e sensação de congestão nasal. N?o exame físico é normal, no momento da consulta, sem dor. Assinale a alternativa que apresenta o diagnóstico mais provável.",
+    "statement": "Homem, 53 anos, refere cefaleia diária, de forte intensidade, há 15 dias. Tem apresentado dois episódios diários de dor, praticamente nos mesmos horários. Um deles sempre ocorre no período noturno, acordando-o do sono. Refere que a dor é unilateral, acometendo o lado esquerdo da cabeça e dura por volta de 1 hora. Associado ao quadro, relata hiperemia do olho esquerdo, lacrimejamento intenso e sensação de congestão nasal. O exame físico é normal, no momento da consulta, sem dor. Assinale a alternativa que apresenta o diagnóstico mais provável.",
     "options": [
       {
         "id": "A",
@@ -6416,7 +6416,7 @@
       },
       {
         "id": "C",
-        "text": "N?o uso de AINEs no tratamento da cefaleia em crianças é efetivo e está relacionado à inibição de prostaglandinas."
+        "text": "O uso de AINEs no tratamento da cefaleia em crianças é efetivo e está relacionado à inibição de prostaglandinas."
       },
       {
         "id": "D",
@@ -6478,7 +6478,7 @@
       },
       {
         "id": "B",
-        "text": "N?o dolorimento à palpação manual pericraniano não é frequentemente encontrado."
+        "text": "O dolorimento à palpação manual pericraniano não é frequentemente encontrado."
       },
       {
         "id": "C",
@@ -6668,7 +6668,7 @@
   {
     "id": "quest63.SCMA.2025",
     "area": "Clínica Médica",
-    "statement": "Mulher de 24 anos, mudou-se recentemente para a área de abrangência da Unidade Básica de Saúde (UBS). Procura a unidade pela terceira vez em um mês, com queixa de cefaleia há 6 horas, de intensidade 7 em 10, hemicraniana à esquerda, acompanhada de fotofobia, fonofobia, náuseas e vômitos. Apresenta essas crises de 1 a 2 vezes por semana desde os 14 anos de idade. Refere que cerca de uma vez por mês, incluindo o episódio atual, a cefaleia é precedida por brilhos na vista e fica com dificuldade para falar por cerca de 5 minutos, geralmente no período perimenstrual. Nega tabagismo, etilismo ou uso de drogas ilícitas. N?o exame físico é normal. Sobre o atendimento desta paciente na UBS, assinale a correta:",
+    "statement": "Mulher de 24 anos, mudou-se recentemente para a área de abrangência da Unidade Básica de Saúde (UBS). Procura a unidade pela terceira vez em um mês, com queixa de cefaleia há 6 horas, de intensidade 7 em 10, hemicraniana à esquerda, acompanhada de fotofobia, fonofobia, náuseas e vômitos. Apresenta essas crises de 1 a 2 vezes por semana desde os 14 anos de idade. Refere que cerca de uma vez por mês, incluindo o episódio atual, a cefaleia é precedida por brilhos na vista e fica com dificuldade para falar por cerca de 5 minutos, geralmente no período perimenstrual. Nega tabagismo, etilismo ou uso de drogas ilícitas. O exame físico é normal. Sobre o atendimento desta paciente na UBS, assinale a correta:",
     "options": [
       {
         "id": "A",
@@ -6742,11 +6742,11 @@
       },
       {
         "id": "B",
-        "text": "N?o eletroencefalograma."
+        "text": "O eletroencefalograma."
       },
       {
         "id": "C",
-        "text": "N?o eletroneuromiografia."
+        "text": "O eletroneuromiografia."
       },
       {
         "id": "D",
@@ -6800,7 +6800,7 @@
   {
     "id": "quest67.UEPA.2019",
     "area": "Clínica Médica",
-    "statement": "Mulher de 35 anos de idade procura pronto atendimento com dor em hemicrânio direito, pulsátil, de forte intensidade, acompanhada de náuseas/vômitos, foto e fonofobia há 6 horas. Refere episódios prévios de cefaleia semelhantes ao atual. Nega uso de medicações contraceptivas. N?o exame neurológico é normal. Trata-se de:",
+    "statement": "Mulher de 35 anos de idade procura pronto atendimento com dor em hemicrânio direito, pulsátil, de forte intensidade, acompanhada de náuseas/vômitos, foto e fonofobia há 6 horas. Refere episódios prévios de cefaleia semelhantes ao atual. Nega uso de medicações contraceptivas. O exame neurológico é normal. Trata-se de:",
     "options": [
       {
         "id": "A",
@@ -6932,7 +6932,7 @@
   {
     "id": "quest71.PUC-SOROCABA.2016",
     "area": "Clínica Médica",
-    "statement": "Paciente masculino de 50 anos queixa-se de cefaleias diárias nas últimas duas semanas. Ele relata dois episódios diários de dor, um deles ocorrendo sempre no período noturno, despertando-o do sono. A dor é de grande intensidade, localiza-se no lado direito da face e crânio e dura cerca de uma hora. Costuma se fazer acompanhar de lacrimejamento e hiperemia do olho direito e congestão nasal. Seu exame neurológico é normal. N?o diagnóstico mais provável é:",
+    "statement": "Paciente masculino de 50 anos queixa-se de cefaleias diárias nas últimas duas semanas. Ele relata dois episódios diários de dor, um deles ocorrendo sempre no período noturno, despertando-o do sono. A dor é de grande intensidade, localiza-se no lado direito da face e crânio e dura cerca de uma hora. Costuma se fazer acompanhar de lacrimejamento e hiperemia do olho direito e congestão nasal. Seu exame neurológico é normal. O diagnóstico mais provável é:",
     "options": [
       {
         "id": "A",
@@ -7031,7 +7031,7 @@
   {
     "id": "quest74.EINSTEIN.2015",
     "area": "Clínica Médica",
-    "statement": "N?o uso de oxigenioterapia a 8 L/min, durante 15 minutos, através de máscara facial tem se mostrado efetivo para ataques agudos da cefaleia:",
+    "statement": "O uso de oxigenioterapia a 8 L/min, durante 15 minutos, através de máscara facial tem se mostrado efetivo para ataques agudos da cefaleia:",
     "options": [
       {
         "id": "A",
@@ -7229,7 +7229,7 @@
   {
     "id": "quest80.HCB.2020",
     "area": "Pediatria",
-    "statement": "N?o diagnóstico das cefaleias em pediatria é, na maioria das vezes, apenas clínico. Uma boa anamnese e um exame físico detalhado, incluindo o exame neurológico e de fundo de olho, são base fundamental para o diagnóstico desse problema em crianças. A American Academy of Neurology (AAN) e outras entidades, em conjunto, elaboraram uma revisão e criaram critérios baseados em evidências para a real necessidade de se realizar o exame de neuroimagem em pacientes com cefaleia. São eles, exceto:",
+    "statement": "O diagnóstico das cefaleias em pediatria é, na maioria das vezes, apenas clínico. Uma boa anamnese e um exame físico detalhado, incluindo o exame neurológico e de fundo de olho, são base fundamental para o diagnóstico desse problema em crianças. A American Academy of Neurology (AAN) e outras entidades, em conjunto, elaboraram uma revisão e criaram critérios baseados em evidências para a real necessidade de se realizar o exame de neuroimagem em pacientes com cefaleia. São eles, exceto:",
     "options": [
       {
         "id": "A",
@@ -7262,7 +7262,7 @@
   {
     "id": "quest81.SUS-SP.2016",
     "area": "Clínica Médica",
-    "statement": "Uma mulher de 52 anos, com antecedente de migrânea, procura o pronto-socorro com queixa de cefaleia súbita de grande intensidade há 4 horas. Estava sentada almoçando quando ocorreu o episódio. É capaz de identificar o momento exato do início da dor. Permaneceu deitada por cerca de 2 horas, com abrandamento progressivo da dor, mas permanece com cefaleia moderada, holocraniana, até agora. N?o exame clínico e neurológico são normais. N?o exame de imagem mais adequado no momento é:",
+    "statement": "Uma mulher de 52 anos, com antecedente de migrânea, procura o pronto-socorro com queixa de cefaleia súbita de grande intensidade há 4 horas. Estava sentada almoçando quando ocorreu o episódio. É capaz de identificar o momento exato do início da dor. Permaneceu deitada por cerca de 2 horas, com abrandamento progressivo da dor, mas permanece com cefaleia moderada, holocraniana, até agora. O exame clínico e neurológico são normais. O exame de imagem mais adequado no momento é:",
     "options": [
       {
         "id": "A",
@@ -7394,7 +7394,7 @@
   {
     "id": "quest85.UERJ.2024-cefaleias159q",
     "area": "Clínica Médica",
-    "statement": "Jovem de 25 anos, sem comorbidades, procura a atenção primária à saúde (APS) por cefaleia persistente. Relata início do quadro há cerca de um mês, com cefaleia hemicraniana à direita, diária, que atrapalha o seu sono e melhora parcialmente com uso de analgésicos comuns. Paciente apresenta fotofobia, fonofobia e náuseas, ocasionalmente, e nega vômitos, febre, alterações do estado mental ou turvação visual. N?o exame neurológico não apresenta alterações. A característica do quadro descrito considerada sinal de alarme para causas secundárias de cefaleia é:",
+    "statement": "Jovem de 25 anos, sem comorbidades, procura a atenção primária à saúde (APS) por cefaleia persistente. Relata início do quadro há cerca de um mês, com cefaleia hemicraniana à direita, diária, que atrapalha o seu sono e melhora parcialmente com uso de analgésicos comuns. Paciente apresenta fotofobia, fonofobia e náuseas, ocasionalmente, e nega vômitos, febre, alterações do estado mental ou turvação visual. O exame neurológico não apresenta alterações. A característica do quadro descrito considerada sinal de alarme para causas secundárias de cefaleia é:",
     "options": [
       {
         "id": "A",
@@ -7460,7 +7460,7 @@
   {
     "id": "quest87.SES-GO.2026-cefaleias159q",
     "area": "Clínica Médica",
-    "statement": "A Classificação Internacional das Cefaleias descreve 14 grupos de cefaleias, sendo os 4 primeiros grupos pertencentes às Cefaleias Primárias e os demais, às Cefaleias Secundárias. N?o grupo 1 descreve os vários subtipos das migrâneas, que são doenças que geram sintomas que vão além da dor. Qual é o processo fisiopatológico que se manifesta clinicamente como aura?",
+    "statement": "A Classificação Internacional das Cefaleias descreve 14 grupos de cefaleias, sendo os 4 primeiros grupos pertencentes às Cefaleias Primárias e os demais, às Cefaleias Secundárias. O grupo 1 descreve os vários subtipos das migrâneas, que são doenças que geram sintomas que vão além da dor. Qual é o processo fisiopatológico que se manifesta clinicamente como aura?",
     "options": [
       {
         "id": "A",
@@ -7526,7 +7526,7 @@
   {
     "id": "quest89.UFCSPA.2026-cefaleias159q",
     "area": "Clínica Médica",
-    "statement": "Paciente feminina, 55 anos, vem à consulta na UBS com queixa de dor crônica de enxaqueca. A médica da atenção primária prescreve amitriptilina, uma vez que possui boa experiência clínica com esse medicamento e encontra respaldo em evidências científicas que sustentam a sua conduta. Sobre a amitriptilina, analise as afirmativas e assinale a alternativa correta. I. Promove a inibição da recaptação da noradrenalina e, mais fortemente, da serotonina, com importante ação sobre receptores colinérgicos, 4-adrenergicos e histaminérgicos tipo H1. II. N?o efeito analgésico se dá pelo bloqueio dos canais de sódio, de forma semelhante aos anestésicos locais. III. Para a manutenção do tratamento da depressão, as doses variam entre 25 e 50mg/dia. IV. É recomendado realizar ECG basal antes do seu início.",
+    "statement": "Paciente feminina, 55 anos, vem à consulta na UBS com queixa de dor crônica de enxaqueca. A médica da atenção primária prescreve amitriptilina, uma vez que possui boa experiência clínica com esse medicamento e encontra respaldo em evidências científicas que sustentam a sua conduta. Sobre a amitriptilina, analise as afirmativas e assinale a alternativa correta. I. Promove a inibição da recaptação da noradrenalina e, mais fortemente, da serotonina, com importante ação sobre receptores colinérgicos, 4-adrenergicos e histaminérgicos tipo H1. II. O efeito analgésico se dá pelo bloqueio dos canais de sódio, de forma semelhante aos anestésicos locais. III. Para a manutenção do tratamento da depressão, as doses variam entre 25 e 50mg/dia. IV. É recomendado realizar ECG basal antes do seu início.",
     "options": [
       {
         "id": "A",
@@ -7658,7 +7658,7 @@
   {
     "id": "quest93.UFPA.2022",
     "area": "Clínica Médica",
-    "statement": "Jovem de 19 anos, sexo masculino, procura atendimento médico devido a episódios de cefaleia há 2 semanas. Relata que as dores são em aperto, localizadas em região occipital e temporal parietal, bilateralmente. Nega náuseas, vômitos, fonofobia, fotofobia ou escotomas. Não tem feito uso de medicação até o momento, referindo melhora após deitar-se em ambiente escuro e silencioso. Relata que está se preparando para concurso público, o que está lhe deixando ansioso e com episódios de insônia. N?o paciente refere que já apresentou episódios semelhantes aos atuais, geralmente desencadeados por momentos de estresse na vida pessoal. N?o exame físico é completamente normal. Com base nas informações, a conduta a ser adotada é",
+    "statement": "Jovem de 19 anos, sexo masculino, procura atendimento médico devido a episódios de cefaleia há 2 semanas. Relata que as dores são em aperto, localizadas em região occipital e temporal parietal, bilateralmente. Nega náuseas, vômitos, fonofobia, fotofobia ou escotomas. Não tem feito uso de medicação até o momento, referindo melhora após deitar-se em ambiente escuro e silencioso. Relata que está se preparando para concurso público, o que está lhe deixando ansioso e com episódios de insônia. O paciente refere que já apresentou episódios semelhantes aos atuais, geralmente desencadeados por momentos de estresse na vida pessoal. O exame físico é completamente normal. Com base nas informações, a conduta a ser adotada é",
     "options": [
       {
         "id": "A",
@@ -7691,7 +7691,7 @@
   {
     "id": "quest94.SCMA.2025",
     "area": "Clínica Médica",
-    "statement": "Mulher de 24 anos, mudou-se recentemente para a área de abrangência da Unidade Básica de Saúde (UBS). Procura a unidade pela terceira vez em um mês, com queixa de cefaleia há 6 horas, de intensidade 7 em 10, hemicraniana à esquerda, acompanhada de fotofobia, fonofobia, náuseas e vômitos. Apresenta essas crises de 1 a 2 vezes por semana desde os 14 anos de idade. Refere que cerca de uma vez por mês, incluindo o episódio atual, a cefaleia é precedida por brilhos na vista e fica com dificuldade para falar por cerca de 5 minutos, geralmente no período perimenstrual. Nega tabagismo, etilismo ou uso de drogas ilícitas. N?o exame físico é normal. Sobre o tratamento medicamentoso da paciente, assinale a correta:",
+    "statement": "Mulher de 24 anos, mudou-se recentemente para a área de abrangência da Unidade Básica de Saúde (UBS). Procura a unidade pela terceira vez em um mês, com queixa de cefaleia há 6 horas, de intensidade 7 em 10, hemicraniana à esquerda, acompanhada de fotofobia, fonofobia, náuseas e vômitos. Apresenta essas crises de 1 a 2 vezes por semana desde os 14 anos de idade. Refere que cerca de uma vez por mês, incluindo o episódio atual, a cefaleia é precedida por brilhos na vista e fica com dificuldade para falar por cerca de 5 minutos, geralmente no período perimenstrual. Nega tabagismo, etilismo ou uso de drogas ilícitas. O exame físico é normal. Sobre o tratamento medicamentoso da paciente, assinale a correta:",
     "options": [
       {
         "id": "A",
@@ -7728,7 +7728,7 @@
     "options": [
       {
         "id": "A",
-        "text": "N?o manejo deve ser realizado com sumatriptano (50 mg) no início de todas as crises, podendo a dose ser repetida após 2 horas caso a dor não tenha cedido completamente."
+        "text": "O manejo deve ser realizado com sumatriptano (50 mg) no início de todas as crises, podendo a dose ser repetida após 2 horas caso a dor não tenha cedido completamente."
       },
       {
         "id": "B",
@@ -7757,7 +7757,7 @@
   {
     "id": "quest96.HAOC.2025",
     "area": "Clínica Médica",
-    "statement": "Homem, 35 anos, queixa-se de cefaleia há três semanas, temporal à esquerda, de caráter contínuo, pulsátil, intensidade de 9 em 10, sem melhora com uso de analgésicos comuns ou opioides. Relata que acorda durante a noite devido à dor e que não há fatores de melhora ou piora. Nega febre, conta que tem sono regular e que faz uso regular de suplementos alimentares há 9 anos. Acrescenta que desde há 15 anos apresenta enxaqueca com alívio da dor com analgésicos simples; além de ser hipertenso há dois anos, obtendo boa resposta ao tratamento com losartana 50 mg/dia. Ao exame físico, registram-se: FC de 76 bpm, FR de 18 irpm, PA de 144x96 mmHg. N?o paciente apresenta fácies de dor, corado, hidratado, eupneico, acianótico e anictérico. Os exames clínicos cardiovascular, respiratório, abdominal, pares crânianos e fundo de olho apresentam-se normais; ausência de rigidez de nuca. Qual é a conduta mais adequada na gestão de saúde deste paciente?",
+    "statement": "Homem, 35 anos, queixa-se de cefaleia há três semanas, temporal à esquerda, de caráter contínuo, pulsátil, intensidade de 9 em 10, sem melhora com uso de analgésicos comuns ou opioides. Relata que acorda durante a noite devido à dor e que não há fatores de melhora ou piora. Nega febre, conta que tem sono regular e que faz uso regular de suplementos alimentares há 9 anos. Acrescenta que desde há 15 anos apresenta enxaqueca com alívio da dor com analgésicos simples; além de ser hipertenso há dois anos, obtendo boa resposta ao tratamento com losartana 50 mg/dia. Ao exame físico, registram-se: FC de 76 bpm, FR de 18 irpm, PA de 144x96 mmHg. O paciente apresenta fácies de dor, corado, hidratado, eupneico, acianótico e anictérico. Os exames clínicos cardiovascular, respiratório, abdominal, pares crânianos e fundo de olho apresentam-se normais; ausência de rigidez de nuca. Qual é a conduta mais adequada na gestão de saúde deste paciente?",
     "options": [
       {
         "id": "A",
@@ -7897,11 +7897,11 @@
       },
       {
         "id": "B",
-        "text": "N?o (Older) Cefaleia que iniciou após os 20 anos."
+        "text": "O (Older) Cefaleia que iniciou após os 20 anos."
       },
       {
         "id": "C",
-        "text": "N?o (Onset) Cefaleia de início súbito, nunca a primeira cefaleia."
+        "text": "O (Onset) Cefaleia de início súbito, nunca a primeira cefaleia."
       },
       {
         "id": "D",
@@ -8161,15 +8161,15 @@
       },
       {
         "id": "B",
-        "text": "N?o diagnóstico provável é de enxaqueca com aura. Está recomendado o tratamento com sumatriptano, devido à severidade da crise."
+        "text": "O diagnóstico provável é de enxaqueca com aura. Está recomendado o tratamento com sumatriptano, devido à severidade da crise."
       },
       {
         "id": "C",
-        "text": "N?o caso indica uma cefaleia tensional. Assim, o médico deve investigar fatores de estresse e intervir nos fatores biopsicossociais envolvidos no processo."
+        "text": "O caso indica uma cefaleia tensional. Assim, o médico deve investigar fatores de estresse e intervir nos fatores biopsicossociais envolvidos no processo."
       },
       {
         "id": "D",
-        "text": "N?o caso é de uma cefaleia primária sem sinal de alerta, portanto, é possível a \"demora permitida\" na avaliação de Juraci."
+        "text": "O caso é de uma cefaleia primária sem sinal de alerta, portanto, é possível a \"demora permitida\" na avaliação de Juraci."
       }
     ],
     "correctOptionId": "A",
@@ -8194,7 +8194,7 @@
       },
       {
         "id": "B",
-        "text": "N?o sumatriptano é uma droga muito utilizada na profilaxia da migrânea."
+        "text": "O sumatriptano é uma droga muito utilizada na profilaxia da migrânea."
       },
       {
         "id": "C",
@@ -8219,7 +8219,7 @@
   {
     "id": "quest110.IAMSPE.2022",
     "area": "Clínica Médica",
-    "statement": "N?o diagnóstico de cefaleia tensional é pautado na entrevista médica, pois o exame clínico neurológico geralmente não apresenta alterações significativas. Quanto às características clínicas da cefaleia tensional, assinale a alternativa correta.",
+    "statement": "O diagnóstico de cefaleia tensional é pautado na entrevista médica, pois o exame clínico neurológico geralmente não apresenta alterações significativas. Quanto às características clínicas da cefaleia tensional, assinale a alternativa correta.",
     "options": [
       {
         "id": "A",
@@ -8252,7 +8252,7 @@
   {
     "id": "quest111.UFRJ.2016",
     "area": "Clínica Médica",
-    "statement": "Mulher, 53 anos, queixa-se de episódios de cefaleia unilateral, tipo fisgada, descrito como \"uma espécie de choque\", fugazes, ocorrendo 2 a 3 vezes por dia, resolvendo espontaneamente, em muitas ocasiões iniciado ao pentear os cabelos. Não tem outros sintomas. Exame físico normal, inclusive neurológico. N?o tratamento preventivo melhor indicado para o quadro é:",
+    "statement": "Mulher, 53 anos, queixa-se de episódios de cefaleia unilateral, tipo fisgada, descrito como \"uma espécie de choque\", fugazes, ocorrendo 2 a 3 vezes por dia, resolvendo espontaneamente, em muitas ocasiões iniciado ao pentear os cabelos. Não tem outros sintomas. Exame físico normal, inclusive neurológico. O tratamento preventivo melhor indicado para o quadro é:",
     "options": [
       {
         "id": "A",
@@ -8318,7 +8318,7 @@
   {
     "id": "quest113.CESUPA.2022",
     "area": "Clínica Médica",
-    "statement": "R.L.S, sexo masculino, 45 anos, procura emergência durante a madrugada, com quadro de cefaleia hemicraniana esquerda há 2h, associada a fotofobia e fonofobia, além de náuseas e distensão abdominal. Fez uso de dipirona 1g sem melhora. É tabagista (30 maços/ano) e hipertenso. Refere episódios similares anteriormente. Ao exame sem déficits neurológicos. PA 140x90mmHg FC: 90bpm FR: 18irpm. N?o diagnóstico mais provável e tratamento recomendado, respectivamente, são:",
+    "statement": "R.L.S, sexo masculino, 45 anos, procura emergência durante a madrugada, com quadro de cefaleia hemicraniana esquerda há 2h, associada a fotofobia e fonofobia, além de náuseas e distensão abdominal. Fez uso de dipirona 1g sem melhora. É tabagista (30 maços/ano) e hipertenso. Refere episódios similares anteriormente. Ao exame sem déficits neurológicos. PA 140x90mmHg FC: 90bpm FR: 18irpm. O diagnóstico mais provável e tratamento recomendado, respectivamente, são:",
     "options": [
       {
         "id": "A",
@@ -8351,7 +8351,7 @@
   {
     "id": "quest114.PUC-SOROCABA.2025",
     "area": "Clínica Médica",
-    "statement": "Juliana, 30 anos, chega a um atendimento na Unidade Básica de Saúde para uma consulta de encaixe, referindo dores de cabeça há dois dias que se iniciaram ao realizar atividade física intensa. Trata-se de dor pulsátil, unilateral, sem irradiação. Vomitou três vezes e chegou a desmaiar. Conta que já teve sintomas semelhantes no período pré-menstrual, associados a náusea e fotofobia. Não houve melhora do quadro com uso de paracetamol e a paciente tem um trabalho muito importante à tarde, por isso resolveu buscar atendimento. Durante o exame físico, conta que é a pior dor de cabeça que já teve na vida. N?o exame apresenta PA 155x90, rigidez de nuca e refere turvação da visão. Exame neurológico normal. Qual seria o melhor plano terapêutico nesse caso e por qual motivo?",
+    "statement": "Juliana, 30 anos, chega a um atendimento na Unidade Básica de Saúde para uma consulta de encaixe, referindo dores de cabeça há dois dias que se iniciaram ao realizar atividade física intensa. Trata-se de dor pulsátil, unilateral, sem irradiação. Vomitou três vezes e chegou a desmaiar. Conta que já teve sintomas semelhantes no período pré-menstrual, associados a náusea e fotofobia. Não houve melhora do quadro com uso de paracetamol e a paciente tem um trabalho muito importante à tarde, por isso resolveu buscar atendimento. Durante o exame físico, conta que é a pior dor de cabeça que já teve na vida. O exame apresenta PA 155x90, rigidez de nuca e refere turvação da visão. Exame neurológico normal. Qual seria o melhor plano terapêutico nesse caso e por qual motivo?",
     "options": [
       {
         "id": "A",
@@ -8495,7 +8495,7 @@
       },
       {
         "id": "C",
-        "text": "N?o uso de analgésicos simples por mais de sete dias por mês, por mais de três meses ou quinze dias no mesmo mês é considerado abuso medicamentoso."
+        "text": "O uso de analgésicos simples por mais de sete dias por mês, por mais de três meses ou quinze dias no mesmo mês é considerado abuso medicamentoso."
       },
       {
         "id": "D",
@@ -8582,7 +8582,7 @@
   {
     "id": "quest121.UERJ.2018",
     "area": "Clínica Médica",
-    "statement": "Uma paciente de 28 anos apresenta cefaleia pulsátil unilateral de moderada intensidade, com duração de 6 horas, associada a náuseas e fotofobia. N?o quadro se repete 3 vezes por mês há 2 anos. Nega aura, trauma ou uso abusivo de medicações. Exame neurológico normal. A principal hipótese diagnóstica é:",
+    "statement": "Uma paciente de 28 anos apresenta cefaleia pulsátil unilateral de moderada intensidade, com duração de 6 horas, associada a náuseas e fotofobia. O quadro se repete 3 vezes por mês há 2 anos. Nega aura, trauma ou uso abusivo de medicações. Exame neurológico normal. A principal hipótese diagnóstica é:",
     "options": [
       {
         "id": "A",
@@ -9209,7 +9209,7 @@
   {
     "id": "quest140.PSU-GO.2024",
     "area": "Clínica Médica",
-    "statement": "Paciente D.A.N?o., masculino, 28 anos de idade, solteiro, engenheiro civil, em tratamento para transtorno de ansiedade com venlafaxina 150 mg 1 cps. Nega alergia a medicamentos, nega etilismo, nega tabagismo e nega consumo de outras drogas, pratica natação 3 x por semana (50 minutos por sessão). S1. Paciente refere que há 5 anos tem apresentado crises de cefaleias, sempre foi frequente, estima que nos últimos 3 meses tem passado mais de 15 dias por mês com cefaleia. A cefaleia é bilateral, em aperto, forte intensidade, atingindo o pico em poucas horas e com piora na atividade física rotineira como caminhar e subir escadas. Paciente refere que como sintoma associado sempre apresenta náuseas e fonofobia, porém nega fotofobia. Nega: calafrios, febre, mialgia, perda de peso, claudicação mandibular, sintomas neurológicos focais ou sistêmicos (nega inclusive sintomas como disfasia e positivos/negativos na visão/sensibilidade), agravação postural, precipitar por exercício/postura/tosse/relação sexual. O1. Sem papiledema, sem déficits neurológicos e algum grau de tensão muscular na cervical (sem configuração de ponto de gatilho). N?o complemento do registro do \"A\" no modelo SOAP, de acordo com a Terceira Edição da Classificação de Cefaleia do Comitê da Sociedade Internacional das Cefaleias (ICHD-3), é:",
+    "statement": "Paciente D.A.O., masculino, 28 anos de idade, solteiro, engenheiro civil, em tratamento para transtorno de ansiedade com venlafaxina 150 mg 1 cps. Nega alergia a medicamentos, nega etilismo, nega tabagismo e nega consumo de outras drogas, pratica natação 3 x por semana (50 minutos por sessão). S1. Paciente refere que há 5 anos tem apresentado crises de cefaleias, sempre foi frequente, estima que nos últimos 3 meses tem passado mais de 15 dias por mês com cefaleia. A cefaleia é bilateral, em aperto, forte intensidade, atingindo o pico em poucas horas e com piora na atividade física rotineira como caminhar e subir escadas. Paciente refere que como sintoma associado sempre apresenta náuseas e fonofobia, porém nega fotofobia. Nega: calafrios, febre, mialgia, perda de peso, claudicação mandibular, sintomas neurológicos focais ou sistêmicos (nega inclusive sintomas como disfasia e positivos/negativos na visão/sensibilidade), agravação postural, precipitar por exercício/postura/tosse/relação sexual. O1. Sem papiledema, sem déficits neurológicos e algum grau de tensão muscular na cervical (sem configuração de ponto de gatilho). O complemento do registro do \"A\" no modelo SOAP, de acordo com a Terceira Edição da Classificação de Cefaleia do Comitê da Sociedade Internacional das Cefaleias (ICHD-3), é:",
     "options": [
       {
         "id": "A",
@@ -9308,7 +9308,7 @@
   {
     "id": "quest143.SCMM.2018",
     "area": "Clínica Médica",
-    "statement": "N?o tratamento profilático da migrânea menstrual, não deve apenas considerar como CORRETO o seguinte:",
+    "statement": "O tratamento profilático da migrânea menstrual, não deve apenas considerar como CORRETO o seguinte:",
     "options": [
       {
         "id": "A",
@@ -9316,7 +9316,7 @@
       },
       {
         "id": "B",
-        "text": "N?o tratamento profilático da migrânea menstrual deve ter caráter temporário, iniciando-se em intervalo de 1 a 14 dias antes do dia em que, usualmente, a cefaleia se inicia, sempre obedecendo ao padrão estabelecido pelo diário."
+        "text": "O tratamento profilático da migrânea menstrual deve ter caráter temporário, iniciando-se em intervalo de 1 a 14 dias antes do dia em que, usualmente, a cefaleia se inicia, sempre obedecendo ao padrão estabelecido pelo diário."
       },
       {
         "id": "C",
@@ -9374,7 +9374,7 @@
   {
     "id": "quest145.UEPA.2018",
     "area": "Clínica Médica",
-    "statement": "Paciente de 27 anos comparece ao serviço de urgência queixando-se de cefaleia importante há 2 horas. Refere já ter tido quadro semelhante no passado. N?o episódio inicia com sensibilidade à luz e tristeza. A dor surge e aumenta progressivamente em horas. No momento, dor importante occipital, retro-orbitária, maior à direita e incapacitante. Há queixa importante de náuseas associada ao quadro. N?o manejo imediato deve ser:",
+    "statement": "Paciente de 27 anos comparece ao serviço de urgência queixando-se de cefaleia importante há 2 horas. Refere já ter tido quadro semelhante no passado. O episódio inicia com sensibilidade à luz e tristeza. A dor surge e aumenta progressivamente em horas. No momento, dor importante occipital, retro-orbitária, maior à direita e incapacitante. Há queixa importante de náuseas associada ao quadro. O manejo imediato deve ser:",
     "options": [
       {
         "id": "A",
@@ -9559,7 +9559,7 @@
       }
     ],
     "correctOptionId": "D",
-    "hint": "N?o cérebro propriamente dito não tem nociceptores.",
+    "hint": "O cérebro propriamente dito não tem nociceptores.",
     "statistics": {
       "A": 10,
       "B": 10,
@@ -9567,7 +9567,7 @@
       "D": 70
     },
     "explanationTitle": "Cefaleia",
-    "explanation": "N?o parênquima cerebral é insensível à dor; a dor cefálica origina-se de estruturas como meninges, vasos e couro cabeludo."
+    "explanation": "O parênquima cerebral é insensível à dor; a dor cefálica origina-se de estruturas como meninges, vasos e couro cabeludo."
   },
   {
     "id": "quest151.UNIRIO.2020",
@@ -9737,7 +9737,7 @@
   {
     "id": "quest156.REVALIDA.2024",
     "area": "Clínica Médica",
-    "statement": "Uma mulher com 21 anos apresenta história de cefaleia hemicraniana, pulsátil, precedida por escotomas visuais, de duração de 6 a 10 horas, com fono e fotofobia, com pelo menos um episódio ao mês nos últimos 10 anos. Relata que a privação de sono desencadeia o quadro e que obtém melhora parcial da cefaleia após ingerir analgésico comum. Nega febre ou alteração das características de cefaleia recentemente. Nega outros sintomas associados. Ao exame físico, apresenta bom estado geral, fácies de dor, está hidratada, corada, com frequência cardíaca de 90 bpm e pressão arterial de 130 x 80 mmHg. Não apresenta alterações no aparelho cardiovascular nem no respiratório. N?o exame neurológico da paciente encontra-se normal. Diante desse quadro clínico, quais são, respectivamente, a hipótese diagnóstica e a conduta adequada para a paciente?",
+    "statement": "Uma mulher com 21 anos apresenta história de cefaleia hemicraniana, pulsátil, precedida por escotomas visuais, de duração de 6 a 10 horas, com fono e fotofobia, com pelo menos um episódio ao mês nos últimos 10 anos. Relata que a privação de sono desencadeia o quadro e que obtém melhora parcial da cefaleia após ingerir analgésico comum. Nega febre ou alteração das características de cefaleia recentemente. Nega outros sintomas associados. Ao exame físico, apresenta bom estado geral, fácies de dor, está hidratada, corada, com frequência cardíaca de 90 bpm e pressão arterial de 130 x 80 mmHg. Não apresenta alterações no aparelho cardiovascular nem no respiratório. O exame neurológico da paciente encontra-se normal. Diante desse quadro clínico, quais são, respectivamente, a hipótese diagnóstica e a conduta adequada para a paciente?",
     "options": [
       {
         "id": "A",
@@ -9770,7 +9770,7 @@
   {
     "id": "quest157.SUS-SP.2021",
     "area": "Clínica Médica",
-    "statement": "N?o tratamento de escolha da cefaleia com características de cefaleia unilateral, forte intensidade, associada a lacrimejamento e hiperemia conjuntival, congestão nasal e rinorreia, sudorese frontal, miose, rubor facial, ptose e edema palpebral e duração limitada é:",
+    "statement": "O tratamento de escolha da cefaleia com características de cefaleia unilateral, forte intensidade, associada a lacrimejamento e hiperemia conjuntival, congestão nasal e rinorreia, sudorese frontal, miose, rubor facial, ptose e edema palpebral e duração limitada é:",
     "options": [
       {
         "id": "A",

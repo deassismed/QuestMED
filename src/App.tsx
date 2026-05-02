@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Check,
+  Download,
+  HelpCircle,
   Lightbulb,
   Lock,
   Pause,
@@ -12,6 +14,7 @@ import {
   X,
 } from "lucide-react";
 import { dailyQuestions, type Option, type Question } from "./data/questions";
+import { generateResultPdfBlob } from "./utils/resultPdf";
 
 const QUESTION_LIMIT = 10;
 const QUESTION_SECONDS = 180;
@@ -20,6 +23,7 @@ const DRAG_COMMIT_RATIO = 0.42;
 const DRAG_COMMIT_MIN_DISTANCE = 132;
 const DRAG_COMMIT_VELOCITY = 1.15;
 const DRAG_TRANSITION_MS = 240;
+const TUTORIAL_STORAGE_KEY = "questmed:tutorial-seen";
 
 const questionCount = Math.min(QUESTION_LIMIT, dailyQuestions.length);
 
@@ -71,12 +75,75 @@ type GestureStart = {
   time: number;
 };
 
+type TutorialTarget = "welcome" | "question" | "confirm" | "hint" | "eliminate" | "timer" | "swipe" | "feedback" | "result";
+
+type TutorialStep = {
+  target: TutorialTarget;
+  title: string;
+  body: string;
+};
+
+type TargetRect = {
+  top: number;
+  left: number;
+  width: number;
+  height: number;
+};
+
 const idleDrag: DragState = {
   isDragging: false,
   neighborIndex: null,
   offset: 0,
   transition: false,
 };
+
+const tutorialSteps: TutorialStep[] = [
+  {
+    target: "welcome",
+    title: "Bem-vindo ao QuestMED",
+    body: "Resolva 10 questoes por dia, com tempo limitado e feedback imediato.",
+  },
+  {
+    target: "question",
+    title: "Leia e escolha",
+    body: "Leia o enunciado e toque em uma alternativa para marcar sua resposta.",
+  },
+  {
+    target: "confirm",
+    title: "Confirme quando decidir",
+    body: "Depois de selecionar uma alternativa, o botao de check aparece para registrar a resposta.",
+  },
+  {
+    target: "hint",
+    title: "Use a dica com criterio",
+    body: "A lampada abre uma dica. Se voce usar, a questao passa a valer metade.",
+  },
+  {
+    target: "eliminate",
+    title: "Corte duas alternativas",
+    body: "A tesoura elimina duas respostas incorretas e so pode ser usada uma vez por questao.",
+  },
+  {
+    target: "timer",
+    title: "Controle o tempo",
+    body: "O cronometro mostra o tempo restante. Toque nele para pausar ou continuar.",
+  },
+  {
+    target: "swipe",
+    title: "Passe as questoes",
+    body: "Arraste para cima para avancar e para baixo para voltar quando estiver no fim ou no topo da questao.",
+  },
+  {
+    target: "feedback",
+    title: "Revise o feedback",
+    body: "Depois de confirmar, aparecem acerto ou erro, estatisticas, pontuacao, justificativa e video curto quando houver.",
+  },
+  {
+    target: "result",
+    title: "Veja seu resultado",
+    body: "Ao terminar as 10 questoes, o app mostra seu resumo de acertos, erros, nao respondidas e desempenho.",
+  },
+];
 
 function createQuestionState(): QuestionRuntimeState {
   return {
@@ -174,6 +241,7 @@ function FloatingToolButton({
   children,
   disabled,
   onClick,
+  refProp,
   tooltip,
 }: {
   active?: boolean;
@@ -181,6 +249,7 @@ function FloatingToolButton({
   children: React.ReactNode;
   disabled?: boolean;
   onClick: () => void;
+  refProp?: React.RefObject<HTMLButtonElement | null>;
   tooltip: string;
 }) {
   return (
@@ -190,6 +259,7 @@ function FloatingToolButton({
       data-tooltip={tooltip}
       disabled={disabled}
       onClick={onClick}
+      ref={refProp}
       type="button"
     >
       {children}
@@ -200,8 +270,19 @@ function FloatingToolButton({
 export default function App() {
   const [session, setSession] = useState<SessionState>(() => createInitialSession());
   const [drag, setDrag] = useState<DragState>(idleDrag);
+  const [showTutorial, setShowTutorial] = useState(false);
+  const [tutorialStep, setTutorialStep] = useState(0);
+  const [tutorialTargetRect, setTutorialTargetRect] = useState<TargetRect | null>(null);
+  const stageRef = useRef<HTMLElement | null>(null);
   const activeScrollRef = useRef<HTMLDivElement | null>(null);
+  const questionCardRef = useRef<HTMLElement | null>(null);
+  const optionsListRef = useRef<HTMLElement | null>(null);
   const feedbackRef = useRef<HTMLElement | null>(null);
+  const helpButtonRef = useRef<HTMLButtonElement | null>(null);
+  const hintButtonRef = useRef<HTMLButtonElement | null>(null);
+  const eliminateButtonRef = useRef<HTMLButtonElement | null>(null);
+  const timerButtonRef = useRef<HTMLButtonElement | null>(null);
+  const confirmButtonRef = useRef<HTMLButtonElement | null>(null);
   const gestureStartRef = useRef<GestureStart | null>(null);
   const dragRef = useRef<DragState>(idleDrag);
   const swipeHandledRef = useRef(false);
@@ -210,11 +291,107 @@ export default function App() {
   const question = dailyQuestions[session.currentIndex];
   const questionState = normalizeQuestionState(session.questionStates[session.currentIndex]);
   const questionLocked =
-    questionState.isConfirmed || questionState.isExpired || questionState.isPaused || session.flowStep !== "question";
+    showTutorial ||
+    questionState.isConfirmed ||
+    questionState.isExpired ||
+    questionState.isPaused ||
+    session.flowStep !== "question";
+  const activeTutorialStep = tutorialSteps[tutorialStep];
 
   function setDragState(nextDrag: DragState) {
     dragRef.current = nextDrag;
     setDrag(nextDrag);
+  }
+
+  function getTutorialTargetElement(target: TutorialTarget) {
+    if (target === "welcome" || target === "result") {
+      return stageRef.current;
+    }
+
+    if (target === "question") {
+      return questionCardRef.current;
+    }
+
+    if (target === "confirm") {
+      return confirmButtonRef.current ?? optionsListRef.current;
+    }
+
+    if (target === "hint") {
+      return hintButtonRef.current;
+    }
+
+    if (target === "eliminate") {
+      return eliminateButtonRef.current;
+    }
+
+    if (target === "timer") {
+      return timerButtonRef.current;
+    }
+
+    if (target === "swipe") {
+      return activeScrollRef.current;
+    }
+
+    return feedbackRef.current ?? optionsListRef.current;
+  }
+
+  function updateTutorialTarget() {
+    if (!showTutorial) {
+      setTutorialTargetRect(null);
+      return;
+    }
+
+    const element = getTutorialTargetElement(activeTutorialStep.target);
+
+    if (!element) {
+      setTutorialTargetRect(null);
+      return;
+    }
+
+    const rect = element.getBoundingClientRect();
+    setTutorialTargetRect({
+      top: rect.top,
+      left: rect.left,
+      width: rect.width,
+      height: rect.height,
+    });
+  }
+
+  function markTutorialSeen() {
+    try {
+      window.localStorage.setItem(TUTORIAL_STORAGE_KEY, "true");
+    } catch {
+      // localStorage can be unavailable in restricted browser modes.
+    }
+  }
+
+  function openTutorial() {
+    setDragState(idleDrag);
+    setTutorialStep(0);
+    setShowTutorial(true);
+  }
+
+  function closeTutorial(markSeen: boolean) {
+    if (markSeen) {
+      markTutorialSeen();
+    }
+
+    setShowTutorial(false);
+    setTutorialStep(0);
+    setTutorialTargetRect(null);
+  }
+
+  function goToNextTutorialStep() {
+    if (tutorialStep >= tutorialSteps.length - 1) {
+      closeTutorial(true);
+      return;
+    }
+
+    setTutorialStep((current) => current + 1);
+  }
+
+  function goToPreviousTutorialStep() {
+    setTutorialStep((current) => Math.max(0, current - 1));
   }
 
   useEffect(() => {
@@ -224,6 +401,34 @@ export default function App() {
       }
     };
   }, []);
+
+  useEffect(() => {
+    try {
+      if (window.localStorage.getItem(TUTORIAL_STORAGE_KEY) !== "true") {
+        setShowTutorial(true);
+      }
+    } catch {
+      setShowTutorial(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!showTutorial) {
+      return;
+    }
+
+    const frame = window.requestAnimationFrame(updateTutorialTarget);
+    const scrollElement = activeScrollRef.current;
+
+    window.addEventListener("resize", updateTutorialTarget);
+    scrollElement?.addEventListener("scroll", updateTutorialTarget, { passive: true });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("resize", updateTutorialTarget);
+      scrollElement?.removeEventListener("scroll", updateTutorialTarget);
+    };
+  }, [showTutorial, tutorialStep, session.currentIndex, questionState.selectedOptionId]);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -351,6 +556,34 @@ export default function App() {
     };
   }, [session.answers]);
 
+  function generateSessionPdf() {
+    const exportedAt = new Date();
+    const blob = generateResultPdfBlob({
+      answers: session.answers,
+      exportedAt,
+      questions: dailyQuestions,
+      summary: {
+        answered: summary.answered,
+        correct: summary.correct,
+        expired: summary.expired,
+        incorrect: summary.incorrect,
+        percent: summary.percent,
+        totalScore: summary.totalScore,
+      },
+      totalQuestions: QUESTION_LIMIT,
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    const timestamp = exportedAt.toISOString().replace(/[:.]/g, "-");
+
+    link.href = url;
+    link.download = `questmed-resultado-${timestamp}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  }
+
   function getAnswerStatus(targetQuestion: Question, targetState: QuestionRuntimeState) {
     if (targetState.isExpired) {
       return "expired";
@@ -367,6 +600,18 @@ export default function App() {
     setSession((current) => ({
       ...current,
       questionStates: replaceQuestionState(current.questionStates, current.currentIndex, updater),
+    }));
+  }
+
+  function finishSession() {
+    setSession((current) => ({
+      ...current,
+      flowStep: "finished",
+      questionStates: replaceQuestionState(current.questionStates, current.currentIndex, (state) => ({
+        ...state,
+        showHintModal: false,
+        showVideoPrompt: false,
+      })),
     }));
   }
 
@@ -392,15 +637,7 @@ export default function App() {
     const nextIndex = session.currentIndex + 1;
 
     if (nextIndex >= questionCount) {
-      setSession((current) => ({
-        ...current,
-        flowStep: "finished",
-        questionStates: replaceQuestionState(current.questionStates, current.currentIndex, (state) => ({
-          ...state,
-          showHintModal: false,
-          showVideoPrompt: false,
-        })),
-      }));
+      finishSession();
       return;
     }
 
@@ -444,6 +681,12 @@ export default function App() {
 
   function getNeighborIndex(deltaY: number, target: EventTarget | null) {
     const { atBottom, atTop } = getScrollInfo(target);
+    const isLastQuestion = session.currentIndex === questionCount - 1;
+    const canGoToResult = isLastQuestion && (questionState.isConfirmed || questionState.isExpired);
+
+    if (deltaY < 0 && atBottom && canGoToResult) {
+      return questionCount;
+    }
 
     if (deltaY < 0 && atBottom && session.currentIndex < questionCount - 1) {
       return session.currentIndex + 1;
@@ -465,6 +708,7 @@ export default function App() {
 
   function startGesture(x: number, y: number, target: EventTarget | null) {
     if (
+      showTutorial ||
       questionState.isPaused ||
       session.flowStep !== "question" ||
       questionState.showHintModal ||
@@ -480,7 +724,13 @@ export default function App() {
   function moveGesture(x: number, y: number, target: EventTarget | null, preventDefault: () => void) {
     const gestureStart = gestureStartRef.current;
 
-    if (!gestureStart || questionState.isPaused || session.flowStep !== "question" || questionState.showHintModal) {
+    if (
+      !gestureStart ||
+      showTutorial ||
+      questionState.isPaused ||
+      session.flowStep !== "question" ||
+      questionState.showHintModal
+    ) {
       return;
     }
 
@@ -543,7 +793,8 @@ export default function App() {
       return;
     }
 
-    const exitOffset = currentDrag.neighborIndex > session.currentIndex ? -viewportHeight : viewportHeight;
+    const neighborIndex = currentDrag.neighborIndex;
+    const exitOffset = neighborIndex > session.currentIndex ? -viewportHeight : viewportHeight;
 
     setDragState({
       ...currentDrag,
@@ -552,7 +803,11 @@ export default function App() {
     });
 
     transitionTimeoutRef.current = window.setTimeout(() => {
-      navigateToQuestion(currentDrag.neighborIndex as number);
+      if (neighborIndex >= questionCount) {
+        finishSession();
+      } else {
+        navigateToQuestion(neighborIndex);
+      }
       setDragState(idleDrag);
     }, DRAG_TRANSITION_MS);
   }
@@ -597,7 +852,7 @@ export default function App() {
   }
 
   function selectOption(optionId: Option["id"]) {
-    if (swipeHandledRef.current || questionLocked || questionState.eliminatedOptionIds.includes(optionId)) {
+    if (showTutorial || swipeHandledRef.current || questionLocked || questionState.eliminatedOptionIds.includes(optionId)) {
       return;
     }
 
@@ -703,7 +958,76 @@ export default function App() {
     setSession(createInitialSession());
   }
 
+  function renderFinishedContent() {
+    return (
+      <>
+        {session.printWarning && <SecurityToast message={session.printWarning} />}
+        <div className="finish-hero">
+          <span className="finish-icon">
+            <Sparkles size={30} aria-hidden="true" />
+          </span>
+          <p className="eyebrow">QuestMED</p>
+          <h1>Resultado</h1>
+          <p>Voce concluiu as 10 questoes de hoje.</p>
+        </div>
+
+        <section className="summary-grid" aria-label="Estatisticas finais">
+          <div>
+            <strong>{summary.correct}</strong>
+            <span>Acertos</span>
+          </div>
+          <div>
+            <strong>{summary.incorrect}</strong>
+            <span>Erros</span>
+          </div>
+          <div>
+            <strong>{summary.expired}</strong>
+            <span>Nao respondidas</span>
+          </div>
+          <div>
+            <strong>{summary.percent}%</strong>
+            <span>Desempenho</span>
+          </div>
+        </section>
+
+        <section className="score-card">
+          <p>Pontuacao total</p>
+          <strong>{summary.totalScore.toFixed(1).replace(".", ",")} / {QUESTION_LIMIT}</strong>
+          <span>{summary.answered} questoes respondidas. Dicas usadas reduzem a questao para metade da pontuacao.</span>
+        </section>
+
+        <div className="finish-actions">
+          <button className="primary-wide-button" onClick={generateSessionPdf} type="button">
+            <Download size={19} aria-hidden="true" />
+            Gerar PDF
+          </button>
+          <button className="secondary-wide-button" onClick={restartSession} type="button">
+            <RotateCcw size={19} aria-hidden="true" />
+            Reiniciar simulacao
+          </button>
+        </div>
+      </>
+    );
+  }
+
+  function renderFinishedPage(position: "active" | "neighbor") {
+    const isActive = position === "active";
+
+    return (
+      <article
+        aria-hidden={!isActive}
+        className={["feed-page", "result-feed-page", isActive ? "active" : "neighbor"].join(" ")}
+      >
+        <div className="result-page-scroll">{renderFinishedContent()}</div>
+      </article>
+    );
+  }
+
   function renderQuestionPage(index: number, position: "active" | "neighbor") {
+    if (index >= questionCount) {
+      return renderFinishedPage(position);
+    }
+
     const targetQuestion = dailyQuestions[index];
     const targetState = normalizeQuestionState(session.questionStates[index]);
     const targetAnswer = session.answers.find((answer) => answer.questionId === targetQuestion.id);
@@ -714,6 +1038,7 @@ export default function App() {
       targetState.isConfirmed ||
       targetState.isExpired ||
       targetState.isPaused ||
+      showTutorial ||
       session.flowStep !== "question" ||
       !isActive;
 
@@ -729,11 +1054,22 @@ export default function App() {
             <h1>Questao {targetProgress}</h1>
           </div>
           <div className="floating-tools" aria-label="Ferramentas da questao">
+            <button
+              aria-label="Abrir tutorial"
+              className="floating-tool-button help-tool-button"
+              data-tooltip="Mostra o tutorial visual."
+              onClick={openTutorial}
+              ref={isActive ? helpButtonRef : undefined}
+              type="button"
+            >
+              <HelpCircle size={21} aria-hidden="true" />
+            </button>
             <FloatingToolButton
               active={targetState.usedHint}
               ariaLabel="Mostrar dica"
               disabled={targetLocked}
               onClick={openHint}
+              refProp={isActive ? hintButtonRef : undefined}
               tooltip="Abre uma dica. Se usada, a questao passa a valer metade."
             >
               <Lightbulb size={21} aria-hidden="true" />
@@ -743,6 +1079,7 @@ export default function App() {
               ariaLabel="Eliminar duas alternativas"
               disabled={targetLocked || targetState.eliminatedOptionIds.length > 0}
               onClick={eliminateOptions}
+              refProp={isActive ? eliminateButtonRef : undefined}
               tooltip="Elimina duas alternativas incorretas."
             >
               <Scissors size={21} aria-hidden="true" />
@@ -756,6 +1093,7 @@ export default function App() {
               ].join(" ")}
               disabled={!isActive || targetState.isConfirmed || targetState.isExpired}
               onClick={toggleTimerPause}
+              ref={isActive ? timerButtonRef : undefined}
               type="button"
             >
               {targetState.isPaused ? (
@@ -776,11 +1114,11 @@ export default function App() {
             {targetState.usedHint && <span className="hint-penalty-pill">Dica: 50%</span>}
           </div>
 
-          <section className="question-card">
+          <section className="question-card" ref={isActive ? questionCardRef : undefined}>
             <p>{targetQuestion.statement}</p>
           </section>
 
-          <section className="options-list" aria-label="Alternativas">
+          <section className="options-list" aria-label="Alternativas" ref={isActive ? optionsListRef : undefined}>
             {targetQuestion.options.map((option) => {
               const isSelected = targetState.selectedOptionId === option.id;
               const isEliminated = targetState.eliminatedOptionIds.includes(option.id);
@@ -888,6 +1226,7 @@ export default function App() {
   const showConfirmButton = canConfirm && session.flowStep === "question";
   const feedHeight = activeScrollRef.current?.clientHeight ?? 1;
   const neighborOffset = drag.neighborIndex === null ? 0 : drag.neighborIndex > session.currentIndex ? feedHeight : -feedHeight;
+  const isLastQuestion = session.currentIndex === questionCount - 1;
   const feedStyle = {
     transform: `translate3d(0, ${drag.offset}px, 0)`,
     transition: drag.transition ? `transform ${DRAG_TRANSITION_MS}ms cubic-bezier(0.18, 0.82, 0.22, 1)` : "none",
@@ -896,51 +1235,14 @@ export default function App() {
     "phone-stage",
     drag.isDragging || drag.transition ? "is-feed-moving" : "",
     questionState.isPaused ? "is-timer-paused" : "",
+    showTutorial ? "is-tutorial-open" : "",
   ].join(" ");
 
   if (session.flowStep === "finished") {
     return (
       <main className="app-shell secure-surface">
-        <section className="phone-stage finished-stage" aria-label="Resultado QuestMED">
-          {session.printWarning && <SecurityToast message={session.printWarning} />}
-          <div className="finish-hero">
-            <span className="finish-icon">
-              <Sparkles size={30} aria-hidden="true" />
-            </span>
-            <p className="eyebrow">QuestMED</p>
-            <h1>Resultado</h1>
-            <p>Voce concluiu as 10 questoes de hoje.</p>
-          </div>
-
-          <section className="summary-grid" aria-label="Estatisticas finais">
-            <div>
-              <strong>{summary.correct}</strong>
-              <span>Acertos</span>
-            </div>
-            <div>
-              <strong>{summary.incorrect}</strong>
-              <span>Erros</span>
-            </div>
-            <div>
-              <strong>{summary.expired}</strong>
-              <span>Nao respondidas</span>
-            </div>
-            <div>
-              <strong>{summary.percent}%</strong>
-              <span>Desempenho</span>
-            </div>
-          </section>
-
-          <section className="score-card">
-            <p>Pontuacao total</p>
-            <strong>{summary.totalScore.toFixed(1).replace(".", ",")} / {QUESTION_LIMIT}</strong>
-            <span>{summary.answered} questoes respondidas. Dicas usadas reduzem a questao para metade da pontuacao.</span>
-          </section>
-
-          <button className="primary-wide-button" onClick={restartSession} type="button">
-            <RotateCcw size={19} aria-hidden="true" />
-            Reiniciar simulacao
-          </button>
+        <section className="phone-stage finished-stage" aria-label="Resultado QuestMED" ref={stageRef}>
+          {renderFinishedContent()}
         </section>
       </main>
     );
@@ -951,6 +1253,7 @@ export default function App() {
       <section
         className={stageClassName}
         aria-label="QuestMED"
+        ref={stageRef}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
@@ -998,8 +1301,8 @@ export default function App() {
                   title={question.explanationTitle}
                 />
               </div>
-              <button className="primary-wide-button" onClick={goNext} type="button">
-                Proxima questao
+              <button className="primary-wide-button" onClick={isLastQuestion ? finishSession : goNext} type="button">
+                {isLastQuestion ? "Resultado do dia" : "Proxima questao"}
               </button>
             </section>
           </div>
@@ -1010,6 +1313,7 @@ export default function App() {
             className="floating-confirm-button"
             disabled={!canConfirm}
             onClick={confirmAnswer}
+            ref={confirmButtonRef}
             type="button"
             aria-label="Confirmar alternativa"
             title="Confirmar alternativa"
@@ -1017,8 +1321,102 @@ export default function App() {
             <Check size={28} aria-hidden="true" />
           </button>
         )}
+
+        {showTutorial && (
+          <TutorialOverlay
+            onClose={() => closeTutorial(true)}
+            onNext={goToNextTutorialStep}
+            onPrevious={goToPreviousTutorialStep}
+            onSkip={() => closeTutorial(true)}
+            rect={tutorialTargetRect}
+            step={activeTutorialStep}
+            stepIndex={tutorialStep}
+            stepTotal={tutorialSteps.length}
+          />
+        )}
       </section>
     </main>
+  );
+}
+
+function TutorialOverlay({
+  onClose,
+  onNext,
+  onPrevious,
+  onSkip,
+  rect,
+  step,
+  stepIndex,
+  stepTotal,
+}: {
+  onClose: () => void;
+  onNext: () => void;
+  onPrevious: () => void;
+  onSkip: () => void;
+  rect: TargetRect | null;
+  step: TutorialStep;
+  stepIndex: number;
+  stepTotal: number;
+}) {
+  const margin = 10;
+  const targetStyle = rect
+    ? {
+        top: Math.max(8, rect.top - margin),
+        left: Math.max(8, rect.left - margin),
+        width: rect.width + margin * 2,
+        height: rect.height + margin * 2,
+      }
+    : undefined;
+  const cardTop = rect ? rect.top + rect.height + 22 : window.innerHeight / 2 - 120;
+  const preferTop = rect ? cardTop > window.innerHeight - 230 : false;
+  const maxCardLeft = Math.max(16, window.innerWidth - 356);
+  const useCenteredCard =
+    !rect || rect.height > window.innerHeight * 0.68 || rect.width > window.innerWidth * 0.82;
+  const cardStyle = useCenteredCard
+    ? {
+        left: "50%",
+        top: "50%",
+        transform: "translate(-50%, -50%)",
+      }
+    : rect
+      ? {
+          top: preferTop ? "auto" : Math.min(cardTop, window.innerHeight - 220),
+          bottom: preferTop ? Math.max(18, window.innerHeight - rect.top + 18) : "auto",
+          left: Math.min(Math.max(16, rect.left + rect.width / 2 - 170), maxCardLeft),
+        }
+    : undefined;
+  const isLast = stepIndex === stepTotal - 1;
+
+  return (
+    <div className="tutorial-layer" role="dialog" aria-modal="true" aria-label="Tutorial QuestMED">
+      <div className="tutorial-dim" />
+      {targetStyle && <div className="tutorial-target-ring" style={targetStyle} aria-hidden="true" />}
+      {step.target === "swipe" && (
+        <div className="tutorial-swipe-gesture" aria-hidden="true">
+          <span />
+        </div>
+      )}
+      <section className="tutorial-card" style={cardStyle}>
+        <div className="tutorial-step-count">
+          {stepIndex + 1}/{stepTotal}
+        </div>
+        <h2>{step.title}</h2>
+        <p>{step.body}</p>
+        <div className="tutorial-actions">
+          <button className="tutorial-text-button" onClick={onSkip} type="button">
+            Pular
+          </button>
+          <div>
+            <button className="tutorial-secondary-button" disabled={stepIndex === 0} onClick={onPrevious} type="button">
+              Voltar
+            </button>
+            <button className="tutorial-primary-button" onClick={isLast ? onClose : onNext} type="button">
+              {isLast ? "Concluir" : "Proximo"}
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
 

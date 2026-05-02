@@ -113,7 +113,7 @@ h2 {
   align-items: center;
   display: grid;
   gap: 6px;
-  grid-template-columns: 44px 44px minmax(92px, auto);
+  grid-template-columns: 40px 40px 40px minmax(88px, auto);
   flex: 0 0 auto;
   z-index: 2;
 }
@@ -157,6 +157,11 @@ h2 {
   background: #e5f5f3;
   border-color: #77bcb6;
   color: var(--primary-dark);
+}
+
+.help-tool-button {
+  background: #f8fbfb;
+  color: #40595d;
 }
 
 .timer-card {
@@ -265,6 +270,10 @@ h2 {
   pointer-events: none;
 }
 
+.result-feed-page {
+  background: var(--bg);
+}
+
 .question-page-scroll {
   flex: 1;
   height: auto;
@@ -278,6 +287,23 @@ h2 {
 }
 
 .question-page-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.result-page-scroll {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  scrollbar-width: none;
+  touch-action: pan-y;
+}
+
+.result-page-scroll::-webkit-scrollbar {
   display: none;
 }
 
@@ -585,6 +611,20 @@ h2 {
   color: #fff;
 }
 
+.secondary-wide-button {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--primary-dark);
+  display: inline-flex;
+  font-weight: 800;
+  gap: 8px;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 12px;
+}
+
 .video-prompt-card button {
   flex: 0 0 auto;
   min-width: 150px;
@@ -633,6 +673,150 @@ h2 {
   border-color: #c6d7d4;
   color: #607174;
   cursor: not-allowed;
+}
+
+.tutorial-layer {
+  inset: 0;
+  pointer-events: auto;
+  position: fixed;
+  z-index: 80;
+}
+
+.tutorial-dim {
+  background: rgba(12, 30, 33, 0.62);
+  inset: 0;
+  position: absolute;
+}
+
+.tutorial-target-ring {
+  border: 2px solid #ffffff;
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 9999px rgba(12, 30, 33, 0.54),
+    0 0 0 7px rgba(44, 167, 160, 0.24),
+    0 18px 48px rgba(6, 22, 24, 0.3);
+  pointer-events: none;
+  position: fixed;
+  transition:
+    height 180ms ease,
+    left 180ms ease,
+    top 180ms ease,
+    width 180ms ease;
+  z-index: 82;
+}
+
+.tutorial-card {
+  background: #ffffff;
+  border: 1px solid rgba(214, 229, 226, 0.98);
+  border-radius: 8px;
+  box-shadow: 0 26px 70px rgba(7, 26, 28, 0.3);
+  color: var(--ink);
+  display: grid;
+  gap: 10px;
+  max-width: calc(100vw - 32px);
+  padding: 16px;
+  position: fixed;
+  width: 340px;
+  z-index: 84;
+}
+
+.tutorial-step-count {
+  color: var(--primary);
+  font-size: 0.76rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.tutorial-card h2 {
+  color: var(--ink);
+  font-size: 1.25rem;
+}
+
+.tutorial-card p {
+  color: #425356;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.tutorial-actions {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.tutorial-actions div {
+  display: flex;
+  gap: 8px;
+}
+
+.tutorial-text-button,
+.tutorial-secondary-button,
+.tutorial-primary-button {
+  border-radius: 8px;
+  font-weight: 850;
+  min-height: 40px;
+  padding: 8px 12px;
+}
+
+.tutorial-text-button {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+}
+
+.tutorial-secondary-button {
+  background: #f3f8f7;
+  border: 1px solid var(--line);
+  color: var(--primary-dark);
+}
+
+.tutorial-secondary-button:disabled {
+  color: #9aabad;
+  cursor: not-allowed;
+}
+
+.tutorial-primary-button {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  color: #fff;
+}
+
+.tutorial-swipe-gesture {
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.96);
+  border-radius: 999px;
+  display: flex;
+  height: 112px;
+  justify-content: center;
+  left: 50%;
+  pointer-events: none;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  z-index: 83;
+}
+
+.tutorial-swipe-gesture span {
+  background: #ffffff;
+  border-radius: 999px;
+  height: 18px;
+  width: 18px;
+  animation: tutorialSwipe 1.3s ease-in-out infinite;
+}
+
+@keyframes tutorialSwipe {
+  0%,
+  100% {
+    transform: translateY(28px);
+  }
+
+  48% {
+    transform: translateY(-28px);
+  }
 }
 
 .modal-backdrop {
@@ -759,6 +943,7 @@ h2 {
 
 .finished-stage {
   gap: 16px;
+  overflow: hidden;
 }
 
 .finish-hero {
@@ -825,6 +1010,19 @@ h2 {
 .score-card strong {
   color: var(--primary-dark);
   font-size: 2rem;
+}
+
+.finish-actions {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding-bottom: calc(4px + env(safe-area-inset-bottom));
+}
+
+.finish-actions .primary-wide-button,
+.finish-actions .secondary-wide-button {
+  min-width: 0;
+  padding-inline: 10px;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -894,7 +1092,7 @@ h2 {
 
   .floating-tools {
     gap: 5px;
-    grid-template-columns: 40px 40px minmax(86px, auto);
+    grid-template-columns: 36px 36px 36px minmax(82px, auto);
   }
 
   .floating-tool-button,
