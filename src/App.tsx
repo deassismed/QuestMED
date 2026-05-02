@@ -15,6 +15,7 @@ import {
   X,
 } from "lucide-react";
 import { dailyQuestions, questionBank, type Option, type Question } from "./data/questions";
+import { flushQuestionEventQueue, trackQuestionEvent } from "./utils/analytics";
 import { generateResultPdfBlob } from "./utils/resultPdf";
 
 const QUESTION_LIMIT = 10;
@@ -328,6 +329,7 @@ export default function App() {
   const dragRef = useRef<DragState>(idleDrag);
   const swipeHandledRef = useRef(false);
   const transitionTimeoutRef = useRef<number | null>(null);
+  const sentQuestionEventKeysRef = useRef<Set<string>>(new Set());
 
   const questionCount = questions.length;
   const question = questions[session.currentIndex];
@@ -512,6 +514,8 @@ export default function App() {
             true,
           );
 
+          trackAnswerRecord(activeQuestion, timeoutRecord, current.currentIndex);
+
           return {
             ...current,
             answers: upsertAnswer(current.answers, timeoutRecord),
@@ -569,6 +573,21 @@ export default function App() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("contextmenu", handleContextMenu);
+    };
+  }, []);
+
+  useEffect(() => {
+    function flushQueue() {
+      void flushQuestionEventQueue();
+    }
+
+    window.addEventListener("online", flushQueue);
+    document.addEventListener("visibilitychange", flushQueue);
+    flushQueue();
+
+    return () => {
+      window.removeEventListener("online", flushQueue);
+      document.removeEventListener("visibilitychange", flushQueue);
     };
   }, []);
 
@@ -642,6 +661,30 @@ export default function App() {
       ...current,
       questionStates: replaceQuestionState(current.questionStates, current.currentIndex, updater),
     }));
+  }
+
+  function trackAnswerRecord(targetQuestion: Question, record: AnswerRecord, questionIndex: number) {
+    const eventKey = [
+      questionIndex,
+      targetQuestion.id,
+      record.selectedOptionId ?? "expired",
+      record.expired ? "expired" : "answered",
+      record.score,
+    ].join(":");
+
+    if (sentQuestionEventKeysRef.current.has(eventKey)) {
+      return;
+    }
+
+    sentQuestionEventKeysRef.current.add(eventKey);
+    trackQuestionEvent({
+      question: targetQuestion,
+      selectedOptionId: record.selectedOptionId,
+      isCorrect: record.isCorrect,
+      usedHint: record.usedHint,
+      expired: record.expired,
+      score: record.score,
+    });
   }
 
   function finishSession() {
@@ -915,6 +958,8 @@ export default function App() {
       false,
     );
 
+    trackAnswerRecord(question, record, session.currentIndex);
+
     setSession((current) => ({
       ...current,
       answers: upsertAnswer(current.answers, record),
@@ -994,12 +1039,14 @@ export default function App() {
   }
 
   function restartSession() {
+    sentQuestionEventKeysRef.current.clear();
     setDragState(idleDrag);
     setSession(createInitialSession(questionCount));
   }
 
   function startNewQuestions() {
     const nextQuestions = createQuestionSet();
+    sentQuestionEventKeysRef.current.clear();
     setDragState(idleDrag);
     setQuestions(nextQuestions);
     setSession(createInitialSession(nextQuestions.length));
