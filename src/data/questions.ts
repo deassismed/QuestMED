@@ -9903,6 +9903,1722 @@ export const questionBank: Question[] = [
     },
     "explanationTitle": "Cefaleia",
     "explanation": "Cefaleia nova e progressiva em idosa com comorbidade oncológica (nódulo pulmonar) = red flag → exame de imagem (RM ou TC)."
+  },
+  {
+    "id": "quest16.UNICAMP.2017",
+    "area": "Cirurgia",
+    "statement": "Mulher, 30a, com cólica renal esquerda há dois dias, dá entrada no Pronto Atendimento com febre de 39 °C e intensa dor lombar esquerda, com sinal de Giordano positivo. Trazia tomografia computadorizada de abdome sem contraste realizada no dia anterior, que mostrava um cálculo ureteral distal esquerdo de 6 mm de diâmetro associado a hidronefrose moderada, com densidade de 750 UH e distância pele-cálculo de 7 cm. Realizou exame de urina que demonstrou leucocitúria acentuada e nitrito positivo. Após tratamento da dor e da febre, coleta de urocultura e hemocultura e início de antibioticoterapia, a conduta é:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Iniciar alfabloqueador e aguardar eliminação do cálculo."
+      },
+      {
+        "id": "B",
+        "text": "Realizar ureterolitotripsia externa por ondas de choque."
+      },
+      {
+        "id": "C",
+        "text": "Realizar ureterolitotripsia transureteroscópica com laser."
+      },
+      {
+        "id": "D",
+        "text": "Colocar cateter ureteral duplo “J” ou nefrostomia percutânea."
+      }
+    ],
+    "correctOptionId": "D",
+    "hint": "Febre + Giordano + hidronefrose = infecção + obstrução; alfabloqueador só em litíase não complicada.",
+    "statistics": {
+      "A": 10,
+      "B": 10,
+      "C": 10,
+      "D": 70
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "Pielonefrite obstrutiva por cálculo ureteral exige drenagem urinária urgente (duplo J ou nefrostomia) + ATB, independentemente do tamanho do cálculo."
+  },
+  {
+    "id": "quest17.UFS.2020",
+    "area": "Clínica Médica",
+    "statement": "Mulher, 22 anos, procura atendimento no Pronto-Socorro com quadro de dor em baixo ventre episódica e relacionada à micção, associada a disúria e eventual estrangúria, de início há cerca de 12 horas. Relata episódio anterior do mesmo quadro há cerca de 04 anos. Vida sexual ativa com sexo desprotegido eventual. Nega corrimentos ou sangramentos vaginais. Ectoscopia vulvar sem alterações. Demais pontos do exame físico sem alterações. A conduta mais acertada frente ao quadro clínico é:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Coletar urocultura para melhor definição diagnóstica."
+      },
+      {
+        "id": "B",
+        "text": "Solicitar ultrassonografia de vias urinárias."
+      },
+      {
+        "id": "C",
+        "text": "Iniciar antibioticoterapia empírica ambulatorial voltada para tratar notadamente flora gram negativa."
+      },
+      {
+        "id": "D",
+        "text": "Internamento hospitalar imediato."
+      }
+    ],
+    "correctOptionId": "C",
+    "hint": "Sem febre ou dor lombar = cistite baixa; urocultura não é obrigatória em primeira episódio não complicado.",
+    "statistics": {
+      "A": 10,
+      "B": 10,
+      "C": 70,
+      "D": 10
+    },
+    "explanationTitle": "Cistite",
+    "explanation": "Quadro clássico de cistite não complicada em mulher jovem: disúria, polaciúria, dor suprapúbica relacionada à micção → tratamento empírico ambulatorial com ATB de espectro para Gram-negativos."
+  },
+  {
+    "id": "quest18.PSU-MG.2020",
+    "area": "Clínica Médica",
+    "statement": "Uma mulher de 28 anos, previamente hígida, foi à UPA no dia 10 de abril de 2019 queixando-se de disúria, dor no flanco direito e febre (38,4°C). O exame de urina revelou 54 piócitos/campo, 13 hemácias/campo e presença de bastonetes Gram-negativo. Optou-se pelo tratamento ambulatorial com ciprofloxacino. Evoluiu com melhora dos sintomas e da febre após 48h do uso do medicamento. No dia 14 de abril, retornou à UPA com queixa de prurido generalizado, recidiva da febre e edema de membros inferiores. [...] Considerando o diagnóstico mais provável, a conduta imediata MAIS ADEQUADA é:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Manter o ciprofloxacino e adicionar a hidrocortisona."
+      },
+      {
+        "id": "B",
+        "text": "Substituir o ciprofloxacino por ceftriaxona e adicionar a hidrocortisona."
+      },
+      {
+        "id": "C",
+        "text": "Substituir o ciprofloxacino por nitrofurantoína."
+      },
+      {
+        "id": "D",
+        "text": "Substituir o ciprofloxacino por sulfametoxazol-trimetoprim."
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Pielonefrite com falha ou reação ao fluoroquinolona → ceftriaxona EV + suporte.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "Quadro inicial de pielonefrite aguda por E. coli tratado com ciprofloxacino; recidiva + eosinofilia + rash = reação de hipersensibilidade → trocar ATB + corticoterapia."
+  },
+  {
+    "id": "quest19.USP-RP.2025",
+    "area": "Clínica Médica",
+    "statement": "Mulher, 36 anos, G1P1, ciclos menstruais regulares. Vem encaminhada com diagnóstico de infecção urinária de repetição, com 4 episódios no último ano, sempre após a relação sexual. Os episódios ocorreram mesmo após o estabelecimento de medidas comportamentais, todos com urocultura positiva e necessidade de antibioticoterapia. No momento, nega sintomas urinários. [...] Qual a melhor conduta para essa paciente?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Terapia hormonal tópica vaginal."
+      },
+      {
+        "id": "B",
+        "text": "Realização de cistoscopia."
+      },
+      {
+        "id": "C",
+        "text": "Terapia hormonal combinada."
+      },
+      {
+        "id": "D",
+        "text": "Antibioticoprofilaxia pós-coito."
+      }
+    ],
+    "correctOptionId": "D",
+    "hint": "Medidas comportamentais falharam; não há indicação de hormônio tópico (não é GSM).",
+    "statistics": {
+      "A": 10,
+      "B": 10,
+      "C": 10,
+      "D": 70
+    },
+    "explanationTitle": "Cistite",
+    "explanation": "Cistite recorrente pós-coito em mulher na menacme sem prolapso ou incontinência → profilaxia antibiótica pós-relação (nitrofurantoína ou TMP-SMX dose única) é conduta de escolha."
+  },
+  {
+    "id": "quest20.HOS-SP.2021",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Mulher de 36 anos de idade é avaliada com quadro de disúria, polaciúria e dor no flanco direito há 3 dias. [...] Exame de urina: esterase leucocitária e nitritos: positivos; contagem de leucócitos acima de 100/campo. Teste rápido de gravidez: positivo. O tratamento inicial recomendado é:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Ceftriaxona."
+      },
+      {
+        "id": "B",
+        "text": "Ciprofloxacino."
+      },
+      {
+        "id": "C",
+        "text": "Gentamicina e ampicilina."
+      },
+      {
+        "id": "D",
+        "text": "Nitrofurantoína."
+      }
+    ],
+    "correctOptionId": "A",
+    "hint": "Fluoroquinolonas contraindicadas na gestação; nitrofurantoína só para cistite.",
+    "statistics": {
+      "A": 70,
+      "B": 10,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "Pielonefrite aguda em gestante → ceftriaxona (segura na gravidez) é primeira linha."
+  },
+  {
+    "id": "quest21.SCM-SP.2025",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Tercigesta, 14 semanas de gestação, 2 partos normais anteriores, traz resultado de exames pré-natais de rotina em consulta na UBS. O médico observa a seguinte urocultura: Resultado: Escherichia coli igual ou superior à 100.000 UFC/mL [...] Nessa caso, a melhor conduta, dentre as abaixo, é:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Prescrever amoxicilina-ácido clavulânico por 7 dias."
+      },
+      {
+        "id": "B",
+        "text": "Prescrever trimetoprima/sulfametoxazol por 3 dias e repetir a urocultura após 7 dias do tratamento."
+      },
+      {
+        "id": "C",
+        "text": "Repetir a urocultura com higiene perineal, pois se trata de contaminação da coleta."
+      },
+      {
+        "id": "D",
+        "text": "Manter acompanhamento clínico, pois se trata de bacteriúria assintomática."
+      }
+    ],
+    "correctOptionId": "A",
+    "hint": "Em gestantes, bacteriúria assintomática = tratamento obrigatório.",
+    "statistics": {
+      "A": 70,
+      "B": 10,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite",
+    "explanation": "Bacteriúria assintomática em gestante (E. coli >10⁵) deve ser tratada com ATB seguro (amox-clav) para prevenir cistite/pielonefrite."
+  },
+  {
+    "id": "quest22.SCOML-SP.2022",
+    "area": "Pediatria",
+    "statement": "Menina, 4 anos de idade, tem febre medida em 38 a 38,5 ºC há 3 dias. Queixa-se de dor abdominal e de ardor ao urinar. [...] Urina I: pH 6, densidade 1025, 60000 leucócitos, 28000 hemácias, nitrito positivo [...] O diagnóstico provável do quadro apresentado é:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Infecção do trato urinário."
+      },
+      {
+        "id": "B",
+        "text": "Pielonefrite."
+      },
+      {
+        "id": "C",
+        "text": "Glomerulonefrite aguda pós-infecciosa."
+      },
+      {
+        "id": "D",
+        "text": "Glomerulonefrite membranoproliferativa."
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "ITU febril em <5 anos é considerada pielonefrite até prova em contrário.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "Febre + dor abdominal + disúria + leucocitúria + nitrito positivo em criança = pielonefrite aguda."
+  },
+  {
+    "id": "quest01.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Uma mulher de 28 anos, sem comorbidades, relata disúria, polaciúria e urgência miccional há 36 horas, sem febre ou dor lombar. O exame de urina tipo I mostra leucocitúria e nitritos positivos. Qual é o tratamento empírico de primeira linha recomendado?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Fosfomicina trometamol 3g via oral em dose única"
+      },
+      {
+        "id": "B",
+        "text": "Ciprofloxacino 500mg via oral 12/12h por 3 dias"
+      },
+      {
+        "id": "C",
+        "text": "Nitrofurantoína 100mg via oral 6/6h por 3 dias"
+      },
+      {
+        "id": "D",
+        "text": "Sulfametoxazol-trimetoprima 800/160mg via oral 12/12h por 7 dias"
+      }
+    ],
+    "correctOptionId": "A",
+    "hint": "Identifique sintomas de ITU baixa sem sinais sistêmicos ou de infecção alta. Considere opções com boa adesão do paciente.",
+    "statistics": {
+      "A": 70,
+      "B": 10,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite aguda",
+    "explanation": "Diretrizes recomendam fosfomicina em dose única como primeira escolha para cistite aguda não complicada em mulheres por sua eficácia, segurança e baixo impacto na resistência."
+  },
+  {
+    "id": "quest02.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Mulher de 35 anos apresenta febre, calafrios, dor lombar direita e disúria há 3 dias. Qual o diagnóstico e conduta inicial mais apropriada?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cistite aguda; tratar com fosfomicina"
+      },
+      {
+        "id": "B",
+        "text": "Pielonefrite aguda; iniciar antibiótico com boa penetração renal e considerar hospitalização se grave"
+      },
+      {
+        "id": "C",
+        "text": "Litíase renal; solicitar TC com contraste"
+      },
+      {
+        "id": "D",
+        "text": "Prostatite; toque retal"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Diferencie ITU baixa (sem febre) de alta (com sintomas sistêmicos e dor lombar).",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "Presença de febre e dor lombar indica infecção do trato urinário superior (pielonefrite), que requer tratamento mais prolongado e possivelmente intravenoso em casos graves."
+  },
+  {
+    "id": "quest03.UnP.2026",
+    "area": "Cirurgia",
+    "statement": "Homem de 55 anos com cólica renal intensa em flanco esquerdo irradiada para genitália. TC sem contraste mostra cálculo de 5 mm no ureter distal. Qual a conduta inicial mais apropriada?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Litotripsia extracorpórea imediata"
+      },
+      {
+        "id": "B",
+        "text": "Analgesia com AINEs, hidratação e observação para eliminação espontânea"
+      },
+      {
+        "id": "C",
+        "text": "Ureteroscopia com litotripsia"
+      },
+      {
+        "id": "D",
+        "text": "Nefrostomia percutânea"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Considere tamanho e localização do cálculo para decidir entre manejo expectante ou intervencionista.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cálculo urinário",
+    "explanation": "Cálculos ureterais <6-7 mm têm alta chance de eliminação espontânea com manejo conservador (analgesia e hidratação)."
+  },
+  {
+    "id": "quest04.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Homem jovem com corrimento uretral purulento e disúria. Qual o tratamento empírico recomendado para uretrite presumivelmente gonocócica e não gonocócica?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Azitromicina em dose única"
+      },
+      {
+        "id": "B",
+        "text": "Ceftriaxona IM + Azitromicina VO"
+      },
+      {
+        "id": "C",
+        "text": "Doxiciclina por 7 dias"
+      },
+      {
+        "id": "D",
+        "text": "Ciprofloxacino VO"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Lembre-se das ISTs comuns causadoras de uretrite e das diretrizes para tratamento sindrômico ou empírico.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Uretrite",
+    "explanation": "Devido à resistência, tratamento dual para gonorreia (ceftriaxona) e cobertura para clamídia (azitromicina)."
+  },
+  {
+    "id": "quest05.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Mulher assintomática sexualmente ativa com exame ginecológico revelando exsudato mucopurulento no colo uterino. Qual a principal etiologia infecciosa a ser investigada?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Candida albicans"
+      },
+      {
+        "id": "B",
+        "text": "Chlamydia trachomatis e Neisseria gonorrhoeae"
+      },
+      {
+        "id": "C",
+        "text": "Gardnerella vaginalis"
+      },
+      {
+        "id": "D",
+        "text": "Trichomonas vaginalis"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "No exame especular, o tipo de secreção cervical orienta o diagnóstico diferencial de cervicite.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cervicite",
+    "explanation": "Cervicite mucopurulenta é classicamente associada a clamídia e gonococo."
+  },
+  {
+    "id": "quest06.UnP.2026",
+    "area": "Pediatria",
+    "statement": "Paciente pediátrica de 4 anos com febre sem foco e disúria. Qual antibiótico é frequentemente utilizado no tratamento empírico de ITU em crianças?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Ciprofloxacino"
+      },
+      {
+        "id": "B",
+        "text": "Amoxicilina-clavulanato"
+      },
+      {
+        "id": "C",
+        "text": "Nitrofurantoína"
+      },
+      {
+        "id": "D",
+        "text": "Vancomicina"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Ajuste a escolha de antibiótico por idade e considerações de segurança pediátrica.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite aguda",
+    "explanation": "Amoxicilina-clavulanato é opção comum para ITU em pediatria, evitando quinolonas em crianças devido a riscos articulares."
+  },
+  {
+    "id": "quest07.UnP.2026",
+    "area": "Medicina Preventiva",
+    "statement": "Mulher com 3 episódios de cistite nos últimos 12 meses, todos após relação sexual. Qual medida profilática é eficaz?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Antibioticoprofilaxia contínua diária por 6 meses"
+      },
+      {
+        "id": "B",
+        "text": "Dose única de antibiótico pós-relação sexual"
+      },
+      {
+        "id": "C",
+        "text": "Ingestão diária de suco de cranberry"
+      },
+      {
+        "id": "D",
+        "text": "Lavagem vaginal diária"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Avalie a associação temporal dos episódios com relações sexuais para escolher a profilaxia adequada.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite crônica",
+    "explanation": "Profilaxia pós-coito é tão eficaz quanto contínua e reduz o uso de antibióticos em ITUs pós-coito."
+  },
+  {
+    "id": "quest08.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Em paciente com suspeita de pielonefrite aguda complicada, qual exame laboratorial deve ser coletado antes do início da antibioticoterapia?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Hemograma completo"
+      },
+      {
+        "id": "B",
+        "text": "Urocultura com antibiograma"
+      },
+      {
+        "id": "C",
+        "text": "Creatinina sérica"
+      },
+      {
+        "id": "D",
+        "text": "PCR quantitativa"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Em cistites não complicadas a cultura não é rotineira, mas em pielonefrites é recomendada.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "A urocultura é essencial para guiar a terapia dirigida e confirmar o diagnóstico em ITUs altas ou complicadas."
+  },
+  {
+    "id": "quest09.UnP.2026",
+    "area": "Cirurgia",
+    "statement": "Homem de 60 anos com cálculo renal de 12 mm assintomático. Qual a indicação para intervenção?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Observação anual com ultrassonografia"
+      },
+      {
+        "id": "B",
+        "text": "Litotripsia extracorpórea ou procedimento endourológico devido ao tamanho"
+      },
+      {
+        "id": "C",
+        "text": "Tratamento clínico com citrato de potássio apenas"
+      },
+      {
+        "id": "D",
+        "text": "Nenhum tratamento necessário"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "O tamanho do cálculo é um dos principais fatores para decisão terapêutica na litíase.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cálculo renal",
+    "explanation": "Cálculos >10 mm geralmente requerem tratamento ativo por menor chance de eliminação espontânea e risco de complicações."
+  },
+  {
+    "id": "quest10.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Mulher grávida no 2º trimestre com bacteriúria assintomática confirmada por urocultura. Qual a conduta correta?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Não tratar, pois é assintomática"
+      },
+      {
+        "id": "B",
+        "text": "Tratar com antibiótico seguro na gestação conforme antibiograma"
+      },
+      {
+        "id": "C",
+        "text": "Repetir urocultura em 1 mês sem tratamento"
+      },
+      {
+        "id": "D",
+        "text": "Iniciar profilaxia com nitrofurantoína"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Diferencie bacteriúria assintomática em gestantes vs não gestantes.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite aguda",
+    "explanation": "Em gestantes, bacteriúria assintomática deve ser tratada para prevenir pielonefrite e complicações obstétricas."
+  },
+  {
+    "id": "quest11.UnP.2026",
+    "area": "Medicina Preventiva",
+    "statement": "Qual é o agente etiológico mais comum nas infecções do trato urinário adquiridas na comunidade?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Klebsiella pneumoniae"
+      },
+      {
+        "id": "B",
+        "text": "Escherichia coli"
+      },
+      {
+        "id": "C",
+        "text": "Enterococcus faecalis"
+      },
+      {
+        "id": "D",
+        "text": "Pseudomonas aeruginosa"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Conheça a epidemiologia para guiar terapia empírica inicial.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite aguda",
+    "explanation": "E. coli é responsável por cerca de 70-90% das ITUs comunitárias."
+  },
+  {
+    "id": "quest12.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Paciente com prostatite crônica. Qual exame físico é fundamental no diagnóstico e acompanhamento?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Palpação abdominal"
+      },
+      {
+        "id": "B",
+        "text": "Toque retal com avaliação da próstata"
+      },
+      {
+        "id": "C",
+        "text": "Exame de genitália externa"
+      },
+      {
+        "id": "D",
+        "text": "Ausculta pulmonar"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "O exame físico prostático é chave na avaliação de sintomas do trato urinário inferior em homens.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Prostatite",
+    "explanation": "O toque retal permite avaliar tamanho, consistência e sensibilidade da próstata em prostatites."
+  },
+  {
+    "id": "quest13.UnP.2026",
+    "area": "Medicina Preventiva",
+    "statement": "Para prevenção de litíase urinária recorrente, qual medida não farmacológica é mais importante?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Restrição rigorosa de cálcio na dieta"
+      },
+      {
+        "id": "B",
+        "text": "Ingestão hídrica aumentada (>2,5 L/dia)"
+      },
+      {
+        "id": "C",
+        "text": "Dieta rica em proteínas animais"
+      },
+      {
+        "id": "D",
+        "text": "Suplementação de vitamina C"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Medidas dietéticas gerais incluem diluição da urina através da hidratação.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Litíase urinária",
+    "explanation": "Alta ingestão de líquidos é a medida mais eficaz e evidenciada para prevenção de novos cálculos urinários."
+  },
+  {
+    "id": "quest14.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Paciente com cistite recorrente e cultura prévia mostrando E. coli sensível. Qual opção pode ser considerada para profilaxia em longo prazo?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Antibioticoprofilaxia com dose baixa noturna de nitrofurantoína"
+      },
+      {
+        "id": "B",
+        "text": "Uso diário de probióticos exclusivamente"
+      },
+      {
+        "id": "C",
+        "text": "Imunoterapia com vacinas orais sem antibiótico"
+      },
+      {
+        "id": "D",
+        "text": "Cirurgia de cistocele imediata"
+      }
+    ],
+    "correctOptionId": "A",
+    "hint": "Para cistites recorrentes, avaliar opções de profilaxia após exclusão de fatores anatômicos.",
+    "statistics": {
+      "A": 70,
+      "B": 10,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite crônica",
+    "explanation": "Antibioticoprofilaxia contínua em baixa dose (ex: nitrofurantoína) é eficaz na redução de recorrências de cistite bacteriana."
+  },
+  {
+    "id": "quest15.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Mulher de 45 anos com 4 episódios de cistite nos últimos 6 meses, sem fatores anatômicos identificados. Qual a melhor estratégia para prevenção secundária?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tratamento sintomático com analgésicos a cada episódio"
+      },
+      {
+        "id": "B",
+        "text": "Profilaxia antibiótica contínua em baixa dose por 6-12 meses"
+      },
+      {
+        "id": "C",
+        "text": "Repetir urocultura apenas nos episódios sintomáticos"
+      },
+      {
+        "id": "D",
+        "text": "Uso rotineiro de sonda vesical de alívio"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Considere profilaxia quando houver >3 episódios/ano e avalie causas anatômicas ou comportamentais primeiro.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite crônica",
+    "explanation": "Profilaxia contínua em baixa dose reduz significativamente as recorrências em cistite crônica/recorrente após exclusão de causas subjacentes."
+  },
+  {
+    "id": "quest16.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Uma mulher de 28 anos, previamente hígida, sexualmente ativa e sem uso de anticoncepcionais, procura o serviço de urgência com disúria intensa, polaciúria (micções a cada 20-30 minutos) e urgência miccional há 48 horas. Nega febre, dor lombar, náuseas ou vômitos. O exame físico revela apenas discreta sensibilidade suprapúbica. O exame de urina tipo I demonstra leucocitúria (30-40 leucócitos/campo), nitritos positivos e hematuria microscópica leve. Qual é o tratamento empírico de primeira linha mais adequado para essa paciente?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Nitrofurantoína 100 mg via oral 6/6h por 5 dias"
+      },
+      {
+        "id": "B",
+        "text": "Fosfomicina trometamol 3 g via oral em dose única"
+      },
+      {
+        "id": "C",
+        "text": "Ciprofloxacino 500 mg via oral 12/12h por 3 dias"
+      },
+      {
+        "id": "D",
+        "text": "Sulfametoxazol-trimetoprima 800/160 mg via oral 12/12h por 7 dias"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Classifique a ITU como baixa ou alta com base na ausência de sinais sistêmicos e dor lombar; priorize agentes com menor duração e impacto na microbiota intestinal.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite aguda",
+    "explanation": "Diretrizes internacionais recomendam fosfomicina em dose única como primeira escolha em cistite aguda não complicada por alta eficácia, baixa indução de resistência e excelente adesão terapêutica."
+  },
+  {
+    "id": "quest17.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Mulher de 62 anos, diabética tipo 2 em uso de metformina, apresenta-se com febre de 38,8°C, calafrios, dor lombar bilateral e disúria há 72 horas. O exame físico mostra sensibilidade à percussão lombar esquerda. O EAS revela piúria e nitritos positivos. Qual é o diagnóstico e a conduta inicial mais apropriada?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cistite aguda; prescrever fosfomicina oral"
+      },
+      {
+        "id": "B",
+        "text": "Pielonefrite aguda; solicitar urocultura e iniciar antibiótico com penetração renal, considerando internação"
+      },
+      {
+        "id": "C",
+        "text": "Litíase renal; solicitar tomografia computadorizada sem contraste"
+      },
+      {
+        "id": "D",
+        "text": "Prostatite aguda; realizar toque retal"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Diferencie infecção do trato urinário superior (febre + dor lombar) da inferior (sintomas miccionais isolados) para definir gravidade e local de tratamento.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "A associação de febre, dor lombar e sensibilidade lombar define pielonefrite aguda, que exige urocultura prévia e terapia antibiótica com boa penetração renal, podendo requerer hospitalização em pacientes com comorbidades."
+  },
+  {
+    "id": "quest18.UnP.2026",
+    "area": "Cirurgia",
+    "statement": "Homem de 48 anos chega ao pronto-socorro com cólica renal intensa em flanco direito, irradiada para região inguinal e testículo direito, associada a náuseas e vômitos. A tomografia computadorizada sem contraste identifica cálculo de 4 mm no terço distal do ureter direito, sem hidronefrose significativa. Qual é a conduta inicial recomendada?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Litotripsia extracorpórea imediata"
+      },
+      {
+        "id": "B",
+        "text": "Analgesia com AINEs, hidratação intravenosa e manejo expectante para eliminação espontânea"
+      },
+      {
+        "id": "C",
+        "text": "Ureteroscopia com litotripsia a laser"
+      },
+      {
+        "id": "D",
+        "text": "Nefrostomia percutânea de urgência"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Avalie tamanho, localização e presença de obstrução do cálculo para decidir entre conduta expectante ou intervencionista.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cálculo urinário",
+    "explanation": "Cálculos ureterais menores que 5-6 mm apresentam taxa de eliminação espontânea superior a 80% com manejo conservador (analgesia e hidratação), conforme diretrizes de urologia."
+  },
+  {
+    "id": "quest19.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Homem de 24 anos, sexualmente ativo com múltiplas parceiras, relata corrimento uretral purulento abundante e disúria há 5 dias, sem febre ou lesões genitais. O exame físico confirma secreção purulenta ao espremer a uretra. Qual é o esquema terapêutico empírico recomendado?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Azitromicina 1 g via oral em dose única"
+      },
+      {
+        "id": "B",
+        "text": "Ceftriaxona 500 mg intramuscular em dose única associada a azitromicina 1 g via oral em dose única"
+      },
+      {
+        "id": "C",
+        "text": "Doxiciclina 100 mg via oral 12/12h por 7 dias"
+      },
+      {
+        "id": "D",
+        "text": "Levofloxacino 500 mg via oral por 7 dias"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Considere as principais etiologias de uretrite em homens jovens sexualmente ativos e as diretrizes de tratamento sindrômico de IST.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Uretrite",
+    "explanation": "Devido à alta prevalência de resistência à fluoroquinolona na gonorreia, o tratamento dual (ceftriaxona + azitromicina) é o padrão para cobertura de gonococo e clamídia em uretrite."
+  },
+  {
+    "id": "quest20.UnP.2026",
+    "area": "Medicina Preventiva",
+    "statement": "Mulher de 31 anos relata quatro episódios de cistite sintomática nos últimos 10 meses, todos iniciados nas 48 horas seguintes à relação sexual. As culturas prévias confirmaram Escherichia coli sensível. Exames de imagem e urocultura atual estão normais. Qual é a medida profilática mais eficaz e com menor risco de resistência?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Antibioticoprofilaxia contínua diária por 6 meses"
+      },
+      {
+        "id": "B",
+        "text": "Dose única de antibiótico após relação sexual"
+      },
+      {
+        "id": "C",
+        "text": "Ingestão diária de suco de cranberry sem antibiótico"
+      },
+      {
+        "id": "D",
+        "text": "Lavagem perineal com antisséptico após relação"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Avalie a relação temporal entre episódios e atividade sexual para selecionar o tipo de profilaxia mais apropriada.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite crônica",
+    "explanation": "A profilaxia pós-coito com dose única de antibiótico é tão eficaz quanto a contínua, reduzindo o consumo total de antimicrobianos em cistite recorrente pós-relação."
+  },
+  {
+    "id": "quest21.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Homem de 58 anos com febre alta, calafrios, dor perineal e disúria há 48 horas. Ao toque retal, a próstata está aumentada, quente e extremamente dolorosa. Qual é o diagnóstico mais provável e a conduta inicial?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cistite aguda; tratar ambulatorialmente"
+      },
+      {
+        "id": "B",
+        "text": "Prostatite aguda bacteriana; iniciar antibiótico de amplo espectro com boa penetração prostática"
+      },
+      {
+        "id": "C",
+        "text": "Hiperplasia prostática benigna; prescrever alfa-bloqueador"
+      },
+      {
+        "id": "D",
+        "text": "Abscesso perianal; solicitar drenagem cirúrgica"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "O exame físico prostático é fundamental na diferenciação de causas de sintomas do trato urinário inferior em homens.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Prostatite",
+    "explanation": "O toque retal doloroso associado a sintomas sistêmicos caracteriza prostatite aguda bacteriana, exigindo antibióticos com penetração prostática (ex: fluoroquinolonas ou TMP-SMX)."
+  },
+  {
+    "id": "quest22.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Durante exame ginecológico de rotina, uma mulher de 26 anos, sexualmente ativa, apresenta exsudato mucopurulento no orifício externo do colo uterino, sem sintomas urinários ou vaginais. Qual é a principal etiologia a ser investigada e tratada?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Candida spp."
+      },
+      {
+        "id": "B",
+        "text": "Chlamydia trachomatis e/ou Neisseria gonorrhoeae"
+      },
+      {
+        "id": "C",
+        "text": "Gardnerella vaginalis (vaginose bacteriana)"
+      },
+      {
+        "id": "D",
+        "text": "Trichomonas vaginalis isolada"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "O aspecto da secreção cervical no exame especular orienta o diagnóstico diferencial de cervicite infecciosa.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cervicite",
+    "explanation": "Cervicite mucopurulenta é classicamente associada a clamídia e gonococo; exige investigação e tratamento dual conforme diretrizes de IST."
+  },
+  {
+    "id": "quest23.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Homem de 35 anos relata corrimento uretral mucoide discreto e prurido uretral há 10 dias após relação sexual desprotegida. Nega dor testicular ou lesões cutâneas. Qual é o agente etiológico mais provável nessa apresentação?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Neisseria gonorrhoeae exclusiva"
+      },
+      {
+        "id": "B",
+        "text": "Chlamydia trachomatis"
+      },
+      {
+        "id": "C",
+        "text": "Trichomonas vaginalis"
+      },
+      {
+        "id": "D",
+        "text": "Herpes simples tipo 2"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "O tipo de corrimento (purulento vs. mucoide) ajuda a diferenciar gonorreia de uretrite não gonocócica.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Uretrite",
+    "explanation": "Corrimento mucoide discreto em uretrite não gonocócica é mais frequentemente causado por Chlamydia trachomatis."
+  },
+  {
+    "id": "quest24.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Paciente de 72 anos, institucionalizada, com demência, apresenta febre de 38,5°C e confusão mental aguda sem queixas urinárias referidas. O EAS mostra piúria e nitritos positivos. Qual é a conduta correta?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Não tratar por ausência de sintomas urinários"
+      },
+      {
+        "id": "B",
+        "text": "Tratar como pielonefrite complicada após coleta de urocultura"
+      },
+      {
+        "id": "C",
+        "text": "Repetir EAS em 48 horas sem antibiótico"
+      },
+      {
+        "id": "D",
+        "text": "Prescrever fosfomicina empírica"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Em pacientes idosos ou com comorbidades, sintomas atípicos podem representar pielonefrite.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "Em idosos, bacteriúria associada a sintomas sistêmicos (delirium) deve ser tratada como infecção do trato urinário superior após confirmação laboratorial."
+  },
+  {
+    "id": "quest25.UnP.2026",
+    "area": "Pediatria",
+    "statement": "Criança de 6 anos do sexo feminino apresenta febre de 39°C, vômitos e dor abdominal difusa há 3 dias, sem disúria referida pela mãe. O exame de urina coletado por saco coletor mostra leucocitúria intensa. Qual é o diagnóstico mais provável?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Apendicite aguda"
+      },
+      {
+        "id": "B",
+        "text": "Pielonefrite aguda"
+      },
+      {
+        "id": "C",
+        "text": "Gastrenterite viral"
+      },
+      {
+        "id": "D",
+        "text": "Cistite simples"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Lembre-se das apresentações atípicas de ITU em pediatria, especialmente em crianças pré-verbais.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "Em crianças pequenas, pielonefrite pode manifestar-se com sintomas gastrointestinais e febre sem disúria clássica."
+  },
+  {
+    "id": "quest26.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Mulher de 42 anos com três episódios documentados de cistite nos últimos 8 meses, sem fatores anatômicos ou comportamentais identificados. Qual é a estratégia de prevenção secundária mais indicada?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tratamento sintomático apenas nos episódios"
+      },
+      {
+        "id": "B",
+        "text": "Antibioticoprofilaxia noturna em baixa dose por 6-12 meses"
+      },
+      {
+        "id": "C",
+        "text": "Uso diário exclusivo de probióticos"
+      },
+      {
+        "id": "D",
+        "text": "Imunoterapia oral sem antibiótico"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Reserve profilaxia para casos com ≥3 episódios/ano e após investigação de fatores predisponentes.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite crônica",
+    "explanation": "Profilaxia antibiótica contínua em baixa dose reduz em até 90% as recorrências em cistite crônica após exclusão de causas subjacentes."
+  },
+  {
+    "id": "quest27.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Homem de 65 anos com prostatite crônica bacteriana recorrente confirmada por cultura de sêmen. Qual é o exame físico essencial para avaliação e seguimento?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Palpação abdominal"
+      },
+      {
+        "id": "B",
+        "text": "Toque retal com avaliação de tamanho, consistência e sensibilidade prostática"
+      },
+      {
+        "id": "C",
+        "text": "Exame da genitália externa isolado"
+      },
+      {
+        "id": "D",
+        "text": "Ausculta cardíaca"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Sintomas do trato urinário inferior em homens sempre exigem avaliação prostática ao exame físico.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Prostatite",
+    "explanation": "O toque retal permite monitorar alterações prostáticas e sensibilidade em prostatite crônica."
+  },
+  {
+    "id": "quest28.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Mulher grávida de 26 semanas com bacteriúria assintomática confirmada por duas uroculturas (>10^5 UFC/mL de E. coli sensível). Qual é a conduta recomendada?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Não tratar, pois é assintomática"
+      },
+      {
+        "id": "B",
+        "text": "Tratar com antibiótico seguro na gestação conforme antibiograma por 7 dias"
+      },
+      {
+        "id": "C",
+        "text": "Repetir urocultura mensal sem tratamento"
+      },
+      {
+        "id": "D",
+        "text": "Iniciar profilaxia com nitrofurantoína até o parto"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Diferencie conduta em gestantes versus população geral quanto à bacteriúria assintomática.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite aguda",
+    "explanation": "Bacteriúria assintomática na gestação deve ser erradicada para prevenir pielonefrite e complicações obstétricas."
+  },
+  {
+    "id": "quest29.UnP.2026",
+    "area": "Cirurgia",
+    "statement": "Paciente de 55 anos com cálculo renal de 13 mm no polo inferior do rim esquerdo, assintomático, detectado em ultrassonografia de rotina. Qual é a indicação terapêutica?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Observação anual com ultrassonografia"
+      },
+      {
+        "id": "B",
+        "text": "Intervenção ativa (litotripsia extracorpórea ou ureteroscopia) devido ao tamanho"
+      },
+      {
+        "id": "C",
+        "text": "Tratamento clínico exclusivo com citrato de potássio"
+      },
+      {
+        "id": "D",
+        "text": "Nenhum tratamento, pois é assintomático"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "O diâmetro do cálculo é o principal critério para decidir conduta expectante versus intervencionista.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cálculo renal",
+    "explanation": "Cálculos renais >10 mm têm baixa chance de eliminação espontânea e maior risco de complicações, justificando tratamento ativo."
+  },
+  {
+    "id": "quest30.UnP.2026",
+    "area": "Medicina Preventiva",
+    "statement": "Homem de 40 anos com história de dois episódios de cólica nefrética nos últimos 2 anos. A análise do cálculo eliminado revelou oxalato de cálcio. Qual é a medida não farmacológica mais eficaz para prevenção de recorrência?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Restrição rigorosa de cálcio dietético"
+      },
+      {
+        "id": "B",
+        "text": "Aumento da ingestão hídrica para mais de 2,5 L/dia"
+      },
+      {
+        "id": "C",
+        "text": "Dieta hiperproteica animal"
+      },
+      {
+        "id": "D",
+        "text": "Suplementação diária de vitamina C"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Medidas gerais de prevenção de litíase priorizam diluição urinária independentemente do tipo de cálculo.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Litíase urinária",
+    "explanation": "A hiper-hidratação é a intervenção não farmacológica mais eficaz e evidenciada para reduzir a formação de novos cálculos urinários."
+  },
+  {
+    "id": "quest31.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Homem de 24 anos, previamente hígido e sexualmente ativo, inicia dor perineal intensa e disúria há 4 horas após atividade física intensa. Ao exame físico nota-se próstata aumentada, quente e extremamente dolorosa ao toque retal, com reflexo cremastérico presente e sinal de Prehn negativo. Qual é a hipótese diagnóstica mais provável?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Varicocele"
+      },
+      {
+        "id": "B",
+        "text": "Prostatite aguda bacteriana"
+      },
+      {
+        "id": "C",
+        "text": "Trauma testicular contuso"
+      },
+      {
+        "id": "D",
+        "text": "Tumor de testículo"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Avalie o toque retal em homens jovens com sintomas do trato urinário inferior; diferencie de epididimite por localização da dor.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Prostatite",
+    "explanation": "Dor perineal aguda pós-esforço + próstata dolorosa ao toque retal + disúria = prostatite aguda bacteriana (emergência que requer antibiótico com penetração prostática)."
+  },
+  {
+    "id": "quest32.UnP.2026",
+    "area": "Cirurgia",
+    "statement": "Homem de 61 anos procura o pronto-socorro com dificuldade miccional há 12 horas e globo vesical palpável. Refere sintomas do trato urinário inferior (jato fraco, gotejamento) há 3 meses. Toque retal revela próstata aumentada, quente e dolorosa. Qual é a conduta imediata?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Nefrostomia bilateral"
+      },
+      {
+        "id": "B",
+        "text": "Sondagem vesical com cateter de Foley"
+      },
+      {
+        "id": "C",
+        "text": "Finasterida e seguimento ambulatorial"
+      },
+      {
+        "id": "D",
+        "text": "Passagem de cateter duplo J"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Em retenção aguda, priorize alívio da obstrução antes de investigação etiológica; analgesia associa-se ao cateter.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Prostatite",
+    "explanation": "Retenção urinária aguda secundária a prostatite aguda (globo vesical + próstata dolorosa) requer desobstrução imediata com cateter vesical de demora."
+  },
+  {
+    "id": "quest33.UnP.2026",
+    "area": "Medicina Preventiva",
+    "statement": "O exame de urina tipo I com nitritos positivos e leucocitúria em paciente assintomática com história de cistite recorrente refere-se a(o):",
+    "options": [
+      {
+        "id": "A",
+        "text": "Promoção da saúde, prevenção primária"
+      },
+      {
+        "id": "B",
+        "text": "Proteção específica, prevenção primária"
+      },
+      {
+        "id": "C",
+        "text": "Diagnóstico precoce, prevenção secundária"
+      },
+      {
+        "id": "D",
+        "text": "Tratamento imediato, prevenção secundária"
+      }
+    ],
+    "correctOptionId": "C",
+    "hint": "Primária evita a doença; secundária detecta precoce para impedir complicações; aplique ao contexto de ITUs repetidas.",
+    "statistics": {
+      "A": 10,
+      "B": 10,
+      "C": 70,
+      "D": 10
+    },
+    "explanationTitle": "Cistite crônica",
+    "explanation": "Exame de urina em rastreamento de ITU recorrente permite diagnóstico precoce de bacteriúria/cistite (prevenção secundária)."
+  },
+  {
+    "id": "quest34.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Gestante de 34 semanas com bacteriúria assintomática confirmada por urocultura (E. coli >10^5 UFC/mL). Qual deve ser a conduta quanto ao tratamento e seguimento?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cesárea eletiva na 38ª semana sem tratamento"
+      },
+      {
+        "id": "B",
+        "text": "Tratar com antibiótico seguro na gestação conforme antibiograma"
+      },
+      {
+        "id": "C",
+        "text": "Aguardar parto espontâneo sem antibiótico"
+      },
+      {
+        "id": "D",
+        "text": "Indução do parto na 40ª semana"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Diferencie bacteriúria assintomática em gestantes (sempre tratar) de não gestantes (geralmente não tratar).",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite aguda",
+    "explanation": "Bacteriúria assintomática na gestação deve ser tratada para prevenir pielonefrite e complicações obstétricas (diretrizes MS/CDC)."
+  },
+  {
+    "id": "quest35.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Adolescente de 16 anos procura UBS após relato de violência sexual recente. Ao exame ginecológico, nota-se corrimento uretral mucopurulento e exsudato cervical. Qual deve ser a conduta do profissional após suporte psicológico?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Notificar apenas ao Ministério da Saúde e deixar decisão para a paciente"
+      },
+      {
+        "id": "B",
+        "text": "Notificar ao Conselho Tutelar e Ministério da Saúde e tratar como uretrite/cervicite presumida"
+      },
+      {
+        "id": "C",
+        "text": "Pedir autorização da paciente para denunciar e tratar apenas se consentir"
+      },
+      {
+        "id": "D",
+        "text": "Chamar familiar para conferência antes de qualquer notificação"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Sigilo não se sobrepõe à proteção da adolescente; avalie sempre sinais de IST no exame genital.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Uretrite",
+    "explanation": "Violência sexual contra menor é notificação compulsória (ECA); presença de corrimento uretral/cervical exige tratamento empírico para uretrite/cervicite (IST)."
+  },
+  {
+    "id": "quest36.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Paciente imunossuprimido pós-transplante renal apresenta febre, dor lombar e disúria 6 semanas após o procedimento. Urocultura mostra E. coli. Quais complicações infecciosas são mais comuns nesse período?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Infecções bacterianas precoces"
+      },
+      {
+        "id": "B",
+        "text": "Infecções virais oportunistas (CMV, herpes) e pielonefrite"
+      },
+      {
+        "id": "C",
+        "text": "Sepse biliar isolada"
+      },
+      {
+        "id": "D",
+        "text": "Infecção fúngica exclusiva"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "<1 mês: infecções bacterianas hospitalares; >1 mês: virais e infecções urinárias altas.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "Após 1 mês de transplante renal, pielonefrite e infecções oportunistas (CMV) são frequentes devido à imunossupressão."
+  },
+  {
+    "id": "quest37.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Paciente de 28 anos relata secreção cervical mucopurulenta e disúria há 1 semana, piorando após relação sexual, sem odor fétido intenso. Qual é o diagnóstico mais provável e o achado laboratorial esperado?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Candidíase vaginal"
+      },
+      {
+        "id": "B",
+        "text": "Cervicite por Chlamydia trachomatis/Neisseria gonorrhoeae"
+      },
+      {
+        "id": "C",
+        "text": "Vaginose bacteriana (clue cells + pH >4,5)"
+      },
+      {
+        "id": "D",
+        "text": "Tricomoníase isolada"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Exame especular com secreção mucopurulenta orienta para cervicite; diferencie de vaginose pelo odor e pH.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cervicite",
+    "explanation": "Secreção mucopurulenta cervical + disúria = cervicite infecciosa (clamídia/gonococo); tratamento dual é padrão."
+  },
+  {
+    "id": "quest38.UnP.2026",
+    "area": "Cirurgia",
+    "statement": "Mulher de 30 anos com cólica renal esquerda há 2 dias evolui com febre de 39°C, dor lombar intensa e sinal de Giordano positivo. TC sem contraste mostra cálculo ureteral distal de 6 mm com hidronefrose moderada. EAS: leucocitúria intensa e nitritos positivos. Após analgesia, antitérmico e coleta de culturas, qual é a conduta?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Iniciar alfabloqueador e aguardar eliminação espontânea"
+      },
+      {
+        "id": "B",
+        "text": "Realizar litotripsia extracorpórea"
+      },
+      {
+        "id": "C",
+        "text": "Realizar ureterolitotripsia transureteroscópica"
+      },
+      {
+        "id": "D",
+        "text": "Colocar cateter duplo J ou nefrostomia percutânea"
+      }
+    ],
+    "correctOptionId": "D",
+    "hint": "Cálculo + infecção + hidronefrose = drenagem prioritária; manejo conservador só em ausência de infecção.",
+    "statistics": {
+      "A": 10,
+      "B": 10,
+      "C": 10,
+      "D": 70
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "Pielonefrite obstrutiva por cálculo exige drenagem urinária urgente (duplo J ou nefrostomia) associada à antibioticoterapia."
+  },
+  {
+    "id": "quest39.UnP.2026",
+    "area": "Cirurgia",
+    "statement": "Homem de 45 anos é admitido com dor lombar intensa e cólica nefrética há 8 horas refratária a AINEs. TC confirma cálculo de 8 mm no ureter proximal com hidronefrose. Qual é a intervenção recomendada neste momento?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Observação expectante exclusiva"
+      },
+      {
+        "id": "B",
+        "text": "Drenagem com cateter duplo J ou nefrostomia"
+      },
+      {
+        "id": "C",
+        "text": "Litotripsia extracorpórea imediata"
+      },
+      {
+        "id": "D",
+        "text": "Tratamento clínico com alfabloqueador isolado"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Avalie tamanho, localização e sinais de complicação do cálculo para decidir drenagem versus manejo conservador.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cálculo urinário",
+    "explanation": "Cólica nefrética com obstrução e risco de complicação (hidronefrose) indica drenagem urgente para evitar pielonefrite ou dano renal."
+  },
+  {
+    "id": "quest40.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Paciente de 81 anos, diabética, em consulta de rotina, apresenta urocultura com E. coli 10.000 UFC/mL e leucocitúria, sem sintomas urinários ou febre. Qual é a conduta correta?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tratar com nitrofurantoína por 7 dias"
+      },
+      {
+        "id": "B",
+        "text": "Tratar com ciprofloxacino por ser idosa"
+      },
+      {
+        "id": "C",
+        "text": "Tratar devido ao diabetes"
+      },
+      {
+        "id": "D",
+        "text": "Não tratar (bacteriúria assintomática)"
+      }
+    ],
+    "correctOptionId": "D",
+    "hint": "Tratamento de bacteriúria assintomática só em gestantes ou antes de procedimentos invasivos urológicos.",
+    "statistics": {
+      "A": 10,
+      "B": 10,
+      "C": 10,
+      "D": 70
+    },
+    "explanationTitle": "Cistite aguda",
+    "explanation": "Bacteriúria assintomática em idosa não gestante não deve ser tratada (exceto pré-procedimento urológico) para evitar resistência e efeitos adversos."
+  },
+  {
+    "id": "quest41.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Toda gestante deve ser orientada sobre a importância da investigação de infecção urinária no pré-natal. Qual é o manejo correto em gestante com bacteriúria assintomática confirmada?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Parto vaginal sempre, mesmo com bacteriúria"
+      },
+      {
+        "id": "B",
+        "text": "Tratar com antibiótico seguro e repetir urocultura"
+      },
+      {
+        "id": "C",
+        "text": "Suspender qualquer terapia após o parto"
+      },
+      {
+        "id": "D",
+        "text": "Aguardar parto espontâneo sem tratamento"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Testagem e tratamento de ITU são universais no pré-natal; diferencie de HIV ou outras ISTs.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite aguda",
+    "explanation": "Bacteriúria assintomática na gestação requer tratamento para prevenir pielonefrite e complicações (MS)."
+  },
+  {
+    "id": "quest42.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Paciente de 25 anos, G2P2, com febre de 38,8°C, dor em hipogástrio e dor à mobilização do colo uterino há 1 semana. Beta-HCG negativo. Hemograma com leucocitose. Qual é o tratamento recomendado?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tratamento ambulatorial com ceftriaxona dose única"
+      },
+      {
+        "id": "B",
+        "text": "Tratamento hospitalar com ceftriaxona EV + doxiciclina"
+      },
+      {
+        "id": "C",
+        "text": "Azitromicina oral dose única"
+      },
+      {
+        "id": "D",
+        "text": "Doxiciclina oral por 10 dias isolada"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "Febre + dor lombar ou anexial em mulher em idade fértil sugere infecção alta do trato urinário ou pélvica.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "Quadro compatível com pielonefrite ou DIP complicada com febre e dor anexial indica internação e antibioticoterapia endovenosa."
+  },
+  {
+    "id": "quest43.UnP.2026",
+    "area": "Ginecologia e Obstetrícia",
+    "statement": "Gestante na 10ª semana procura pré-natal e questiona sobre testagem para infecção urinária. Qual é a recomendação INCORRETA?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Testagem deve ser realizada apenas em urgência"
+      },
+      {
+        "id": "B",
+        "text": "Testagem no 1º trimestre e início do 3º trimestre"
+      },
+      {
+        "id": "C",
+        "text": "Testagem é importante para prevenção de complicações materno-fetais"
+      },
+      {
+        "id": "D",
+        "text": "Teste rápido também na admissão ao parto"
+      }
+    ],
+    "correctOptionId": "A",
+    "hint": "Rastreamento de ITU na gestação é rotina para prevenir pielonefrite.",
+    "statistics": {
+      "A": 70,
+      "B": 10,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Cistite aguda",
+    "explanation": "Testagem para bacteriúria/ITU é universal no pré-natal (1º e 3º trimestre) e na admissão ao parto, não apenas em urgência."
+  },
+  {
+    "id": "quest44.UnP.2026",
+    "area": "Pediatria",
+    "statement": "Pré-escolar feminina de 18 meses é internada com febre sem foco. Urina por cateterismo mostra E. coli >50.000 UFC/mL. Ultrassonografia revela ureterectasia esquerda. Qual exame complementar é necessário?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Urografia excretora com função renal normal"
+      },
+      {
+        "id": "B",
+        "text": "Uretrocistografia miccional com urocultura controle negativa"
+      },
+      {
+        "id": "C",
+        "text": "Urografia excretora com urocultura controle"
+      },
+      {
+        "id": "D",
+        "text": "Uretrocistografia com função renal normal"
+      }
+    ],
+    "correctOptionId": "B",
+    "hint": "VCUG é indicada após 1ª ITU febril em crianças pequenas com alterações na USG.",
+    "statistics": {
+      "A": 10,
+      "B": 70,
+      "C": 10,
+      "D": 10
+    },
+    "explanationTitle": "Pielonefrite",
+    "explanation": "ITU febril em menina <2 anos com anomalia ultrassonográfica indica uretrocistografia miccional (VCUG) para avaliar refluxo vesicoureteral."
+  },
+  {
+    "id": "quest45.UnP.2026",
+    "area": "Clínica Médica",
+    "statement": "Um fator de risco aumentado para nefrolitíase (litíase urinária) é:",
+    "options": [
+      {
+        "id": "A",
+        "text": "Sexo feminino"
+      },
+      {
+        "id": "B",
+        "text": "Etnia negra"
+      },
+      {
+        "id": "C",
+        "text": "Débito urinário inferior a 2,5 litros/dia"
+      },
+      {
+        "id": "D",
+        "text": "Ganho de peso isolado"
+      }
+    ],
+    "correctOptionId": "C",
+    "hint": "Conheça os fatores modificáveis de litíase (hidratação, dieta) para orientação preventiva.",
+    "statistics": {
+      "A": 10,
+      "B": 10,
+      "C": 70,
+      "D": 10
+    },
+    "explanationTitle": "Litíase urinária",
+    "explanation": "Baixo débito urinário (<2-2,5 L/dia) é o principal fator de risco modificável para litíase urinária por concentrar solutos na urina."
   }
 ];
 
