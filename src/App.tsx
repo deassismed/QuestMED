@@ -1107,6 +1107,7 @@ export default function App() {
         <div className="question-page-scroll" ref={isActive ? activeScrollRef : undefined}>
           <div className="meta-row">
             <span className="id-pill">{targetQuestion.id}</span>
+            <span className="theme-pill">{targetQuestion.Tema}</span>
             <span className="area-pill">{targetQuestion.area}</span>
             <span className="progress-pill">{targetProgress}/{QUESTION_LIMIT} hoje</span>
             {targetState.usedHint && <span className="hint-penalty-pill">Dica: 50%</span>}

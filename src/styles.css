@@ -316,6 +316,7 @@ h2 {
 }
 
 .id-pill,
+.theme-pill,
 .area-pill,
 .progress-pill,
 .hint-penalty-pill {
@@ -330,6 +331,12 @@ h2 {
 .id-pill {
   background: #1d3437;
   color: #fff;
+}
+
+.theme-pill {
+  background: #e9f8f4;
+  border: 1px solid #b9ded5;
+  color: #0d6658;
 }
 
 .area-pill {
