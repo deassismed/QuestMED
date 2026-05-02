@@ -10,10 +10,11 @@ import {
   RotateCcw,
   Scissors,
   ShieldAlert,
+  Shuffle,
   Sparkles,
   X,
 } from "lucide-react";
-import { dailyQuestions, type Option, type Question } from "./data/questions";
+import { dailyQuestions, questionBank, type Option, type Question } from "./data/questions";
 import { generateResultPdfBlob } from "./utils/resultPdf";
 
 const QUESTION_LIMIT = 10;
@@ -25,7 +26,7 @@ const DRAG_COMMIT_VELOCITY = 1.15;
 const DRAG_TRANSITION_MS = 240;
 const TUTORIAL_STORAGE_KEY = "questmed:tutorial-seen";
 
-const questionCount = Math.min(QUESTION_LIMIT, dailyQuestions.length);
+const initialQuestions = dailyQuestions.slice(0, QUESTION_LIMIT);
 
 type FlowStep = "question" | "videoModal" | "finished";
 
@@ -48,7 +49,6 @@ type QuestionRuntimeState = {
   isExpired: boolean;
   usedHint: boolean;
   showHintModal: boolean;
-  showStats: boolean;
   showVideoPrompt: boolean;
   isPaused: boolean;
   timeLeft: number;
@@ -101,7 +101,7 @@ const tutorialSteps: TutorialStep[] = [
   {
     target: "welcome",
     title: "Bem-vindo ao QuestMED",
-    body: "Resolva 10 questoes por dia, com tempo limitado e feedback imediato.",
+    body: "Resolva 10 questões por dia, com tempo limitado e feedback imediato.",
   },
   {
     target: "question",
@@ -111,37 +111,37 @@ const tutorialSteps: TutorialStep[] = [
   {
     target: "confirm",
     title: "Confirme quando decidir",
-    body: "Depois de selecionar uma alternativa, o botao de check aparece para registrar a resposta.",
+    body: "Depois de selecionar uma alternativa, o botão de check aparece para registrar a resposta.",
   },
   {
     target: "hint",
-    title: "Use a dica com criterio",
-    body: "A lampada abre uma dica. Se voce usar, a questao passa a valer metade.",
+    title: "Use a dica com critério",
+    body: "A lâmpada abre uma dica. Se você usar, a questão passa a valer metade.",
   },
   {
     target: "eliminate",
     title: "Corte duas alternativas",
-    body: "A tesoura elimina duas respostas incorretas e so pode ser usada uma vez por questao.",
+    body: "A tesoura elimina duas respostas incorretas e só pode ser usada uma vez por questão.",
   },
   {
     target: "timer",
     title: "Controle o tempo",
-    body: "O cronometro mostra o tempo restante. Toque nele para pausar ou continuar.",
+    body: "O cronômetro mostra o tempo restante. Toque nele para pausar ou continuar.",
   },
   {
     target: "swipe",
-    title: "Passe as questoes",
-    body: "Arraste para cima para avancar e para baixo para voltar quando estiver no fim ou no topo da questao.",
+    title: "Passe as questões",
+    body: "Arraste para cima para avançar e para baixo para voltar quando estiver no fim ou no topo da questão.",
   },
   {
     target: "feedback",
     title: "Revise o feedback",
-    body: "Depois de confirmar, aparecem acerto ou erro, estatisticas, pontuacao, justificativa e video curto quando houver.",
+    body: "Depois de confirmar, aparecem acerto ou erro, pontuação, justificativa e vídeo curto quando houver.",
   },
   {
     target: "result",
     title: "Veja seu resultado",
-    body: "Ao terminar as 10 questoes, o app mostra seu resumo de acertos, erros, nao respondidas e desempenho.",
+    body: "Ao terminar as 10 questões, o app mostra seu resumo de acertos, erros, não respondidas e desempenho.",
   },
 ];
 
@@ -153,7 +153,6 @@ function createQuestionState(): QuestionRuntimeState {
     isExpired: false,
     usedHint: false,
     showHintModal: false,
-    showStats: false,
     showVideoPrompt: false,
     isPaused: false,
     timeLeft: QUESTION_SECONDS,
@@ -167,10 +166,51 @@ function normalizeQuestionState(state: QuestionRuntimeState | undefined): Questi
   };
 }
 
-function createInitialSession(): SessionState {
+function shuffleQuestions<T>(items: T[]) {
+  const shuffled = [...items];
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+  }
+
+  return shuffled;
+}
+
+function createQuestionSet() {
+  const themes = Array.from(new Set(questionBank.map((question) => question.Tema)));
+  const buckets = new Map(
+    themes.map((theme) => [
+      theme,
+      shuffleQuestions(questionBank.filter((question) => question.Tema === theme)),
+    ]),
+  );
+  const themeOrder = shuffleQuestions(themes);
+  const selected: Question[] = [];
+  let round = 0;
+
+  while (selected.length < QUESTION_LIMIT && themeOrder.length > 0) {
+    const theme = themeOrder[round % themeOrder.length];
+    const question = buckets.get(theme)?.shift();
+
+    if (question) {
+      selected.push(question);
+    }
+
+    round += 1;
+
+    if (round > questionBank.length + themeOrder.length) {
+      break;
+    }
+  }
+
+  return selected;
+}
+
+function createInitialSession(questionTotal: number): SessionState {
   return {
     currentIndex: 0,
-    questionStates: Array.from({ length: questionCount }, createQuestionState),
+    questionStates: Array.from({ length: questionTotal }, createQuestionState),
     flowStep: "question",
     answers: [],
     printWarning: null,
@@ -268,7 +308,8 @@ function FloatingToolButton({
 }
 
 export default function App() {
-  const [session, setSession] = useState<SessionState>(() => createInitialSession());
+  const [questions, setQuestions] = useState<Question[]>(() => initialQuestions);
+  const [session, setSession] = useState<SessionState>(() => createInitialSession(initialQuestions.length));
   const [drag, setDrag] = useState<DragState>(idleDrag);
   const [showTutorial, setShowTutorial] = useState(false);
   const [tutorialStep, setTutorialStep] = useState(0);
@@ -288,7 +329,8 @@ export default function App() {
   const swipeHandledRef = useRef(false);
   const transitionTimeoutRef = useRef<number | null>(null);
 
-  const question = dailyQuestions[session.currentIndex];
+  const questionCount = questions.length;
+  const question = questions[session.currentIndex];
   const questionState = normalizeQuestionState(session.questionStates[session.currentIndex]);
   const questionLocked =
     showTutorial ||
@@ -450,7 +492,7 @@ export default function App() {
           return current;
         }
 
-        const activeQuestion = dailyQuestions[current.currentIndex];
+        const activeQuestion = questions[current.currentIndex];
         const activeQuestionState = current.questionStates[current.currentIndex];
 
         if (
@@ -477,7 +519,6 @@ export default function App() {
               ...state,
               timeLeft: 0,
               isExpired: true,
-              showStats: true,
             })),
           };
         }
@@ -514,12 +555,12 @@ export default function App() {
       }
 
       event.preventDefault();
-      warn("Capturas e salvamentos rapidos foram desativados nesta tela.");
+      warn("Capturas e salvamentos rápidos foram desativados nesta tela.");
     }
 
     function handleContextMenu(event: MouseEvent) {
       event.preventDefault();
-      warn("Menu de contexto bloqueado durante a resolucao.");
+      warn("Menu de contexto bloqueado durante a resolução.");
     }
 
     window.addEventListener("keydown", handleKeyDown);
@@ -561,7 +602,7 @@ export default function App() {
     const blob = generateResultPdfBlob({
       answers: session.answers,
       exportedAt,
-      questions: dailyQuestions,
+      questions,
       summary: {
         answered: summary.answered,
         correct: summary.correct,
@@ -880,7 +921,6 @@ export default function App() {
       questionStates: replaceQuestionState(current.questionStates, current.currentIndex, (state) => ({
         ...state,
         isConfirmed: true,
-        showStats: true,
         showVideoPrompt: true,
       })),
     }));
@@ -955,7 +995,14 @@ export default function App() {
 
   function restartSession() {
     setDragState(idleDrag);
-    setSession(createInitialSession());
+    setSession(createInitialSession(questionCount));
+  }
+
+  function startNewQuestions() {
+    const nextQuestions = createQuestionSet();
+    setDragState(idleDrag);
+    setQuestions(nextQuestions);
+    setSession(createInitialSession(nextQuestions.length));
   }
 
   function renderFinishedContent() {
@@ -969,7 +1016,7 @@ export default function App() {
           <strong>QUESTMED</strong>
         </div>
 
-        <section className="summary-grid" aria-label="Estatisticas finais">
+        <section className="summary-grid" aria-label="Estatísticas finais">
           <div>
             <strong>{summary.correct}</strong>
             <span>Acertos</span>
@@ -980,7 +1027,7 @@ export default function App() {
           </div>
           <div>
             <strong>{summary.expired}</strong>
-            <span>Nao respondidas</span>
+            <span>Não respondidas</span>
           </div>
           <div>
             <strong>{summary.percent}%</strong>
@@ -989,9 +1036,9 @@ export default function App() {
         </section>
 
         <section className="score-card">
-          <p>Pontuacao total</p>
+          <p>Pontuação total</p>
           <strong>{summary.totalScore.toFixed(1).replace(".", ",")} / {QUESTION_LIMIT}</strong>
-          <span>{summary.answered} questoes respondidas. Dicas usadas reduzem a questao para metade da pontuacao.</span>
+          <span>{summary.answered} questões respondidas. Dicas usadas reduzem a questão para metade da pontuação.</span>
         </section>
 
         <div className="finish-actions">
@@ -1001,7 +1048,11 @@ export default function App() {
           </button>
           <button className="secondary-wide-button" onClick={restartSession} type="button">
             <RotateCcw size={19} aria-hidden="true" />
-            Reiniciar simulacao
+            Refazer
+          </button>
+          <button className="secondary-wide-button" onClick={startNewQuestions} type="button">
+            <Shuffle size={19} aria-hidden="true" />
+            Novas questões
           </button>
         </div>
       </>
@@ -1026,7 +1077,7 @@ export default function App() {
       return renderFinishedPage(position);
     }
 
-    const targetQuestion = dailyQuestions[index];
+    const targetQuestion = questions[index];
     const targetState = normalizeQuestionState(session.questionStates[index]);
     const targetAnswer = session.answers.find((answer) => answer.questionId === targetQuestion.id);
     const targetStatus = getAnswerStatus(targetQuestion, targetState);
@@ -1051,7 +1102,7 @@ export default function App() {
             <p className="eyebrow">QuestMED</p>
             <h1>Quest {targetProgress}</h1>
           </div>
-          <div className="floating-tools" aria-label="Ferramentas da questao">
+          <div className="floating-tools" aria-label="Ferramentas da questão">
             <button
               aria-label="Abrir tutorial"
               className="floating-tool-button help-tool-button"
@@ -1068,7 +1119,7 @@ export default function App() {
               disabled={targetLocked}
               onClick={openHint}
               refProp={isActive ? hintButtonRef : undefined}
-              tooltip="Abre uma dica. Se usada, a questao passa a valer metade."
+              tooltip="Abre uma dica. Se usada, a questão passa a valer metade."
             >
               <Lightbulb size={21} aria-hidden="true" />
             </FloatingToolButton>
@@ -1083,7 +1134,7 @@ export default function App() {
               <Scissors size={21} aria-hidden="true" />
             </FloatingToolButton>
             <button
-              aria-label={targetState.isPaused ? "Continuar cronometro" : "Pausar cronometro"}
+              aria-label={targetState.isPaused ? "Continuar cronômetro" : "Pausar cronômetro"}
               className={[
                 "timer-card",
                 targetState.isExpired ? "expired" : "",
@@ -1152,7 +1203,7 @@ export default function App() {
                 <Lock size={18} aria-hidden="true" />
                 <p>
                   <strong className="result-badge neutral">TEMPO ENCERRADO</strong>
-                  <span>A questao foi bloqueada e registrada como nao respondida.</span>
+                  <span>A questão foi bloqueada e registrada como não respondida.</span>
                 </p>
               </div>
             )}
@@ -1162,7 +1213,7 @@ export default function App() {
                 <Sparkles size={18} aria-hidden="true" />
                 <p>
                   <strong className="result-badge correct">CORRETA</strong>
-                  <span>Boa leitura dos dados clinicos.</span>
+                  <span>Boa leitura dos dados clínicos.</span>
                 </p>
               </div>
             )}
@@ -1179,22 +1230,8 @@ export default function App() {
 
             {targetAnswer && (
               <div className="score-mini-card">
-                <span>Pontuacao nesta questao</span>
+                <span>Pontuação nesta questão</span>
                 <strong>{targetAnswer.score.toFixed(1).replace(".", ",")} ponto</strong>
-              </div>
-            )}
-
-            {targetState.showStats && (
-              <div className="stats-card">
-                {targetQuestion.options.map((option) => (
-                  <div className="stat-row" key={option.id}>
-                    <span>{option.id}</span>
-                    <div className="stat-track">
-                      <div style={{ width: `${targetQuestion.statistics[option.id]}%` }} />
-                    </div>
-                    <strong>{targetQuestion.statistics[option.id]}%</strong>
-                  </div>
-                ))}
               </div>
             )}
 
@@ -1203,7 +1240,7 @@ export default function App() {
                 <strong>{targetQuestion.explanationTitle}</strong>
                 <button disabled={!targetQuestion.videoId || !isActive} onClick={openVideo} type="button">
                   <Play size={16} aria-hidden="true" />
-                  Ver video curto
+                  Ver vídeo curto
                 </button>
               </div>
             )}
@@ -1263,7 +1300,7 @@ export default function App() {
       >
         {session.printWarning && <SecurityToast message={session.printWarning} />}
 
-        <section className="question-feed" aria-label="Questoes">
+        <section className="question-feed" aria-label="Questões">
           <div className="question-feed-track" style={feedStyle}>
             {drag.neighborIndex !== null && (
               <div className="feed-page-slot" style={{ transform: `translate3d(0, ${neighborOffset}px, 0)` }}>
@@ -1288,8 +1325,8 @@ export default function App() {
 
         {session.flowStep === "videoModal" && question.videoId && (
           <div className="modal-backdrop video-backdrop" role="presentation">
-            <section className="video-modal" aria-label="Video explicativo" aria-modal="true" role="dialog">
-              <button className="close-modal-button" onClick={closeVideo} type="button" aria-label="Fechar video">
+            <section className="video-modal" aria-label="Vídeo explicativo" aria-modal="true" role="dialog">
+              <button className="close-modal-button" onClick={closeVideo} type="button" aria-label="Fechar vídeo">
                 <X size={20} aria-hidden="true" />
               </button>
               <div className="video-frame-wrap">
@@ -1301,7 +1338,7 @@ export default function App() {
                 />
               </div>
               <button className="primary-wide-button" onClick={isLastQuestion ? finishSession : goNext} type="button">
-                {isLastQuestion ? "Resultado do dia" : "Proxima questao"}
+                {isLastQuestion ? "Resultado do dia" : "Próxima questão"}
               </button>
             </section>
           </div>
@@ -1410,7 +1447,7 @@ function TutorialOverlay({
               Voltar
             </button>
             <button className="tutorial-primary-button" onClick={isLast ? onClose : onNext} type="button">
-              {isLast ? "Concluir" : "Proximo"}
+              {isLast ? "Concluir" : "Próximo"}
             </button>
           </div>
         </div>
