@@ -126,7 +126,7 @@ function formatDate(date: Date) {
 
 function getStatus(answer: PdfAnswer | undefined) {
   if (!answer || answer.expired) {
-    return "Nao respondida";
+    return "Não respondida";
   }
 
   return answer.isCorrect ? "Correta" : "Incorreta";
@@ -238,8 +238,7 @@ class SimplePdf {
 
 function addQuestion(pdf: SimplePdf, result: PdfQuestionResult) {
   const { answer, order, question } = result;
-  const selectedOption = answer?.selectedOptionId ?? "Nao respondeu";
-  const stats = question.options.map((option) => `${option.id}: ${question.statistics[option.id]}%`).join(" | ");
+  const selectedOption = answer?.selectedOptionId ?? "Não respondeu";
 
   pdf.ensureSpace(180);
   pdf.addText(`${order}. ${question.area} - ${question.id}`, {
@@ -273,13 +272,12 @@ function addQuestion(pdf: SimplePdf, result: PdfQuestionResult) {
     bold: true,
     size: 8.8,
   });
-  pdf.addText(`Pontuacao: ${formatScore(answer?.score ?? 0)} ponto | Dica usada: ${answer?.usedHint ? "Sim" : "Nao"}`, {
+  pdf.addText(`Pontuação: ${formatScore(answer?.score ?? 0)} ponto | Dica usada: ${answer?.usedHint ? "Sim" : "Não"}`, {
     size: 8.8,
   });
-  pdf.addText(`Estatisticas: ${stats}`, { color: COLORS.muted, size: 8.8 });
 
   if (question.explanation) {
-    pdf.addText(`Comentario: ${question.explanation}`, { size: 8.8, lineGap: 1.8 });
+    pdf.addText(`Comentário: ${question.explanation}`, { size: 8.8, lineGap: 1.8 });
   }
 
   pdf.divider();
@@ -308,12 +306,12 @@ export function generateResultPdfBlob({
   });
   pdf.addText(`Gerado em ${formatDate(exportedAt)}`, { color: COLORS.muted, size: 9.5 });
   pdf.moveDown(8);
-  pdf.addText(`Pontuacao total: ${formatScore(summary.totalScore)} / ${totalQuestions}`, {
+  pdf.addText(`Pontuação total: ${formatScore(summary.totalScore)} / ${totalQuestions}`, {
     bold: true,
     size: 11,
   });
   pdf.addText(
-    `Desempenho: ${summary.percent}% | Acertos: ${summary.correct} | Erros: ${summary.incorrect} | Nao respondidas: ${summary.expired} | Respondidas: ${summary.answered}`,
+    `Desempenho: ${summary.percent}% | Acertos: ${summary.correct} | Erros: ${summary.incorrect} | Não respondidas: ${summary.expired} | Respondidas: ${summary.answered}`,
     { size: 9.5 },
   );
   pdf.divider();
