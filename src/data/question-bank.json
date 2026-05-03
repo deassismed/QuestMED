@@ -4170,16 +4170,16 @@
         "text": "As afirmativas I, II e III são verdadeiras."
       }
     ],
-    "correctOptionId": "B",
-    "hint": "Estertores não são patognomônicos de IC; edema periférico simétrico é típico.",
+    "correctOptionId": "A",
+    "hint": "Na IC crônica, a ausência de estertores não é rara; edema periférico simétrico é típico no paciente ambulatorial.",
     "statistics": {
-      "A": 10,
-      "B": 70,
+      "A": 70,
+      "B": 10,
       "C": 10,
       "D": 10
     },
     "explanationTitle": "Insuficiência Cardíaca",
-    "explanation": "Edema simétrico e estertores são comuns na IC, mas estertores não são específicos (podem ocorrer em pneumopatias)."
+    "explanation": "O edema periférico da IC ambulatorial tende a ser simétrico, envolvendo tornozelos e região pré-tibial. Em paciente sem pneumopatia, estertores à ausculta favorecem IC. Já na IC crônica, a ausência de estertores é relativamente comum, mesmo com aumento das pressões de enchimento, tornando a afirmativa III falsa."
   },
   {
     "id": "dispneia.quest04.SURCE.2022",
@@ -5054,16 +5054,16 @@
         "text": "Deve ser iniciado preferencialmente com corticoide inalatório diário em baixas doses associado a 2-agonista de curta duração em caso de sintomas."
       }
     ],
-    "correctOptionId": "D",
-    "hint": "GINA 2025 recomenda corticoide inalatório mesmo em asma intermitente leve.",
+    "correctOptionId": "C",
+    "hint": "GINA 2025 recomenda tratamento de resgate que inclua corticoide inalatório, preferencialmente ICS-formoterol conforme sintomas.",
     "statistics": {
       "A": 10,
       "B": 10,
-      "C": 10,
-      "D": 70
+      "C": 70,
+      "D": 10
     },
     "explanationTitle": "Asma",
-    "explanation": "Asma intermitente com teste de broncoprovocação positivo → corticoide inalatório em baixa dose + SABA de resgate."
+    "explanation": "Asma leve/intermitente com teste de broncoprovocação positivo deve receber tratamento anti-inflamatório desde o início; a opção preferencial é corticoide inalatório associado a formoterol conforme sintomas."
   },
   {
     "id": "dispneia.quest30.CERMAM.2024",
