@@ -32,6 +32,7 @@ revoke select on public.question_events from authenticated;
 create index if not exists question_events_local_day_idx
 on public.question_events (local_day);
 
+drop view if exists public.question_stats;
 drop view if exists public.daily_question_stats;
 
 create view public.daily_question_stats as
@@ -54,3 +55,31 @@ order by local_day desc, area asc, tema asc;
 
 revoke select on public.daily_question_stats from authenticated;
 grant select on public.daily_question_stats to anon;
+
+create view public.question_stats as
+select
+  local_day,
+  question_id,
+  area,
+  tema,
+  correct_option_id,
+  count(*)::integer as total_questions,
+  count(*) filter (where is_correct)::integer as correct_questions,
+  count(*) filter (where not is_correct and not expired)::integer as incorrect_questions,
+  count(*) filter (where expired)::integer as expired_questions,
+  count(*) filter (where used_hint)::integer as used_hint_questions,
+  count(*) filter (where selected_option_id = 'A')::integer as selected_a_questions,
+  count(*) filter (where selected_option_id = 'B')::integer as selected_b_questions,
+  count(*) filter (where selected_option_id = 'C')::integer as selected_c_questions,
+  count(*) filter (where selected_option_id = 'D')::integer as selected_d_questions,
+  round(
+    100 * count(*) filter (where is_correct)::numeric / nullif(count(*), 0),
+    1
+  ) as correct_percent,
+  round(avg(score), 2) as average_score
+from public.question_events
+group by local_day, question_id, area, tema, correct_option_id
+order by local_day desc, question_id asc;
+
+revoke select on public.question_stats from authenticated;
+grant select on public.question_stats to anon;
