@@ -15,6 +15,7 @@ import {
   X,
 } from "lucide-react";
 import { dailyQuestions, questionBank, type Option, type Question } from "./data/questions";
+import StatisticsDashboard from "./StatisticsDashboard";
 import { flushQuestionEventQueue, trackQuestionEvent } from "./utils/analytics";
 import { generateResultPdfBlob } from "./utils/resultPdf";
 
@@ -308,7 +309,7 @@ function FloatingToolButton({
   );
 }
 
-export default function App() {
+function QuizApp() {
   const [questions, setQuestions] = useState<Question[]>(() => initialQuestions);
   const [session, setSession] = useState<SessionState>(() => createInitialSession(initialQuestions.length));
   const [drag, setDrag] = useState<DragState>(idleDrag);
@@ -1420,6 +1421,13 @@ export default function App() {
       </section>
     </main>
   );
+}
+
+export default function App() {
+  const normalizedPath = window.location.pathname.replace(/\/$/, "");
+  const isStatsRoute = normalizedPath.endsWith("/estatisticas");
+
+  return isStatsRoute ? <StatisticsDashboard /> : <QuizApp />;
 }
 
 function TutorialOverlay({
