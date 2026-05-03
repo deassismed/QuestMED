@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { AlertCircle, ArrowLeft, BarChart3, CalendarDays, Filter, RefreshCw } from "lucide-react";
-import type { Area, Tema } from "./data/questions";
+import { AlertCircle, ArrowLeft, BarChart3, CalendarDays, Filter, RefreshCw, Search } from "lucide-react";
+import { questionBank, type Area, type Option, type Question, type Tema } from "./data/questions";
 import {
+  fetchAggregatedQuestionDetailStats,
   fetchAggregatedQuestionStats,
   questionStatsConfigured,
+  type AggregatedQuestionDetailStats,
   type AggregatedQuestionStats,
 } from "./utils/statistics";
 
@@ -23,6 +25,15 @@ type GroupedStats = {
   summary: Summary;
 };
 
+type QuestionSummary = Summary & {
+  questionId: string;
+  area: Area;
+  tema: Tema;
+  correctOptionId: Option["id"];
+  usedHintQuestions: number;
+  selectedOptions: Record<Option["id"], number>;
+};
+
 const emptySummary: Summary = {
   totalQuestions: 0,
   correctQuestions: 0,
@@ -31,6 +42,15 @@ const emptySummary: Summary = {
   averageScore: 0,
   correctPercent: 0,
 };
+
+const emptySelectedOptions: Record<Option["id"], number> = {
+  A: 0,
+  B: 0,
+  C: 0,
+  D: 0,
+};
+
+const questionById = new Map(questionBank.map((question) => [question.id, question]));
 
 function getHomeHref() {
   return `${window.location.pathname.replace(/\/estatisticas\/?$/, "/")}${window.location.search}`;
@@ -90,6 +110,69 @@ function groupBy(rows: AggregatedQuestionStats[], key: (row: AggregatedQuestionS
     .sort((a, b) => b.summary.totalQuestions - a.summary.totalQuestions);
 }
 
+function summarizeQuestionRows(rows: AggregatedQuestionDetailStats[]): QuestionSummary[] {
+  const groups = new Map<string, AggregatedQuestionDetailStats[]>();
+
+  rows.forEach((row) => {
+    groups.set(row.questionId, [...(groups.get(row.questionId) ?? []), row]);
+  });
+
+  return Array.from(groups.entries())
+    .map(([questionId, groupRows]) => {
+      const firstRow = groupRows[0];
+      const totals = groupRows.reduce(
+        (summary, row) => ({
+          ...summary,
+          totalQuestions: summary.totalQuestions + row.totalQuestions,
+          correctQuestions: summary.correctQuestions + row.correctQuestions,
+          incorrectQuestions: summary.incorrectQuestions + row.incorrectQuestions,
+          expiredQuestions: summary.expiredQuestions + row.expiredQuestions,
+          usedHintQuestions: summary.usedHintQuestions + row.usedHintQuestions,
+          averageScore: summary.averageScore + row.averageScore * row.totalQuestions,
+          selectedOptions: {
+            A: summary.selectedOptions.A + row.selectedAQuestions,
+            B: summary.selectedOptions.B + row.selectedBQuestions,
+            C: summary.selectedOptions.C + row.selectedCQuestions,
+            D: summary.selectedOptions.D + row.selectedDQuestions,
+          },
+        }),
+        {
+          ...emptySummary,
+          questionId,
+          area: firstRow.area,
+          tema: firstRow.tema,
+          correctOptionId: firstRow.correctOptionId,
+          usedHintQuestions: 0,
+          selectedOptions: emptySelectedOptions,
+        },
+      );
+
+      if (totals.totalQuestions === 0) {
+        return totals;
+      }
+
+      return {
+        ...totals,
+        averageScore: totals.averageScore / totals.totalQuestions,
+        correctPercent: (totals.correctQuestions / totals.totalQuestions) * 100,
+      };
+    })
+    .sort((a, b) => b.totalQuestions - a.totalQuestions);
+}
+
+function getQuestionSearchText(question: Question | undefined, summary: QuestionSummary) {
+  return [
+    summary.questionId,
+    summary.area,
+    summary.tema,
+    question?.statement,
+    question?.explanationTitle,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="stats-card">
@@ -133,30 +216,153 @@ function StatsTable({ rows, title }: { rows: GroupedStats[]; title: string }) {
   );
 }
 
+function QuestionStatsTable({
+  onSelectQuestion,
+  rows,
+  selectedQuestionId,
+}: {
+  onSelectQuestion: (questionId: string) => void;
+  rows: QuestionSummary[];
+  selectedQuestionId: string | null;
+}) {
+  return (
+    <section className="stats-panel question-stats-panel">
+      <h2>Por questao</h2>
+      {rows.length === 0 ? (
+        <p className="stats-empty-line">Nenhuma questao encontrada neste recorte.</p>
+      ) : (
+        <div className="stats-table-wrap">
+          <table className="stats-table question-stats-table">
+            <thead>
+              <tr>
+                <th>Questao</th>
+                <th>Tema</th>
+                <th>Area</th>
+                <th>Respostas</th>
+                <th>Acerto</th>
+                <th>Dica</th>
+                <th>Media</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr
+                  className={row.questionId === selectedQuestionId ? "selected" : ""}
+                  key={row.questionId}
+                  onClick={() => onSelectQuestion(row.questionId)}
+                >
+                  <td>{row.questionId}</td>
+                  <td>{row.tema}</td>
+                  <td>{row.area}</td>
+                  <td>{row.totalQuestions}</td>
+                  <td>{formatDecimal(row.correctPercent)}%</td>
+                  <td>{row.usedHintQuestions}</td>
+                  <td>{formatDecimal(row.averageScore)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function QuestionDetail({ summary }: { summary: QuestionSummary }) {
+  const question = questionById.get(summary.questionId);
+  const maxSelected = Math.max(...Object.values(summary.selectedOptions), 1);
+
+  return (
+    <section className="stats-panel question-detail-panel">
+      <div className="question-detail-header">
+        <div>
+          <p className="eyebrow">Detalhe da questao</p>
+          <h2>{summary.questionId}</h2>
+        </div>
+        <span className="question-correct-pill">Gabarito {summary.correctOptionId}</span>
+      </div>
+
+      <div className="question-detail-meta">
+        <span>{summary.tema}</span>
+        <span>{summary.area}</span>
+        <span>{summary.totalQuestions} respostas</span>
+      </div>
+
+      {question && <p className="question-detail-statement">{question.statement}</p>}
+
+      <div className="question-detail-grid">
+        <StatCard label="Acertos" value={String(summary.correctQuestions)} />
+        <StatCard label="Erros" value={String(summary.incorrectQuestions)} />
+        <StatCard label="Nao respondidas" value={String(summary.expiredQuestions)} />
+        <StatCard label="Usaram dica" value={String(summary.usedHintQuestions)} />
+      </div>
+
+      <div className="option-distribution" aria-label="Distribuicao por alternativa">
+        {(["A", "B", "C", "D"] as const).map((optionId) => {
+          const count = summary.selectedOptions[optionId];
+          const percent = summary.totalQuestions > 0 ? (count / summary.totalQuestions) * 100 : 0;
+          const width = `${Math.max(4, (count / maxSelected) * 100)}%`;
+
+          return (
+            <div className="option-distribution-row" key={optionId}>
+              <span className={optionId === summary.correctOptionId ? "correct" : ""}>{optionId}</span>
+              <div>
+                <strong>{count}</strong>
+                <em>{formatDecimal(percent)}%</em>
+                <i style={{ width }} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {question && (
+        <div className="question-option-list">
+          {question.options.map((option) => (
+            <p className={option.id === summary.correctOptionId ? "correct" : ""} key={option.id}>
+              <strong>{option.id}</strong>
+              <span>{option.text}</span>
+            </p>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
 export default function StatisticsDashboard() {
   const [rows, setRows] = useState<AggregatedQuestionStats[]>([]);
+  const [questionRows, setQuestionRows] = useState<AggregatedQuestionDetailStats[]>([]);
   const [loadState, setLoadState] = useState<LoadState>(() =>
     questionStatsConfigured() ? "loading" : "not-configured",
   );
   const [selectedDay, setSelectedDay] = useState("all");
   const [selectedTema, setSelectedTema] = useState("all");
   const [selectedArea, setSelectedArea] = useState("all");
+  const [questionSearch, setQuestionSearch] = useState("");
+  const [selectedQuestionId, setSelectedQuestionId] = useState<string | null>(null);
 
   async function loadStats() {
     if (!questionStatsConfigured()) {
       setLoadState("not-configured");
       setRows([]);
+      setQuestionRows([]);
       return;
     }
 
     setLoadState("loading");
 
     try {
-      const nextRows = await fetchAggregatedQuestionStats();
+      const [nextRows, nextQuestionRows] = await Promise.all([
+        fetchAggregatedQuestionStats(),
+        fetchAggregatedQuestionDetailStats(),
+      ]);
       setRows(nextRows);
+      setQuestionRows(nextQuestionRows);
       setLoadState("ready");
     } catch {
       setRows([]);
+      setQuestionRows([]);
       setLoadState("error");
     }
   }
@@ -181,10 +387,46 @@ export default function StatisticsDashboard() {
     [rows, selectedArea, selectedDay, selectedTema],
   );
 
+  const filteredQuestionRows = useMemo(
+    () =>
+      questionRows.filter((row) => {
+        const matchesDay = selectedDay === "all" || row.localDay === selectedDay;
+        const matchesTema = selectedTema === "all" || row.tema === selectedTema;
+        const matchesArea = selectedArea === "all" || row.area === selectedArea;
+
+        return matchesDay && matchesTema && matchesArea;
+      }),
+    [questionRows, selectedArea, selectedDay, selectedTema],
+  );
+
   const summary = useMemo(() => summarize(filteredRows), [filteredRows]);
   const byDay = useMemo(() => groupBy(filteredRows, (row) => formatDate(row.localDay)), [filteredRows]);
   const byTema = useMemo(() => groupBy(filteredRows, (row) => row.tema), [filteredRows]);
   const byArea = useMemo(() => groupBy(filteredRows, (row) => row.area), [filteredRows]);
+  const questionSummaries = useMemo(() => summarizeQuestionRows(filteredQuestionRows), [filteredQuestionRows]);
+  const searchedQuestionSummaries = useMemo(() => {
+    const normalizedSearch = questionSearch.trim().toLowerCase();
+
+    if (!normalizedSearch) {
+      return questionSummaries;
+    }
+
+    return questionSummaries.filter((summary) =>
+      getQuestionSearchText(questionById.get(summary.questionId), summary).includes(normalizedSearch),
+    );
+  }, [questionSearch, questionSummaries]);
+  const selectedQuestion =
+    searchedQuestionSummaries.find((summary) => summary.questionId === selectedQuestionId) ??
+    searchedQuestionSummaries[0] ??
+    null;
+  const hardestQuestions = useMemo(
+    () =>
+      [...questionSummaries]
+        .filter((summary) => summary.totalQuestions > 0)
+        .sort((a, b) => a.correctPercent - b.correctPercent)
+        .slice(0, 5),
+    [questionSummaries],
+  );
   const isReady = loadState === "ready";
   const hasRows = filteredRows.length > 0;
 
@@ -319,6 +561,49 @@ export default function StatisticsDashboard() {
                   <StatsTable rows={byTema} title="Por tema" />
                   <StatsTable rows={byArea} title="Por area" />
                 </div>
+
+                <section className="question-search-panel">
+                  <div className="stats-filter-title">
+                    <Search size={18} aria-hidden="true" />
+                    <strong>Buscar questao</strong>
+                  </div>
+                  <label>
+                    <span>ID, tema, area ou enunciado</span>
+                    <input
+                      onChange={(event) => setQuestionSearch(event.target.value)}
+                      placeholder="Ex.: disuria.quest16 ou cefaleia"
+                      type="search"
+                      value={questionSearch}
+                    />
+                  </label>
+                </section>
+
+                <div className="question-analytics-grid">
+                  <QuestionStatsTable
+                    onSelectQuestion={setSelectedQuestionId}
+                    rows={searchedQuestionSummaries}
+                    selectedQuestionId={selectedQuestion?.questionId ?? null}
+                  />
+                  {selectedQuestion && <QuestionDetail summary={selectedQuestion} />}
+                </div>
+
+                {hardestQuestions.length > 0 && (
+                  <section className="stats-panel hardest-question-panel">
+                    <h2>Questoes com menor acerto</h2>
+                    <div className="hardest-question-list">
+                      {hardestQuestions.map((summary) => (
+                        <button
+                          key={summary.questionId}
+                          onClick={() => setSelectedQuestionId(summary.questionId)}
+                          type="button"
+                        >
+                          <span>{summary.questionId}</span>
+                          <strong>{formatDecimal(summary.correctPercent)}%</strong>
+                        </button>
+                      ))}
+                    </div>
+                  </section>
+                )}
               </>
             )}
           </>
