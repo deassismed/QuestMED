@@ -1367,8 +1367,25 @@ h2 {
 }
 
 .question-stats-panel {
-  max-height: 620px;
+  display: flex;
+  flex-direction: column;
+  max-height: 72vh;
   overflow: hidden;
+}
+
+.question-stats-panel .stats-table-wrap {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding-right: 4px;
+  scrollbar-gutter: stable;
+}
+
+.question-stats-table thead th {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .question-stats-table tbody tr {
@@ -1593,6 +1610,10 @@ h2 {
 
   .question-detail-panel {
     position: static;
+  }
+
+  .question-stats-panel {
+    max-height: 58vh;
   }
 }
 
