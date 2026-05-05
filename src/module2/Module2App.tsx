@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowLeft,
   BookOpenCheck,
@@ -18,9 +18,8 @@ import {
   X,
 } from "lucide-react";
 import { dailyQuestions, questionBank, type Option, type Question } from "./data/questions";
-import Module2App from "./module2/Module2App";
-import QuestionEditorDashboard from "./QuestionEditorDashboard";
-import StatisticsDashboard from "./StatisticsDashboard";
+import QuestionEditorDashboard from "../QuestionEditorDashboard";
+import StatisticsDashboard from "../StatisticsDashboard";
 import { flushQuestionEventQueue, trackQuestionEvent } from "./utils/analytics";
 import { generateResultPdfBlob } from "./utils/resultPdf";
 
@@ -31,7 +30,7 @@ const DRAG_COMMIT_RATIO = 0.42;
 const DRAG_COMMIT_MIN_DISTANCE = 132;
 const DRAG_COMMIT_VELOCITY = 1.15;
 const DRAG_TRANSITION_MS = 240;
-const TUTORIAL_STORAGE_KEY = "questmed:tutorial-seen";
+const TUTORIAL_STORAGE_KEY = "questmed2:tutorial-seen";
 
 const initialQuestions = dailyQuestions.slice(0, QUESTION_LIMIT);
 
@@ -359,7 +358,6 @@ function playFeedbackTone(kind: FeedbackAnimation["kind"]) {
 
     oscillator.type = kind === "correct" ? "sine" : "triangle";
     oscillator.frequency.setValueAtTime(frequency, noteStart);
-
     if (kind === "incorrect") {
       oscillator.frequency.exponentialRampToValueAtTime(frequency * 0.72, noteEnd);
     }
@@ -390,9 +388,60 @@ function FeedbackBurst({
   }, [onDone]);
 
   return (
-    <div aria-hidden="true" className={["feedback-burst", kind].join(" ")}>
+    <div
+      aria-hidden="true"
+      className={["feedback-burst", kind].join(" ")}
+    >
       <span className="feedback-burst-core">{kind === "correct" ? "✓" : "!"}</span>
     </div>
+  );
+}
+
+function QuestionAttachments({ question }: { question: Question }) {
+  if (!question.attachments?.length) {
+    return null;
+  }
+
+  return (
+    <section className="question-attachments" aria-label="Anexos da questao">
+      {question.attachments.map((attachment, index) => {
+        if (attachment.type === "image") {
+          return (
+            <figure className="question-image-attachment" key={`${attachment.type}-${index}`}>
+              <img alt={attachment.alt} src={attachment.src} />
+              {attachment.caption && <figcaption>{attachment.caption}</figcaption>}
+            </figure>
+          );
+        }
+
+        return (
+          <div className="question-lab-attachment" key={`${attachment.type}-${index}`}>
+            <h2>{attachment.title}</h2>
+            <div className="stats-table-wrap">
+              <table className="stats-table">
+                <thead>
+                  <tr>
+                    <th>Exame</th>
+                    <th>Resultado</th>
+                    <th>Referencia</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {attachment.rows.map((row) => (
+                    <tr key={`${row.exam}-${row.value}`}>
+                      <td>{row.exam}</td>
+                      <td>{row.unit ? `${row.value} ${row.unit}` : row.value}</td>
+                      <td>{row.reference ?? "-"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {attachment.caption && <p>{attachment.caption}</p>}
+          </div>
+        );
+      })}
+    </section>
   );
 }
 
@@ -404,6 +453,7 @@ function ClassroomModule() {
     isConfirmed: false,
     showDiscussionModal: false,
   });
+  const [feedbackAnimation, setFeedbackAnimation] = useState<FeedbackAnimation | null>(null);
   const feedbackRef = useRef<HTMLElement | null>(null);
   const selectedQuestion = questionBank.find((questionItem) => questionItem.id === selectedQuestionId) ?? questionBank[0];
   const selectedOption = selectedQuestion?.options.find((option) => option.id === answerState.selectedOptionId);
@@ -464,6 +514,13 @@ function ClassroomModule() {
       return;
     }
 
+    const animationKind = answerState.selectedOptionId === selectedQuestion?.correctOptionId ? "correct" : "incorrect";
+    playFeedbackTone(animationKind);
+    setFeedbackAnimation({
+      id: Date.now(),
+      kind: animationKind,
+    });
+
     setAnswerState((current) => ({
       ...current,
       isConfirmed: true,
@@ -472,6 +529,7 @@ function ClassroomModule() {
   }
 
   function restartClassroomAnswer() {
+    setFeedbackAnimation(null);
     setAnswerState({
       selectedOptionId: null,
       isConfirmed: false,
@@ -496,6 +554,13 @@ function ClassroomModule() {
   return (
     <main className="classroom-shell">
       <section className="classroom-dashboard" aria-label="Sala de aula QuestMED">
+        {feedbackAnimation && (
+          <FeedbackBurst
+            key={feedbackAnimation.id}
+            kind={feedbackAnimation.kind}
+            onDone={() => setFeedbackAnimation(null)}
+          />
+        )}
         <header className="stats-header classroom-header">
           <a className="stats-back-link" href="./">
             <ArrowLeft size={18} aria-hidden="true" />
@@ -567,6 +632,7 @@ function ClassroomModule() {
             <section className="question-card classroom-question-card">
               <p>{selectedQuestion.statement}</p>
             </section>
+            <QuestionAttachments question={selectedQuestion} />
 
             <section className="options-list classroom-options-list" aria-label="Alternativas">
               {selectedQuestion.options.map((option) => {
@@ -1675,6 +1741,7 @@ function QuizApp() {
           <section className="question-card" ref={isActive ? questionCardRef : undefined}>
             <p>{targetQuestion.statement}</p>
           </section>
+          <QuestionAttachments question={targetQuestion} />
 
           <section className="options-list" aria-label="Alternativas" ref={isActive ? optionsListRef : undefined}>
             {targetQuestion.options.map((option) => {
@@ -1890,16 +1957,11 @@ function QuizApp() {
   );
 }
 
-export default function App() {
+export default function Module2App() {
   const normalizedPath = window.location.pathname.replace(/\/$/, "");
   const isStatsRoute = normalizedPath.endsWith("/estatisticas");
   const isQuestionEditorRoute = normalizedPath.endsWith("/editar-questoes");
   const isClassroomRoute = normalizedPath.endsWith("/sala-de-aula") || normalizedPath.endsWith("/estudar");
-  const isModule2Route = normalizedPath === "/modulo-2" || normalizedPath.startsWith("/modulo-2/");
-
-  if (isModule2Route) {
-    return <Module2App />;
-  }
 
   if (isStatsRoute) {
     return <StatisticsDashboard />;

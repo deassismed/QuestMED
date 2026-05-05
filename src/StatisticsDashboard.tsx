@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { AlertCircle, ArrowLeft, BarChart3, CalendarDays, Filter, RefreshCw, Search } from "lucide-react";
+import { AlertCircle, ArrowLeft, BarChart3, CalendarDays, Download, Filter, RefreshCw, Search } from "lucide-react";
 import { questionBank, type Area, type Option, type Question, type Tema } from "./data/questions";
 import {
   fetchAggregatedQuestionDetailStats,
@@ -8,6 +8,7 @@ import {
   type AggregatedQuestionDetailStats,
   type AggregatedQuestionStats,
 } from "./utils/statistics";
+import { generateStatisticsPdfBlob, generateVisualStatisticsPdfBlob } from "./utils/statisticsPdf";
 
 type LoadState = "loading" | "ready" | "not-configured" | "error";
 
@@ -68,6 +69,18 @@ function formatDate(date: string) {
 
 function formatDecimal(value: number) {
   return value.toFixed(1).replace(".", ",");
+}
+
+function downloadBlob(blob: Blob, filename: string) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
 }
 
 function summarize(rows: AggregatedQuestionStats[]): Summary {
@@ -430,6 +443,50 @@ export default function StatisticsDashboard() {
   const isReady = loadState === "ready";
   const hasRows = filteredRows.length > 0;
 
+  function generateStatisticsPdf() {
+    const exportedAt = new Date();
+    const timestamp = exportedAt.toISOString().replace(/[:.]/g, "-");
+    const filters = [
+      `Dia: ${selectedDay === "all" ? "Todos" : formatDate(selectedDay)}`,
+      `Tema: ${selectedTema === "all" ? "Todos" : selectedTema}`,
+      `Area: ${selectedArea === "all" ? "Todas" : selectedArea}`,
+      `Busca: ${questionSearch.trim() || "Sem busca"}`,
+    ];
+    const blob = generateStatisticsPdfBlob({
+      areas: byArea,
+      days: byDay,
+      exportedAt,
+      filters,
+      questions: searchedQuestionSummaries,
+      summary,
+      temas: byTema,
+    });
+
+    downloadBlob(blob, `questmed-estatisticas-${timestamp}.pdf`);
+  }
+
+  function generateVisualStatisticsPdf() {
+    const exportedAt = new Date();
+    const timestamp = exportedAt.toISOString().replace(/[:.]/g, "-");
+    const filters = [
+      `Dia: ${selectedDay === "all" ? "Todos" : formatDate(selectedDay)}`,
+      `Tema: ${selectedTema === "all" ? "Todos" : selectedTema}`,
+      `Area: ${selectedArea === "all" ? "Todas" : selectedArea}`,
+      `Busca: ${questionSearch.trim() || "Sem busca"}`,
+    ];
+    const blob = generateVisualStatisticsPdfBlob({
+      areas: byArea,
+      days: byDay,
+      exportedAt,
+      filters,
+      questions: searchedQuestionSummaries,
+      summary,
+      temas: byTema,
+    });
+
+    downloadBlob(blob, `questmed-estatisticas-visual-${timestamp}.pdf`);
+  }
+
   return (
     <main className="stats-app-shell">
       <section className="stats-dashboard" aria-label="Estatisticas QuestMED">
@@ -447,10 +504,20 @@ export default function StatisticsDashboard() {
               <h1>Respostas</h1>
             </div>
           </div>
-          <button className="stats-refresh-button" onClick={loadStats} type="button">
-            <RefreshCw size={17} aria-hidden="true" />
-            Atualizar
-          </button>
+          <div className="stats-header-actions">
+            <button className="stats-pdf-button visual" disabled={!hasRows} onClick={generateVisualStatisticsPdf} type="button">
+              <Download size={17} aria-hidden="true" />
+              PDF visual
+            </button>
+            <button className="stats-pdf-button" disabled={!hasRows} onClick={generateStatisticsPdf} type="button">
+              <Download size={17} aria-hidden="true" />
+              PDF completo
+            </button>
+            <button className="stats-refresh-button" onClick={loadStats} type="button">
+              <RefreshCw size={17} aria-hidden="true" />
+              Atualizar
+            </button>
+          </div>
         </header>
 
         {loadState === "not-configured" && (
