@@ -1895,7 +1895,7 @@ export default function App() {
   const isStatsRoute = normalizedPath.endsWith("/estatisticas");
   const isQuestionEditorRoute = normalizedPath.endsWith("/editar-questoes");
   const isClassroomRoute = normalizedPath.endsWith("/sala-de-aula") || normalizedPath.endsWith("/estudar");
-  const isModule2Route = normalizedPath === "/modulo-2" || normalizedPath.startsWith("/modulo-2/");
+  const isModule2Route = normalizedPath.endsWith("/modulo-2") || normalizedPath.includes("/modulo-2/");
 
   if (isModule2Route) {
     return <Module2App />;
