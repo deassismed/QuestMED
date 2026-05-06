@@ -22,6 +22,11 @@ import QuestionEditorDashboard from "../QuestionEditorDashboard";
 import StatisticsDashboard from "../StatisticsDashboard";
 import { flushQuestionEventQueue, trackQuestionEvent } from "./utils/analytics";
 import { generateResultPdfBlob } from "./utils/resultPdf";
+import {
+  fetchAggregatedQuestionDetailStats,
+  questionStatsConfigured,
+  type AggregatedQuestionDetailStats,
+} from "../utils/statistics";
 
 const QUESTION_LIMIT = 10;
 const QUESTION_SECONDS = 180;
@@ -100,6 +105,19 @@ type ClassroomAnswerState = {
   selectedOptionId: Option["id"] | null;
   isConfirmed: boolean;
   showDiscussionModal: boolean;
+};
+
+type ClassroomStatsLoadState = "loading" | "ready" | "not-configured" | "error";
+
+type ClassroomQuestionStats = {
+  totalQuestions: number;
+  correctQuestions: number;
+  incorrectQuestions: number;
+  expiredQuestions: number;
+  usedHintQuestions: number;
+  correctPercent: number;
+  averageScore: number;
+  selectedOptions: Record<Option["id"], number>;
 };
 
 type FeedbackAnimation = {
@@ -331,6 +349,64 @@ function normalizeText(value: string) {
     .toLowerCase();
 }
 
+function formatDecimal(value: number) {
+  return value.toFixed(1).replace(".", ",");
+}
+
+function summarizeClassroomQuestionStats(
+  rows: AggregatedQuestionDetailStats[],
+  questionId: string,
+): ClassroomQuestionStats | null {
+  const questionRows = rows.filter((row) => row.questionId === questionId);
+
+  if (questionRows.length === 0) {
+    return null;
+  }
+
+  const totals = questionRows.reduce<ClassroomQuestionStats>(
+    (summary, row) => ({
+      totalQuestions: summary.totalQuestions + row.totalQuestions,
+      correctQuestions: summary.correctQuestions + row.correctQuestions,
+      incorrectQuestions: summary.incorrectQuestions + row.incorrectQuestions,
+      expiredQuestions: summary.expiredQuestions + row.expiredQuestions,
+      usedHintQuestions: summary.usedHintQuestions + row.usedHintQuestions,
+      correctPercent: 0,
+      averageScore: summary.averageScore + row.averageScore * row.totalQuestions,
+      selectedOptions: {
+        A: summary.selectedOptions.A + row.selectedAQuestions,
+        B: summary.selectedOptions.B + row.selectedBQuestions,
+        C: summary.selectedOptions.C + row.selectedCQuestions,
+        D: summary.selectedOptions.D + row.selectedDQuestions,
+      },
+    }),
+    {
+      totalQuestions: 0,
+      correctQuestions: 0,
+      incorrectQuestions: 0,
+      expiredQuestions: 0,
+      usedHintQuestions: 0,
+      correctPercent: 0,
+      averageScore: 0,
+      selectedOptions: {
+        A: 0,
+        B: 0,
+        C: 0,
+        D: 0,
+      },
+    },
+  );
+
+  if (totals.totalQuestions === 0) {
+    return totals;
+  }
+
+  return {
+    ...totals,
+    correctPercent: (totals.correctQuestions / totals.totalQuestions) * 100,
+    averageScore: totals.averageScore / totals.totalQuestions,
+  };
+}
+
 function playFeedbackTone(kind: FeedbackAnimation["kind"]) {
   const AudioContextClass =
     window.AudioContext ??
@@ -454,11 +530,42 @@ function ClassroomModule() {
     showDiscussionModal: false,
   });
   const [feedbackAnimation, setFeedbackAnimation] = useState<FeedbackAnimation | null>(null);
+  const [statsRows, setStatsRows] = useState<AggregatedQuestionDetailStats[]>([]);
+  const [statsLoadState, setStatsLoadState] = useState<ClassroomStatsLoadState>(() =>
+    questionStatsConfigured() ? "loading" : "not-configured",
+  );
   const feedbackRef = useRef<HTMLElement | null>(null);
   const selectedQuestion = questionBank.find((questionItem) => questionItem.id === selectedQuestionId) ?? questionBank[0];
   const selectedOption = selectedQuestion?.options.find((option) => option.id === answerState.selectedOptionId);
   const isCorrect = answerState.selectedOptionId === selectedQuestion?.correctOptionId;
   const canConfirm = Boolean(answerState.selectedOptionId) && !answerState.isConfirmed;
+  const selectedQuestionStats = useMemo(
+    () => summarizeClassroomQuestionStats(statsRows, selectedQuestion?.id ?? ""),
+    [selectedQuestion?.id, statsRows],
+  );
+  const maxSelectedCount = Math.max(
+    ...Object.values(selectedQuestionStats?.selectedOptions ?? { A: 0, B: 0, C: 0, D: 0 }),
+    1,
+  );
+
+  async function loadClassroomStats() {
+    if (!questionStatsConfigured()) {
+      setStatsLoadState("not-configured");
+      setStatsRows([]);
+      return;
+    }
+
+    setStatsLoadState("loading");
+
+    try {
+      const nextRows = await fetchAggregatedQuestionDetailStats();
+      setStatsRows(nextRows);
+      setStatsLoadState("ready");
+    } catch {
+      setStatsRows([]);
+      setStatsLoadState("error");
+    }
+  }
 
   const filteredQuestions = useMemo(() => {
     const normalizedSearch = normalizeText(searchTerm.trim());
@@ -480,6 +587,10 @@ function ClassroomModule() {
       })
       .slice(0, 24);
   }, [searchTerm]);
+
+  useEffect(() => {
+    void loadClassroomStats();
+  }, []);
 
   useEffect(() => {
     if (!answerState.isConfirmed) {
@@ -700,20 +811,63 @@ function ClassroomModule() {
 
                   <div className="explanation-card classroom-statistics-card">
                     <h2>Estatistica da questao</h2>
-                    <div className="option-distribution">
-                      {selectedQuestion.options.map((option) => (
-                        <div className="option-distribution-row" key={option.id}>
-                          <span className={option.id === selectedQuestion.correctOptionId ? "correct" : ""}>
-                            {option.id}
-                          </span>
-                          <div>
-                            <strong>{selectedQuestion.statistics[option.id]}%</strong>
-                            <em>{option.id === selectedQuestion.correctOptionId ? "Gabarito" : "Alternativa"}</em>
-                            <i style={{ width: `${selectedQuestion.statistics[option.id]}%` }} />
+                    {statsLoadState === "loading" && (
+                      <p className="stats-empty-line">Carregando estatisticas reais...</p>
+                    )}
+                    {statsLoadState === "not-configured" && (
+                      <p className="stats-empty-line">Supabase nao configurado para buscar estatisticas reais.</p>
+                    )}
+                    {statsLoadState === "error" && (
+                      <p className="stats-empty-line">Nao foi possivel carregar as estatisticas reais desta questao.</p>
+                    )}
+                    {statsLoadState === "ready" && !selectedQuestionStats && (
+                      <p className="stats-empty-line">Ainda nao ha respostas reais registradas para esta questao.</p>
+                    )}
+                    {statsLoadState === "ready" && selectedQuestionStats && (
+                      <>
+                        <div className="question-detail-grid">
+                          <div className="stats-card">
+                            <span>Respostas</span>
+                            <strong>{selectedQuestionStats.totalQuestions}</strong>
+                          </div>
+                          <div className="stats-card">
+                            <span>Acerto</span>
+                            <strong>{formatDecimal(selectedQuestionStats.correctPercent)}%</strong>
+                          </div>
+                          <div className="stats-card">
+                            <span>Dicas</span>
+                            <strong>{selectedQuestionStats.usedHintQuestions}</strong>
+                          </div>
+                          <div className="stats-card">
+                            <span>Media</span>
+                            <strong>{formatDecimal(selectedQuestionStats.averageScore)}</strong>
                           </div>
                         </div>
-                      ))}
-                    </div>
+                        <div className="option-distribution">
+                          {selectedQuestion.options.map((option) => {
+                            const count = selectedQuestionStats.selectedOptions[option.id];
+                            const percent =
+                              selectedQuestionStats.totalQuestions > 0
+                                ? (count / selectedQuestionStats.totalQuestions) * 100
+                                : 0;
+                            const width = `${Math.max(4, (count / maxSelectedCount) * 100)}%`;
+
+                            return (
+                              <div className="option-distribution-row" key={option.id}>
+                                <span className={option.id === selectedQuestion.correctOptionId ? "correct" : ""}>
+                                  {option.id}
+                                </span>
+                                <div>
+                                  <strong>{count}</strong>
+                                  <em>{formatDecimal(percent)}%</em>
+                                  <i style={{ width }} />
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </>
+                    )}
                   </div>
 
                   <button
