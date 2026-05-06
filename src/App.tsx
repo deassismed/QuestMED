@@ -28,6 +28,7 @@ import {
   questionStatsConfigured,
   type AggregatedQuestionDetailStats,
 } from "./utils/statistics";
+import { classroomExplanationsByQuestionId } from "./data/classroom-explanations";
 
 const QUESTION_LIMIT = 10;
 const QUESTION_SECONDS = 180;
@@ -487,6 +488,9 @@ function ClassroomModule() {
   const feedbackRef = useRef<HTMLElement | null>(null);
   const selectedQuestion = questionBank.find((questionItem) => questionItem.id === selectedQuestionId) ?? questionBank[0];
   const selectedOption = selectedQuestion?.options.find((option) => option.id === answerState.selectedOptionId);
+  const selectedClassroomExplanation = selectedQuestion
+    ? classroomExplanationsByQuestionId[selectedQuestion.id]
+    : undefined;
   const isCorrect = answerState.selectedOptionId === selectedQuestion?.correctOptionId;
   const canConfirm = Boolean(answerState.selectedOptionId) && !answerState.isConfirmed;
   const selectedQuestionStats = useMemo(
@@ -852,57 +856,63 @@ function ClassroomModule() {
                   <span className="id-pill">{selectedQuestion.id}</span>
                   <span className="theme-pill">{selectedQuestion.Tema}</span>
                   <span className="area-pill">{selectedQuestion.area}</span>
-                  <span className="hint-penalty-pill">Conteudo de teste</span>
+                  <span
+                    className={[
+                      "hint-penalty-pill",
+                      selectedClassroomExplanation ? "classroom-explanation-available" : "classroom-explanation-pending",
+                    ].join(" ")}
+                  >
+                    {selectedClassroomExplanation ? "Explicacao disponivel" : "Material em construcao"}
+                  </span>
                 </div>
 
                 <header className="classroom-discussion-header">
-                  <p className="eyebrow">Modelo temporario</p>
-                  <h2>Explicacao ampliada para discussao em sala</h2>
+                  <p className="eyebrow">
+                    {selectedClassroomExplanation ? "Explicacao ampliada" : "Material em construcao"}
+                  </p>
+                  <h2>{selectedClassroomExplanation?.title ?? "Material em construcao"}</h2>
                   <p>
-                    Este modal contem apenas informacoes de teste para avaliarmos formato, espaco de leitura e ritmo
-                    da apresentacao. O conteudo definitivo sera definido depois.
+                    {selectedClassroomExplanation?.subtitle ??
+                      "A explicacao ampliada desta questao ainda esta sendo preparada pela equipe QuestMED."}
                   </p>
                 </header>
 
-                <section className="classroom-discussion-grid">
-                  <article className="classroom-discussion-section">
-                    <span>1</span>
-                    <div>
-                      <h3>Ponto central da questao</h3>
-                      <p>
-                        Neste espaco poderemos destacar qual dado do enunciado muda a conduta, quais pistas devem ser
-                        reconhecidas rapidamente e por que a alternativa correta resolve melhor o problema.
-                      </p>
-                    </div>
-                  </article>
+                {selectedClassroomExplanation && selectedClassroomExplanation.tags.length > 0 && (
+                  <div className="classroom-explanation-tags" aria-label="Marcadores da explicacao">
+                    {selectedClassroomExplanation.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                )}
 
-                  <article className="classroom-discussion-section">
-                    <span>2</span>
-                    <div>
-                      <h3>Armadilhas comuns</h3>
-                      <p>
-                        Aqui pode entrar uma discussao sobre distratores, interpretacoes incompletas do caso e erros
-                        frequentes que aparecem quando a questao e resolvida com pressa.
-                      </p>
-                    </div>
-                  </article>
-
-                  <article className="classroom-discussion-section">
-                    <span>3</span>
-                    <div>
-                      <h3>Como eu conduziria com os alunos</h3>
-                      <p>
-                        Podemos usar este bloco para transformar a justificativa em roteiro de aula: pergunta inicial,
-                        debate rapido, fechamento conceitual e conexao com pratica clinica.
-                      </p>
-                    </div>
-                  </article>
-                </section>
+                {selectedClassroomExplanation ? (
+                  <section className="classroom-discussion-grid">
+                    {selectedClassroomExplanation.sections.map((section, index) => (
+                      <article className="classroom-discussion-section" key={`${section.title}-${index}`}>
+                        <span>{String(index + 1).padStart(2, "0")}</span>
+                        <div>
+                          <h3>{section.title}</h3>
+                          <p>{section.body}</p>
+                        </div>
+                      </article>
+                    ))}
+                  </section>
+                ) : (
+                  <section className="classroom-discussion-note classroom-discussion-empty">
+                    <strong>Em breve</strong>
+                    <p>
+                      Esta questao ainda nao tem material ampliado cadastrado. Voce pode usar o gabarito, a dica e a
+                      justificativa breve enquanto a discussao completa e construida.
+                    </p>
+                  </section>
+                )}
 
                 <section className="classroom-discussion-note">
-                  <strong>Aviso</strong>
+                  <strong>{selectedClassroomExplanation ? "Mensagem-chave" : "Justificativa breve"}</strong>
                   <p>
-                    Conteudo demonstrativo. Esta area ainda nao esta conectada a informacoes especificas da questao.
+                    {selectedClassroomExplanation?.keyMessage ??
+                      selectedQuestion.explanation ??
+                      "A justificativa breve desta questao ainda nao esta disponivel."}
                   </p>
                 </section>
               </div>

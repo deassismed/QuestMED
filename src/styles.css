@@ -1049,6 +1049,18 @@ h2 {
   min-width: 188px;
 }
 
+.classroom-explanation-available {
+  background: #e9fbf3;
+  border-color: rgba(15, 118, 110, 0.22);
+  color: #0f766e;
+}
+
+.classroom-explanation-pending {
+  background: #fff7e8;
+  border-color: rgba(166, 111, 23, 0.26);
+  color: #9a5d05;
+}
+
 .classroom-statistics-card {
   display: grid;
   gap: 12px;
@@ -1112,6 +1124,23 @@ h2 {
   max-width: 760px;
 }
 
+.classroom-explanation-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.classroom-explanation-tags span {
+  background: #eef8f8;
+  border: 1px solid rgba(33, 115, 112, 0.18);
+  border-radius: 999px;
+  color: var(--primary-dark);
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+  padding: 8px 11px;
+}
+
 .classroom-discussion-grid {
   display: grid;
   gap: 12px;
@@ -1169,6 +1198,16 @@ h2 {
 
 .classroom-discussion-note p {
   margin: 0;
+}
+
+.classroom-discussion-empty {
+  background: #f8fbfb;
+  border-color: var(--line);
+  color: #425356;
+}
+
+.classroom-discussion-empty strong {
+  color: var(--primary-dark);
 }
 
 .finished-stage {
