@@ -17,7 +17,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import { dailyQuestions, questionBank, type Option, type Question } from "./data/questions";
+import { questionBank, type Option, type Question } from "./data/questions";
 import Module2App from "./module2/Module2App";
 import QuestionEditorDashboard from "./QuestionEditorDashboard";
 import StatisticsDashboard from "./StatisticsDashboard";
@@ -38,8 +38,8 @@ const DRAG_COMMIT_MIN_DISTANCE = 132;
 const DRAG_COMMIT_VELOCITY = 1.15;
 const DRAG_TRANSITION_MS = 240;
 const TUTORIAL_STORAGE_KEY = "questmed:tutorial-seen";
-
-const initialQuestions = dailyQuestions.slice(0, QUESTION_LIMIT);
+const QUESTION_EXPOSURE_STORAGE_KEY = "questmed:recent-question-exposures";
+const RECENT_EXPOSURE_LIMIT = Math.min(questionBank.length, QUESTION_LIMIT * 8);
 
 type FlowStep = "question" | "videoModal" | "finished";
 
@@ -214,15 +214,74 @@ function shuffleQuestions<T>(items: T[]) {
   return shuffled;
 }
 
-function createQuestionSet() {
+function readRecentQuestionExposures() {
+  try {
+    const rawHistory = window.localStorage.getItem(QUESTION_EXPOSURE_STORAGE_KEY);
+    const parsed = rawHistory ? JSON.parse(rawHistory) : [];
+
+    return Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+function recordQuestionExposures(questionIds: string[]) {
+  try {
+    const nextHistory = [
+      ...questionIds,
+      ...readRecentQuestionExposures().filter((questionId) => !questionIds.includes(questionId)),
+    ].slice(0, RECENT_EXPOSURE_LIMIT);
+
+    window.localStorage.setItem(QUESTION_EXPOSURE_STORAGE_KEY, JSON.stringify(nextHistory));
+  } catch {
+    // localStorage can be unavailable in restricted browser modes.
+  }
+}
+
+function aggregateExposureCounts(rows: AggregatedQuestionDetailStats[]) {
+  return rows.reduce<Record<string, number>>((counts, row) => {
+    counts[row.questionId] = (counts[row.questionId] ?? 0) + row.totalQuestions;
+
+    return counts;
+  }, {});
+}
+
+function getQuestionSelectionScore(
+  question: Question,
+  recentQuestionIds: string[],
+  exposureCounts: Record<string, number>,
+) {
+  const recentIndex = recentQuestionIds.indexOf(question.id);
+  const recencyPenalty = recentIndex >= 0 ? (RECENT_EXPOSURE_LIMIT - recentIndex) * 100 : 0;
+  const exposurePenalty = (exposureCounts[question.id] ?? 0) * 18;
+
+  return recencyPenalty + exposurePenalty + Math.random();
+}
+
+function createQuestionSet(exposureCounts: Record<string, number> = {}) {
+  const recentQuestionIds = readRecentQuestionExposures();
   const themes = Array.from(new Set(questionBank.map((question) => question.Tema)));
   const buckets = new Map(
     themes.map((theme) => [
       theme,
-      shuffleQuestions(questionBank.filter((question) => question.Tema === theme)),
+      questionBank
+        .filter((question) => question.Tema === theme)
+        .map((question) => ({
+          question,
+          score: getQuestionSelectionScore(question, recentQuestionIds, exposureCounts),
+        }))
+        .sort((a, b) => a.score - b.score)
+        .map(({ question }) => question),
     ]),
   );
-  const themeOrder = shuffleQuestions(themes);
+  const themeOrder = shuffleQuestions(themes).sort((themeA, themeB) => {
+    const firstQuestionA = buckets.get(themeA)?.[0];
+    const firstQuestionB = buckets.get(themeB)?.[0];
+    const scoreA = firstQuestionA ? getQuestionSelectionScore(firstQuestionA, recentQuestionIds, exposureCounts) : Infinity;
+    const scoreB = firstQuestionB ? getQuestionSelectionScore(firstQuestionB, recentQuestionIds, exposureCounts) : Infinity;
+
+    return scoreA - scoreB;
+  });
   const selected: Question[] = [];
   let round = 0;
 
@@ -925,13 +984,14 @@ function ClassroomModule() {
 }
 
 function QuizApp() {
-  const [questions, setQuestions] = useState<Question[]>(() => initialQuestions);
-  const [session, setSession] = useState<SessionState>(() => createInitialSession(initialQuestions.length));
+  const [questions, setQuestions] = useState<Question[]>(() => createQuestionSet());
+  const [session, setSession] = useState<SessionState>(() => createInitialSession(questions.length));
   const [drag, setDrag] = useState<DragState>(idleDrag);
   const [feedbackAnimation, setFeedbackAnimation] = useState<FeedbackAnimation | null>(null);
   const [showTutorial, setShowTutorial] = useState(false);
   const [tutorialStep, setTutorialStep] = useState(0);
   const [tutorialTargetRect, setTutorialTargetRect] = useState<TargetRect | null>(null);
+  const [questionExposureCounts, setQuestionExposureCounts] = useState<Record<string, number>>({});
   const stageRef = useRef<HTMLElement | null>(null);
   const activeScrollRef = useRef<HTMLDivElement | null>(null);
   const questionCardRef = useRef<HTMLElement | null>(null);
@@ -1060,6 +1120,34 @@ function QuizApp() {
       if (transitionTimeoutRef.current) {
         window.clearTimeout(transitionTimeoutRef.current);
       }
+    };
+  }, []);
+
+  useEffect(() => {
+    recordQuestionExposures(questions.map((questionItem) => questionItem.id));
+  }, [questions]);
+
+  useEffect(() => {
+    if (!questionStatsConfigured()) {
+      return;
+    }
+
+    let ignore = false;
+
+    fetchAggregatedQuestionDetailStats()
+      .then((rows) => {
+        if (!ignore) {
+          setQuestionExposureCounts(aggregateExposureCounts(rows));
+        }
+      })
+      .catch(() => {
+        if (!ignore) {
+          setQuestionExposureCounts({});
+        }
+      });
+
+    return () => {
+      ignore = true;
     };
   }, []);
 
@@ -1669,7 +1757,7 @@ function QuizApp() {
   }
 
   function startNewQuestions() {
-    const nextQuestions = createQuestionSet();
+    const nextQuestions = createQuestionSet(questionExposureCounts);
     sentQuestionEventKeysRef.current.clear();
     setFeedbackAnimation(null);
     setDragState(idleDrag);
