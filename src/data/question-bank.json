@@ -207,7 +207,7 @@
     "id": "disuria.quest22.SCOML-SP.2022",
     "area": "Pediatria",
     "Tema": "Disúria",
-    "statement": "Menina, 4 anos de idade, tem febre medida em 38 a 38,5 ºC há 3 dias. Queixa-se de dor abdominal e de ardor ao urinar. [...] Urina I: pH 6, densidade 1025, 60000 leucócitos, 28000 hemácias, nitrito positivo [...] O diagnóstico provável do quadro apresentado é:",
+    "statement": "Menina, 4 anos de idade, tem febre medida em 38 a 38,5 ºC há 3 dias. Queixa-se de dor abdominal e de ardor ao urinar. Há 2 dias tem náuseas, vômitos e reduziu a aceitação alimentar. Ao exame está afebril, prostrada, toxemiada, corada e hidratada, sem outras alterações. Realizada avaliação laboratorial com os seguintes resultados: Hb 12,7 g/dL, Ht 39%, 18.200 leucócitos (3% bastões, 59% neutrófilos, 1% eosinófilos, 0% basófilos, 26% linfócitos e 10% monócitos) e PCR 30 mg/dL. Urina I: pH 6, densidade 1025, 60000 leucócitos, 28000 hemácias, nitrito positivo, proteínas 1+, presença de cilindros granulosos e células epiteliais.\n\nO diagnóstico provável do quadro apresentado é:",
     "options": [
       {
         "id": "A",
@@ -235,7 +235,7 @@
       "D": 10
     },
     "explanationTitle": "Pielonefrite",
-    "explanation": "Febre + dor abdominal + disúria + leucocitúria + nitrito positivo em criança = pielonefrite aguda."
+    "explanation": "A alternativa correta é a letra B, pielonefrite. A paciente apresenta quadro típico de infecção urinária febril alta, com febre há três dias, dor abdominal, disúria, náuseas, vômitos, prostração e toxemia. Os exames laboratoriais reforçam processo infeccioso bacteriano sistêmico, com leucocitose neutrofílica e PCR bastante elevada. A urinálise mostra leucocitúria importante, hematúria e nitrito positivo, achado sugestivo de enterobactéria gram-negativa, especialmente Infecção do Trato Urinário por E. coli. A presença de cilindros granulosos sugere acometimento renal parenquimatoso, favorecendo pielonefrite em vez de cistite baixa simples.\n\nA alternativa A está incorreta porque “infecção do trato urinário” é muito inespecífica; o quadro define ITU alta febril. As alternativas C, D e E estão incorretas porque glomerulonefrites geralmente cursam com edema, hipertensão, hematúria glomerular, proteinúria e cilindros hemáticos, além de não explicarem adequadamente o nitrito positivo e o padrão infeccioso bacteriano urinário.\n\nFontes: Sociedade Brasileira de Pediatria, Documento Científico – Infecção do Trato Urinário em Pediatria, 2021; American Academy of Pediatrics Clinical Practice Guideline for UTI, 2021."
   },
   {
     "id": "disuria.quest01.UnP.2026",
@@ -269,7 +269,7 @@
       "D": 10
     },
     "explanationTitle": "Cistite aguda",
-    "explanation": "Diretrizes recomendam fosfomicina em dose única como primeira escolha para cistite aguda não complicada em mulheres por sua eficácia, segurança e baixo impacto na resistência."
+    "explanation": "Resposta: A — Fosfomicina trometamol 3 g via oral em dose única.\n\nA paciente apresenta quadro típico de Cistite Aguda não complicada: disúria, polaciúria e urgência miccional, sem febre ou dor lombar. A fosfomicina trometamol em dose única é uma das terapias empíricas de primeira linha atualmente recomendadas por apresentar boa eficácia, baixa resistência bacteriana e menor impacto ecológico.\n\nA nitrofurantoína também é opção de primeira linha, porém o esquema correto é 100 mg 12/12h por 5 dias, e não 6/6h por 3 dias, tornando a alternativa C incorreta. \n\nObs: Alguns protocolos recomendam Nitrofurantoína de 6/6h, porém, POR 5 DIAS.\n\nFluoroquinolonas, como ciprofloxacino, devem ser evitadas como primeira escolha em cistite simples devido ao risco de resistência e efeitos adversos. Sulfametoxazol-trimetoprima pode ser utilizado apenas em locais com baixa resistência bacteriana, geralmente por 3 dias, não 7 dias.\n\nFontes: Infectious Diseases Society of America Guideline for Acute Uncomplicated Cystitis, 2011; Ministério da Saúde — PCDT Infecção Urinária, 2023."
   },
   {
     "id": "disuria.quest02.UnP.2026",
@@ -343,7 +343,7 @@
     "id": "disuria.quest04.UnP.2026",
     "area": "Ginecologia e Obstetrícia",
     "Tema": "Disúria",
-    "statement": "Homem jovem com corrimento uretral purulento e disúria. Qual o tratamento empírico recomendado para uretrite presumivelmente gonocócica e não gonocócica?",
+    "statement": "Homem jovem com corrimento uretral purulento e disúria. Qual o tratamento empírico recomendado para uretrite presumivelmente gonocócica?",
     "options": [
       {
         "id": "A",
@@ -371,7 +371,7 @@
       "D": 10
     },
     "explanationTitle": "Uretrite",
-    "explanation": "Devido à resistência, tratamento dual para gonorreia (ceftriaxona) e cobertura para clamídia (azitromicina)."
+    "explanation": "Resposta: B — Ceftriaxona IM + Azitromicina VO.\n\nHomem jovem com corrimento uretral purulento e disúria apresenta quadro típico de uretrite gonocócica, frequentemente associada à coinfecção por Clamídia. Por isso, o tratamento empírico clássico deve cobrir tanto Gonorreia quanto clamídia.\n\nA combinação de ceftriaxona intramuscular com azitromicina oral foi por muitos anos o esquema padrão recomendado em provas e diretrizes. Ciprofloxacino não é recomendado devido à resistência do gonococo. Azitromicina isolada ou doxiciclina isolada não cobrem adequadamente gonorreia.\n\nObservação: diretrizes mais recentes, como o CDC 2021, passaram a preferir ceftriaxona associada à doxiciclina quando clamídia não foi excluída, devido ao aumento de resistência à azitromicina. Entretanto, em questões de prova mais tradicionais, a resposta esperada costuma ser ceftriaxona + azitromicina.\n\nFontes: Ministério da Saúde — PCDT IST, 2022; Centers for Disease Control and Prevention STI Treatment Guidelines, 2021."
   },
   {
     "id": "disuria.quest05.UnP.2026",
@@ -1221,7 +1221,7 @@
       "D": 10
     },
     "explanationTitle": "Cálculo renal",
-    "explanation": "Cálculos renais >10 mm têm baixa chance de eliminação espontânea e maior risco de complicações, justificando tratamento ativo."
+    "explanation": "Cálculo renal assintomático de 13 mm em polo inferior tem baixa chance de eliminação espontânea e maior risco de crescimento, obstrução futura e sintomas.\n\nPara cálculos renais:\n\n* <10 mm: pode-se considerar observação.\n* >10 mm, especialmente em polo inferior: geralmente indica-se tratamento ativo.\n\nAs opções incluem:\n\n* litotripsia extracorpórea (LECO),\n* ureteroscopia flexível com laser,\n* eventualmente nefrolitotomia percutânea (cálculos maiores).\n\nNo polo inferior, a LECO tem menor taxa de sucesso que a ureteroscopia devido à dificuldade de eliminação dos fragmentos.\n\nAs alternativas C e D estão incorretas:\n\n* citrato de potássio não resolve cálculo de 13 mm isoladamente;\n* ausência de sintomas não exclui indicação terapêutica.\n\nFontes: European Association of Urology — Urolithiasis Guidelines, 2024.\nAmerican Urological Association — Surgical Management of Stones Guideline, 2016/atualizações."
   },
   {
     "id": "disuria.quest30.UnP.2026",
@@ -1561,7 +1561,7 @@
       "D": 10
     },
     "explanationTitle": "Migrânea",
-    "explanation": "Topiramato é profilático eficaz para migrânea, especialmente em pacientes obesos (promove perda de peso) e sem contraindicação respiratória (propranolol contraindicado na asma)."
+    "explanation": "Resposta: B — Topiramato 25 mg VO de 12/12h.\n\nO quadro é compatível com enxaqueca sem aura, com alta frequência de crises, cerca de quatro por semana, o que indica profilaxia. O propranolol deve ser evitado pela asma e presença de sibilos. A amitriptilina e a clorpromazina não são boas escolhas neste caso por obesidade, risco de ganho ponderal e, principalmente, aumento do intervalo QT no ECG. O topiramato é uma boa opção profilática para enxaqueca, especialmente em paciente com obesidade, pois pode favorecer perda ponderal. Deve-se apenas orientar titulação gradual e atenção a efeitos adversos como parestesias, lentificação cognitiva, nefrolitíase e contraindicação/risco na gestação.\n\nFontes: American Headache Society, 2021; European Headache Federation, 2019; ICHD-3, 2018."
   },
   {
     "id": "cefaleia.7",
@@ -1969,7 +1969,7 @@
       "D": 70
     },
     "explanationTitle": "Cefaleia Tensional",
-    "explanation": "Critérios ICHD-3 para cefaleia tensional episódica permitem foto/fonofobia (mas não náuseas/vômitos)."
+    "explanation": "Resposta: D.\n\nNa cefaleia do tipo tensional episódica, a dor costuma ser bilateral/holocraniana, em pressão ou aperto, de intensidade leve a moderada, sem piora com atividade física rotineira. Pode haver fotofobia ou fonofobia, mas não ambas de forma marcante. Náuseas e vômitos devem estar ausentes. O exame neurológico é normal, e pode haver dor, hipertonia ou hiperestesia da musculatura pericraniana. Portanto, a alternativa D é a mais correta.\n\nFonte: International Classification of Headache Disorders, 3ª edição — ICHD-3, 2018."
   },
   {
     "id": "cefaleia.quest19.PSU-AL.2020",
@@ -2581,7 +2581,7 @@
       "D": 10
     },
     "explanationTitle": "Migrânea",
-    "explanation": "Aura de tronco cerebral (diplopia, ataxia, alteração visual) com RM normal = migrânea com aura do tronco cerebral (antiga “basilar”)."
+    "explanation": "Resposta: A — Enxaqueca basilar.\nO quadro descrito é típico de enxaqueca com aura de tronco encefálico, anteriormente chamada de enxaqueca basilar. Os sintomas de diplopia, ataxia e alterações visuais representam sinais neurológicos originados do tronco cerebral, comuns nesse subtipo de enxaqueca, especialmente em adolescentes e mulheres jovens. Os exames de imagem e EEG costumam ser normais entre as crises.\nA alternativa D está incorreta porque a enxaqueca hemiplégica exige déficit motor transitório, o que não foi descrito. Cefaleia hípnica ocorre tipicamente em idosos durante o sono. Cefaleia em salvas cursa com dor orbitária intensa e sintomas autonômicos ipsilaterais.\nFonte: International Classification of Headache Disorders (ICHD-3), 2018."
   },
   {
     "id": "cefaleia.quest40.CERMAM.2024",
@@ -2683,7 +2683,7 @@
       "D": 10
     },
     "explanationTitle": "Neuralgia do Trigêmeo",
-    "explanation": "Dor em choque, gatilhos mastigação/frio e alodinia térmica na distribuição trigeminal = neuralgia do trigêmeo."
+    "explanation": "Resposta: B — Nevralgia do nervo trigêmeo.\n\nO quadro é clássico de Nevralgia do Trigêmeo: dor intensa, unilateral, em choque, paroxística, envolvendo região maxilar e mandibular (V2 e V3), precipitada por estímulos leves como mastigação, frio ou toque. A presença de gatilhos e a curta duração recorrente das crises são características típicas. A alodinia térmica pode estar presente.\n\nA nevralgia do nervo facial é rara e cursa de forma diferente. Cefaleia em salvas causa dor orbitária intensa associada a sintomas autonômicos. Arterite de células gigantes geralmente ocorre com cefaleia temporal, claudicação de mandíbula, sintomas sistêmicos e risco visual, não com dor em choque desencadeada por estímulos.\n\nFonte: International Classification of Headache Disorders (ICHD-3), 2018."
   },
   {
     "id": "cefaleia.quest43.SES-PE.2018",
@@ -3029,7 +3029,7 @@
     "id": "dor-lombar.quest10.UFCSPA.2026",
     "area": "Clínica Médica",
     "Tema": "Dor lombar",
-    "statement": "Considerando os fatores de risco e os fatores protetores na avaliação de quadro de lombalgia na Atenção Primária à Saúde, analise as afirmativas: I. A baixa qualidade do sono confere maior risco, gravidade e tendência à cronificação da lombalgia. II. A insatisfação e insegurança no trabalho e o estresse nas relações interpessoais não estão entre os fatores ocupacionais. III. Em populações economicamente ativas, dor prévia em outros sítios associa-se ao desenvolvimento de lombalgia incapacitante.",
+    "statement": "Considerando os fatores de risco e os fatores protetores na avaliação de quadro de lombalgia na Atenção Primária à Saúde, analise as afirmativas: \nI. A baixa qualidade do sono confere maior risco, gravidade e tendência à cronificação da lombalgia.\n\nII. A insatisfação e insegurança no trabalho e o estresse nas relações interpessoais não estão entre os fatores ocupacionais. \n\nIII. Em populações economicamente ativas, dor prévia em outros sítios associa-se ao desenvolvimento de lombalgia incapacitante.",
     "options": [
       {
         "id": "A",
@@ -3057,7 +3057,7 @@
       "D": 10
     },
     "explanationTitle": "Lombalgia",
-    "explanation": "Sono ruim e dor prévia são fatores de risco para cronificação; estresse ocupacional é fator de risco."
+    "explanation": "Resposta: C — Apenas as afirmativas I e III estão corretas.\n\nA afirmativa I está correta, pois distúrbios do sono e baixa qualidade do sono estão associados a maior risco de dor lombar, pior prognóstico e cronificação da dor. A afirmativa II está incorreta porque fatores psicossociais e ocupacionais, como insatisfação profissional, insegurança no trabalho e estresse interpessoal, são reconhecidos fatores de risco para lombalgia crônica e incapacitante. A afirmativa III está correta, já que dor musculoesquelética prévia em outros sítios aumenta a probabilidade de desenvolvimento de lombalgia incapacitante em populações economicamente ativas.\n\nFontes: National Institute for Health and Care Excellence Low back pain and sciatica guideline, 2020; Lancet Series on Low Back Pain, 2018."
   },
   {
     "id": "dor-lombar.quest11.HP.2024",
@@ -3227,7 +3227,7 @@
       "D": 70
     },
     "explanationTitle": "Lombalgia",
-    "explanation": "Lombalgia inespecífica → AINE curto período + reavaliação."
+    "explanation": "Resposta: D — Prescrever AINH por 3–4 semanas e reavaliar.\n\nTrata-se de lombalgia inespecífica, sem sinais de alarme e com exame físico normal. Nesse cenário, não há indicação inicial de exames laboratoriais, radiografia ou ressonância. A conduta é tratamento conservador, com orientação para manter atividade conforme tolerância, analgesia/anti-inflamatório por curto período e reavaliação clínica.\n\nA dor vespertina isolada não é sinal de alarme. Tramadol não deve ser primeira escolha, e ciclobenzaprina pode ser considerada apenas em casos selecionados com espasmo muscular importante.\n\nFontes: ACP Guideline for Low Back Pain, 2017; NICE Low Back Pain and Sciatica Guideline, 2020."
   },
   {
     "id": "dor-lombar.quest16.UEL.2024",
@@ -3533,7 +3533,7 @@
       "D": 10
     },
     "explanationTitle": "Lombalgia",
-    "explanation": "Lombalgia inflamatória típica piora com repouso e melhora com movimento."
+    "explanation": "A lombalgia de ritmo inflamatório caracteriza-se por dor crônica, geralmente com início insidioso antes dos 45 anos, que piora após períodos de repouso, especialmente pela manhã ou durante a noite, e melhora com atividade física e exercício. É comum haver rigidez matinal prolongada. Esse padrão é típico das espondiloartrites, como a Espondilite Anquilosante. Por isso, a alternativa B é a correta. As alternativas A e C descrevem padrão mecânico de dor lombar, no qual a dor tende a piorar com esforço físico e melhorar com repouso. A alternativa D está incorreta porque a dor inflamatória costuma variar claramente com repouso e movimento.\n\nFontes: ASAS criteria for inflammatory back pain, 2009; European Alliance of Associations for Rheumatology Recommendations, 2022."
   },
   {
     "id": "dor-lombar.quest25.UERJ.2025",
@@ -3567,7 +3567,7 @@
       "D": 10
     },
     "explanationTitle": "Lombalgia",
-    "explanation": "A grande maioria das lombalgias agudas é autolimitada e melhora em até 3 meses."
+    "explanation": "A maioria das lombalgias agudas inespecíficas apresenta evolução favorável, com melhora espontânea nas primeiras semanas a até três meses, mesmo sem exames complementares ou intervenções complexas. A alternativa A está incorreta porque exames de imagem não são necessários rotineiramente, sendo reservados para presença de sinais de alerta ou déficit neurológico importante. A alternativa B está incorreta porque nem toda ciatalgia corresponde a radiculopatia verdadeira; muitas vezes há dor referida sem compressão radicular documentada. A alternativa D também está incorreta, pois alterações degenerativas em exames de imagem são muito frequentes em indivíduos assintomáticos, especialmente com o avanço da idade.\n\nFontes: American College of Physicians Guideline for Low Back Pain, 2017; Brinjikji et al., AJNR, 2015."
   },
   {
     "id": "dor-lombar.quest26.AMRIGS.2017",
@@ -3941,7 +3941,7 @@
       "D": 10
     },
     "explanationTitle": "Lombalgia",
-    "explanation": "Idade avançada + dor >1 mês + trauma + história de câncer = múltiplos red flags."
+    "explanation": "Resposta: C — Idade > 50 anos, dor lombar > 1 mês, trauma e câncer.\n\nEsse paciente apresenta múltiplos sinais de alerta (“red flags”) para causa secundária de lombalgia, justificando investigação por imagem. Os principais são: idade acima de 50 anos, dor persistente por mais de um mês, antecedente de trauma e história de câncer, especialmente câncer de próstata, que possui predileção por metástases ósseas. O diabetes, isoladamente, não é considerado red flag clássico para indicação de imagem em lombalgia, embora possa aumentar risco de infecção em alguns contextos clínicos. O sexo masculino também não constitui sinal de alerta.\n\nFontes: American College of Physicians Guideline for Low Back Pain, 2017; National Institute for Health and Care Excellence Low back pain and sciatica guideline, 2020."
   },
   {
     "id": "dor-lombar.quest37.REVALIDA.2023",
@@ -4179,7 +4179,7 @@
       "D": 10
     },
     "explanationTitle": "Insuficiência Cardíaca",
-    "explanation": "O edema periférico da IC ambulatorial tende a ser simétrico, envolvendo tornozelos e região pré-tibial. Em paciente sem pneumopatia, estertores à ausculta favorecem IC. Já na IC crônica, a ausência de estertores é relativamente comum, mesmo com aumento das pressões de enchimento, tornando a afirmativa III falsa."
+    "explanation": "I — Verdadeira.\nNa insuficiência cardíaca ambulatorial, o edema periférico costuma ser bilateral e simétrico, predominando em tornozelos e região pré-tibial.\n\nII — Verdadeira.\nEm paciente sem pneumopatia, estertores pulmonares são achado relativamente específico de congestão pulmonar por insuficiência cardíaca, embora não sejam muito sensíveis.\n\nIII — Falsa.\nNa insuficiência cardíaca crônica, a ausência de estertores é comum, pois há adaptação linfática pulmonar; portanto, estertores podem estar ausentes mesmo com pressões de enchimento elevadas.\n\nGabarito: A — I e II verdadeiras; III falsa.\n\nFontes: Diretriz Brasileira de Insuficiência Cardíaca Crônica e Aguda, SBC, 2018; ESC Guidelines for Heart Failure, 2021."
   },
   {
     "id": "dispneia.quest04.SURCE.2022",
@@ -4451,7 +4451,7 @@
       "D": 10
     },
     "explanationTitle": "Pneumonia",
-    "explanation": "Pneumonia grave (choque, taquipneia, hipoxemia) → UTI + cobertura para pneumococo + atípicos (ceftriaxona + azitromicina)."
+    "explanation": "Resposta: A — Transferência para UTI e início precoce de ceftriaxona + azitromicina.\n\nA paciente tem pneumonia adquirida na comunidade grave, com sinais de instabilidade clínica: prostração, FR 32 irpm, dessaturação e hipotensão importante, PA 80 × 40 mmHg. Isso indica necessidade de manejo em UTI ou unidade de suporte avançado. O esquema empírico adequado deve cobrir pneumococo e germes atípicos, sendo ceftriaxona associada a azitromicina uma opção clássica para PAC grave. Ampicilina + amicacina não é esquema habitual para PAC comunitária. Levofloxacino em enfermaria ou claritromicina isolada seriam insuficientes diante da gravidade.\n\nFontes: ATS/IDSA Community-Acquired Pneumonia Guideline, 2019; ERS/ESICM/ESCMID/ALAT Severe CAP Guideline, 2023; SBPT Recomendações para PAC, 2018."
   },
   {
     "id": "dispneia.quest12.HPEV.2016",
@@ -4893,7 +4893,7 @@
       "D": 10
     },
     "explanationTitle": "Insuficiência Cardíaca",
-    "explanation": "Hipocalcemia grave pode causar miocardiopatia dilatada reversível."
+    "explanation": "Resposta: A — Hipocalcemia.\n\nA hipocalcemia pode causar disfunção miocárdica reversível, levando a insuficiência cardíaca e redução da contratilidade ventricular. Como o cálcio é fundamental para o acoplamento excitação-contração do miocárdio, sua deficiência importante pode resultar em cardiomiopatia dilatada reversível após correção do distúrbio eletrolítico.\n\nHipercalcemia e distúrbios do potássio estão mais associados a alterações de condução e arritmias do que como causa clássica reversível de insuficiência cardíaca.\n\nFontes: European Society of Cardiology Heart Failure Guidelines, 2021; Mann DL et al. Braunwald’s Heart Disease, 12ª ed., 2022."
   },
   {
     "id": "dispneia.quest25.FMUSP-RP.2018",
@@ -5063,7 +5063,7 @@
       "D": 10
     },
     "explanationTitle": "Asma",
-    "explanation": "Asma leve/intermitente com teste de broncoprovocação positivo deve receber tratamento anti-inflamatório desde o início; a opção preferencial é corticoide inalatório associado a formoterol conforme sintomas."
+    "explanation": "O paciente tem quadro compatível com asma leve, com:\n\n* sintomas episódicos típicos,\n* desencadeados por alérgeno,\n* teste de broncoprovocação positivo,\n* espirometria normal (o que não exclui asma).\n\nSegundo a Global Initiative for Asthma 2025, o tratamento preferencial para adultos e adolescentes com asma leve é:\n\n* corticoide inalatório + formoterol sob demanda (“anti-inflammatory reliever”).\n\nA GINA não recomenda mais SABA isolado devido ao maior risco de exacerbações.\n\nA alternativa D está incorreta porque, embora ICS diário + SABA seja opção possível em alguns contextos, não é a estratégia preferencial atual.\n\nFontes: GINA 2025 Strategy Report; Global Initiative for Asthma (GINA), 2025."
   },
   {
     "id": "dispneia.quest30.CERMAM.2024",
@@ -5097,7 +5097,7 @@
       "D": 10
     },
     "explanationTitle": "DPOC",
-    "explanation": "DPOC grupo E (exacerbações frequentes + VEF1 <60%) → LABA + LAMA + ICS + reabilitação + vacinas."
+    "explanation": "Resposta: B.\n\nO caso é de DPOC sintomática, com VEF1 pós-BD 52%, dispneia importante e 3 exacerbações moderadas no último ano. Além disso, eosinófilos de 385/mm³ favorecem benefício com corticoide inalatório associado. Assim, a melhor estratégia é terapia tripla inalatória com LAMA + LABA + CI, além de reabilitação pulmonar, vacinação e manutenção da cessação do tabagismo.\n\nAs diretrizes GOLD 2025 recomendam LABA + LAMA para grupo E e considerar terapia tripla LABA + LAMA + CI quando eosinófilos ≥300/mm³."
   },
   {
     "id": "dispneia.quest31.PUC-RS.2023",
@@ -5243,23 +5243,23 @@
     "options": [
       {
         "id": "A",
-        "text": "Furosemida."
+        "text": "Furosemida"
       },
       {
         "id": "B",
-        "text": "Captopril."
+        "text": "Captopril"
       },
       {
         "id": "C",
-        "text": "Metoprolol."
+        "text": "Metoprolol"
       },
       {
         "id": "D",
-        "text": "Hidroclorotiazida."
+        "text": "Hidroclorotiazida"
       }
     ],
-    "correctOptionId": "C",
-    "hint": "Betabloqueadores são pilares na IC com FE reduzida.",
+    "correctOptionId": "B",
+    "hint": "Pense primeiro no objetivo do medicamento na insuficiência cardíaca: aliviar sintomas de congestão ou modificar prognóstico. Depois observe que o paciente não tem edema nem sinais de retenção hídrica.",
     "statistics": {
       "A": 10,
       "B": 10,
@@ -5267,7 +5267,7 @@
       "D": 10
     },
     "explanationTitle": "Insuficiência Cardíaca",
-    "explanation": "IC com FE 45% (reduzida) + sintomas → betabloqueador (metoprolol) é indicado para redução de mortalidade."
+    "explanation": "A alternativa B (captopril) foi o gabarito oficial da prova AMRIGS 2016 e estava plenamente alinhada às diretrizes da época. Naquele contexto, os inibidores da ECA eram considerados a base inicial do tratamento da insuficiência cardíaca com fração de ejeção reduzida ou limítrofe, por reduzirem mortalidade, remodelamento ventricular e hospitalizações. O paciente apresentava dispneia aos esforços, diabetes, hipertensão e fração de ejeção de 45%, sem sinais de congestão, o que afastava indicação imediata de diurético como furosemida. Hidroclorotiazida não modifica prognóstico na insuficiência cardíaca. Embora o metoprolol também tenha benefício prognóstico, tradicionalmente os betabloqueadores eram introduzidos após estabilização clínica e frequentemente após início do IECA.\n\nÀ luz das diretrizes atuais, o raciocínio mudou parcialmente. Hoje esse paciente seria classificado como portador de Insuficiência Cardíaca com Fração de Ejeção Levemente Reduzida, e o tratamento contemporâneo prioriza combinação precoce de terapias modificadoras de prognóstico, incluindo IECA/BRA/ARNI, betabloqueadores e inibidores de SGLT2, especialmente pela presença concomitante de diabetes. Assim, em prática clínica moderna, provavelmente seriam iniciados mais de um fármaco logo no início. Entretanto, considerando apenas as alternativas disponíveis na questão, o captopril continua sendo a melhor resposta isolada, pois mantém benefício prognóstico comprovado e segue adequado para o perfil clínico apresentado.\n\nFontes: Diretriz SBC de Insuficiência Cardíaca, 2018; European Society of Cardiology Heart Failure Guidelines, 2021; American Heart Association/ACC/HFSA Guideline for Heart Failure, 2022."
   },
   {
     "id": "dispneia.quest36.SCM-BH.2015",
