@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { questionBank, type Option, type Question } from "./data/questions";
 import QuestionEditorDashboard from "../QuestionEditorDashboard";
+import QuestionAttachments from "../QuestionAttachments";
+import OfficialQuestionValidatorDashboard from "../OfficialQuestionValidatorDashboard";
 import StatisticsDashboard from "../StatisticsDashboard";
 import { flushQuestionEventQueue, trackQuestionEvent } from "./utils/analytics";
 import { generateResultPdfBlob } from "./utils/resultPdf";
@@ -519,54 +521,6 @@ function FeedbackBurst({
   );
 }
 
-function QuestionAttachments({ question }: { question: Question }) {
-  if (!question.attachments?.length) {
-    return null;
-  }
-
-  return (
-    <section className="question-attachments" aria-label="Anexos da questao">
-      {question.attachments.map((attachment, index) => {
-        if (attachment.type === "image") {
-          return (
-            <figure className="question-image-attachment" key={`${attachment.type}-${index}`}>
-              <img alt={attachment.alt} src={attachment.src} />
-              {attachment.caption && <figcaption>{attachment.caption}</figcaption>}
-            </figure>
-          );
-        }
-
-        return (
-          <div className="question-lab-attachment" key={`${attachment.type}-${index}`}>
-            <h2>{attachment.title}</h2>
-            <div className="stats-table-wrap">
-              <table className="stats-table">
-                <thead>
-                  <tr>
-                    <th>Exame</th>
-                    <th>Resultado</th>
-                    <th>Referencia</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {attachment.rows.map((row) => (
-                    <tr key={`${row.exam}-${row.value}`}>
-                      <td>{row.exam}</td>
-                      <td>{row.unit ? `${row.value} ${row.unit}` : row.value}</td>
-                      <td>{row.reference ?? "-"}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            {attachment.caption && <p>{attachment.caption}</p>}
-          </div>
-        );
-      })}
-    </section>
-  );
-}
-
 function ClassroomModule() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedQuestionId, setSelectedQuestionId] = useState(() => questionBank[0]?.id ?? "");
@@ -788,8 +742,8 @@ function ClassroomModule() {
 
             <section className="question-card classroom-question-card">
               <p>{selectedQuestion.statement}</p>
+              <QuestionAttachments question={selectedQuestion} />
             </section>
-            <QuestionAttachments question={selectedQuestion} />
 
             <section className="options-list classroom-options-list" aria-label="Alternativas">
               {selectedQuestion.options.map((option) => {
@@ -1944,8 +1898,8 @@ function QuizApp() {
 
           <section className="question-card" ref={isActive ? questionCardRef : undefined}>
             <p>{targetQuestion.statement}</p>
+            <QuestionAttachments question={targetQuestion} />
           </section>
-          <QuestionAttachments question={targetQuestion} />
 
           <section className="options-list" aria-label="Alternativas" ref={isActive ? optionsListRef : undefined}>
             {targetQuestion.options.map((option) => {
@@ -2165,6 +2119,7 @@ export default function Module2App() {
   const normalizedPath = window.location.pathname.replace(/\/$/, "");
   const isStatsRoute = normalizedPath.endsWith("/estatisticas");
   const isQuestionEditorRoute = normalizedPath.endsWith("/editar-questoes");
+  const isQuestionValidatorRoute = normalizedPath.endsWith("/validar-questoes");
   const isClassroomRoute = normalizedPath.endsWith("/sala-de-aula") || normalizedPath.endsWith("/estudar");
 
   if (isStatsRoute) {
@@ -2173,6 +2128,10 @@ export default function Module2App() {
 
   if (isQuestionEditorRoute) {
     return <QuestionEditorDashboard />;
+  }
+
+  if (isQuestionValidatorRoute) {
+    return <OfficialQuestionValidatorDashboard />;
   }
 
   if (isClassroomRoute) {

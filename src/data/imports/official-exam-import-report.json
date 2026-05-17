@@ -1,0 +1,140 @@
+[
+  {
+    "exam": "ENAMED 2025",
+    "examFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\ENAMED 2025.pdf",
+    "answerFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\ENAMED 2025 Gabarito.pdf",
+    "answerCount": 100,
+    "questionBlocksFound": 109,
+    "questionsImported": 98,
+    "questionsWithImageMention": 14,
+    "skippedAnnulled": [
+      24,
+      60
+    ],
+    "failedQuestionNumbers": []
+  },
+  {
+    "exam": "ENARE 2024",
+    "examFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\ENARE 2024.pdf",
+    "answerFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\ENARE 2024 Gabarito.pdf",
+    "answerCount": 100,
+    "questionBlocksFound": 100,
+    "questionsImported": 97,
+    "questionsWithImageMention": 23,
+    "skippedAnnulled": [
+      42,
+      56,
+      84
+    ],
+    "failedQuestionNumbers": []
+  },
+  {
+    "exam": "Revalida 23.1",
+    "examFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\Revalida 23.1.pdf",
+    "answerFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\Revalida 23.1 Gabarito.pdf",
+    "answerCount": 100,
+    "questionBlocksFound": 100,
+    "questionsImported": 93,
+    "questionsWithImageMention": 16,
+    "skippedAnnulled": [
+      7,
+      13,
+      35,
+      38,
+      42,
+      48,
+      49
+    ],
+    "failedQuestionNumbers": []
+  },
+  {
+    "exam": "Revalida 23.2",
+    "examFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\Revalida 23.2.pdf",
+    "answerFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\Revalida 23.2 Gabarito.pdf",
+    "answerCount": 100,
+    "questionBlocksFound": 100,
+    "questionsImported": 91,
+    "questionsWithImageMention": 20,
+    "skippedAnnulled": [
+      3,
+      28,
+      37,
+      46,
+      48,
+      58,
+      67,
+      73,
+      93
+    ],
+    "failedQuestionNumbers": []
+  },
+  {
+    "exam": "Revalida 24.1",
+    "examFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\Revalida 24.1.pdf",
+    "answerFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\Revalida 24.1 Gabarito.pdf",
+    "answerCount": 100,
+    "questionBlocksFound": 100,
+    "questionsImported": 95,
+    "questionsWithImageMention": 21,
+    "skippedAnnulled": [
+      7,
+      17,
+      43,
+      50,
+      83
+    ],
+    "failedQuestionNumbers": []
+  },
+  {
+    "exam": "Revalida 24.2",
+    "examFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\Revalida 24.2.pdf",
+    "answerFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\Revalida 24.2 Gabarito.pdf",
+    "answerCount": 100,
+    "questionBlocksFound": 100,
+    "questionsImported": 94,
+    "questionsWithImageMention": 19,
+    "skippedAnnulled": [
+      3,
+      22,
+      30,
+      37,
+      46,
+      60
+    ],
+    "failedQuestionNumbers": []
+  },
+  {
+    "exam": "Revalida 25.1",
+    "examFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\Revalida 25.1.pdf",
+    "answerFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\Revalida 25.1 Gabarito.pdf",
+    "answerCount": 100,
+    "questionBlocksFound": 100,
+    "questionsImported": 97,
+    "questionsWithImageMention": 17,
+    "skippedAnnulled": [
+      7,
+      23,
+      34
+    ],
+    "failedQuestionNumbers": []
+  },
+  {
+    "exam": "Revalida 25.2",
+    "examFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\Revalida 25.2.pdf",
+    "answerFile": "C:\\Users\\PC\\Downloads\\Telegram Desktop\\Provas medicina\\Revalida 25.2 Gabarito.pdf",
+    "answerCount": 100,
+    "questionBlocksFound": 109,
+    "questionsImported": 93,
+    "questionsWithImageMention": 18,
+    "skippedAnnulled": [
+      7,
+      9,
+      11,
+      43,
+      55,
+      85,
+      87
+    ],
+    "failedQuestionNumbers": []
+  }
+]

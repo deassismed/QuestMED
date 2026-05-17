@@ -21,6 +21,8 @@ export type Question = {
   explanationTitle: string;
   explanation?: string;
   videoId?: string;
+  imageUrl?: string;
+  imageAlt?: string;
 };
 
 export type QuestionAttachment =

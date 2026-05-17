@@ -13,6 +13,7 @@ export type Question = {
   area: Area;
   Tema: Tema;
   statement: string;
+  attachments?: QuestionAttachment[];
   options: Option[];
   correctOptionId: Option["id"];
   hint: string;
@@ -20,6 +21,15 @@ export type Question = {
   explanationTitle: string;
   explanation?: string;
   videoId?: string;
+  imageUrl?: string;
+  imageAlt?: string;
+};
+
+export type QuestionAttachment = {
+  type: "image";
+  src: string;
+  alt: string;
+  caption?: string;
 };
 
 const DAILY_QUESTION_LIMIT = 10;

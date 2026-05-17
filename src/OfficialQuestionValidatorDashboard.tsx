@@ -3,57 +3,72 @@ import {
   AlertCircle,
   ArrowLeft,
   CheckCircle2,
-  FilePenLine,
+  ClipboardCheck,
   Image,
   Lock,
-  Plus,
   RefreshCw,
   Save,
   Search,
-  Trash2,
 } from "lucide-react";
 import { type Option, type Question } from "./data/questions";
+
+type ImportedQuestion = Question & {
+  source?: string;
+  sourceQuestionNumber?: number;
+  imageAlt?: string;
+  imageUrl?: string;
+  reviewNotes?: string;
+  validationStatus?: "pending" | "needs-review" | "validated";
+  metadata?: {
+    answerWasRelabeledFromE?: boolean;
+    hasImageMention?: boolean;
+    originalOptionCount?: number;
+  };
+};
 
 type LoadState = "idle" | "loading" | "ready" | "error";
 type SaveState = "idle" | "saving" | "saved" | "error";
 
-const EDITOR_TOKEN_KEY = "questmed:editor-token";
+const VALIDATOR_TOKEN_KEY = "questmed:editor-token";
 const optionIds: Option["id"][] = ["A", "B", "C", "D"];
 const jsonHeaders = { "Content-Type": "application/json; charset=utf-8" };
 
 function getHomeHref() {
-  return `${window.location.pathname.replace(/\/editar-questoes\/?$/, "/")}${window.location.search}`;
+  return `${window.location.pathname.replace(/\/validar-questoes\/?$/, "/")}${window.location.search}`;
 }
 
-function cloneQuestion(question: Question): Question {
+function cloneQuestion(question: ImportedQuestion): ImportedQuestion {
   return {
     ...question,
-    attachments: question.attachments?.map((attachment) => ({ ...attachment })),
+    metadata: question.metadata ? { ...question.metadata } : undefined,
     options: question.options.map((option) => ({ ...option })),
     statistics: { ...question.statistics },
   };
-}
-
-function getQuestionSearchText(question: Question) {
-  return [
-    question.id,
-    question.area,
-    question.Tema,
-    question.statement,
-    question.hint,
-    question.explanation,
-    question.explanationTitle,
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
 }
 
 function normalizeOptions(options: Option[]) {
   return optionIds.map((optionId) => options.find((option) => option.id === optionId) ?? { id: optionId, text: "" });
 }
 
-function validateDraft(draft: Question | null) {
+function getQuestionSearchText(question: ImportedQuestion) {
+  return [
+    question.id,
+    question.source,
+    question.area,
+    question.Tema,
+    question.statement,
+    question.hint,
+    question.explanation,
+    question.explanationTitle,
+    question.reviewNotes,
+    question.validationStatus,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
+function validateDraft(draft: ImportedQuestion | null) {
   const errors: string[] = [];
 
   if (!draft) {
@@ -64,21 +79,13 @@ function validateDraft(draft: Question | null) {
     errors.push("Enunciado obrigatorio.");
   }
 
-  if (!draft.hint.trim()) {
-    errors.push("Dica obrigatoria.");
+  if (!draft.area.trim()) {
+    errors.push("Area obrigatoria.");
   }
 
-  if (!draft.explanation?.trim()) {
-    errors.push("Justificativa obrigatoria.");
+  if (!draft.Tema.trim()) {
+    errors.push("Tema obrigatorio.");
   }
-
-  draft.attachments
-    ?.filter((attachment) => attachment.type === "image" && attachment.src.trim())
-    .forEach((attachment, index) => {
-      if (!attachment.alt.trim()) {
-        errors.push(`Descricao da imagem ${index + 1} obrigatoria.`);
-      }
-    });
 
   if (!optionIds.includes(draft.correctOptionId)) {
     errors.push("Gabarito deve ser A, B, C ou D.");
@@ -97,9 +104,7 @@ async function parseResponse<T>(response: Response): Promise<T> {
   const contentType = response.headers.get("content-type") ?? "";
 
   if (!contentType.includes("application/json")) {
-    throw new Error(
-      "O helper local do editor nao respondeu. Abra o modulo com npm run editor, nao com npm run dev.",
-    );
+    throw new Error("O helper local nao respondeu. Abra este modulo com npm run editor.");
   }
 
   const payload = (await response.json()) as T & { error?: string; errors?: string[] };
@@ -110,28 +115,6 @@ async function parseResponse<T>(response: Response): Promise<T> {
   }
 
   return payload;
-}
-
-function EditorStateCard({
-  children,
-  danger,
-  icon,
-  title,
-}: {
-  children: React.ReactNode;
-  danger?: boolean;
-  icon: React.ReactNode;
-  title: string;
-}) {
-  return (
-    <section className={["stats-state-card", danger ? "danger" : ""].join(" ")}>
-      {icon}
-      <div>
-        <h2>{title}</h2>
-        <p>{children}</p>
-      </div>
-    </section>
-  );
 }
 
 function LoginPanel({
@@ -151,7 +134,7 @@ function LoginPanel({
         <Lock size={26} aria-hidden="true" />
         <div>
           <p className="eyebrow">Acesso local</p>
-          <h2>Editor de questoes</h2>
+          <h2>Validar questoes</h2>
         </div>
       </div>
       <form
@@ -181,14 +164,38 @@ function LoginPanel({
   );
 }
 
-export default function QuestionEditorDashboard() {
-  const [token, setToken] = useState(() => window.sessionStorage.getItem(EDITOR_TOKEN_KEY) ?? "");
+function ValidatorStateCard({
+  children,
+  danger,
+  icon,
+  title,
+}: {
+  children: React.ReactNode;
+  danger?: boolean;
+  icon: React.ReactNode;
+  title: string;
+}) {
+  return (
+    <section className={["stats-state-card", danger ? "danger" : ""].join(" ")}>
+      {icon}
+      <div>
+        <h2>{title}</h2>
+        <p>{children}</p>
+      </div>
+    </section>
+  );
+}
+
+export default function OfficialQuestionValidatorDashboard() {
+  const [token, setToken] = useState(() => window.sessionStorage.getItem(VALIDATOR_TOKEN_KEY) ?? "");
   const [authError, setAuthError] = useState<string | null>(null);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<ImportedQuestion[]>([]);
   const [selectedQuestionId, setSelectedQuestionId] = useState<string | null>(null);
-  const [draft, setDraft] = useState<Question | null>(null);
+  const [draft, setDraft] = useState<ImportedQuestion | null>(null);
   const [questionSearch, setQuestionSearch] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [imageFilter, setImageFilter] = useState("all");
   const [loadState, setLoadState] = useState<LoadState>("idle");
   const [loadError, setLoadError] = useState<string | null>(null);
   const [saveState, setSaveState] = useState<SaveState>("idle");
@@ -207,7 +214,7 @@ export default function QuestionEditorDashboard() {
         }),
       );
 
-      window.sessionStorage.setItem(EDITOR_TOKEN_KEY, payload.token);
+      window.sessionStorage.setItem(VALIDATOR_TOKEN_KEY, payload.token);
       setToken(payload.token);
     } catch (error) {
       setAuthError(error instanceof Error ? error.message : "Nao foi possivel entrar.");
@@ -225,8 +232,8 @@ export default function QuestionEditorDashboard() {
     setLoadError(null);
 
     try {
-      const payload = await parseResponse<{ questions: Question[] }>(
-        await window.fetch("/api/questions", {
+      const payload = await parseResponse<{ questions: ImportedQuestion[] }>(
+        await window.fetch("/api/imported-questions", {
           headers: { Authorization: `Bearer ${nextToken}` },
         }),
       );
@@ -243,12 +250,12 @@ export default function QuestionEditorDashboard() {
       setSaveError(null);
     } catch (error) {
       if (error instanceof Error && error.message.includes("nao autorizado")) {
-        window.sessionStorage.removeItem(EDITOR_TOKEN_KEY);
+        window.sessionStorage.removeItem(VALIDATOR_TOKEN_KEY);
         setToken("");
       }
 
       setLoadState("error");
-      setLoadError(error instanceof Error ? error.message : "Nao foi possivel carregar as questoes.");
+      setLoadError(error instanceof Error ? error.message : "Nao foi possivel carregar as questoes importadas.");
     }
   }
 
@@ -269,8 +276,8 @@ export default function QuestionEditorDashboard() {
     setSaveError(null);
 
     try {
-      const payload = await parseResponse<{ question: Question }>(
-        await window.fetch(`/api/questions/${encodeURIComponent(draft.id)}`, {
+      const payload = await parseResponse<{ question: ImportedQuestion }>(
+        await window.fetch(`/api/imported-questions/${encodeURIComponent(draft.id)}`, {
           body: JSON.stringify({ question: draft }),
           headers: {
             Authorization: `Bearer ${token}`,
@@ -301,24 +308,39 @@ export default function QuestionEditorDashboard() {
   );
   const draftErrors = useMemo(() => validateDraft(draft), [draft]);
   const isDirty = Boolean(draft && selectedQuestion && JSON.stringify(draft) !== JSON.stringify(selectedQuestion));
+  const summary = useMemo(
+    () => ({
+      pending: questions.filter((question) => (question.validationStatus ?? "pending") === "pending").length,
+      needsReview: questions.filter((question) => question.validationStatus === "needs-review").length,
+      validated: questions.filter((question) => question.validationStatus === "validated").length,
+      withImageMention: questions.filter((question) => question.metadata?.hasImageMention).length,
+    }),
+    [questions],
+  );
   const searchedQuestions = useMemo(() => {
     const normalizedSearch = questionSearch.trim().toLowerCase();
 
-    if (!normalizedSearch) {
-      return questions;
-    }
+    return questions.filter((question) => {
+      const status = question.validationStatus ?? "pending";
+      const matchesStatus = statusFilter === "all" || status === statusFilter;
+      const matchesImage =
+        imageFilter === "all" ||
+        (imageFilter === "image-mentioned" && Boolean(question.metadata?.hasImageMention)) ||
+        (imageFilter === "image-added" && Boolean(question.imageUrl?.trim()));
+      const matchesSearch = !normalizedSearch || getQuestionSearchText(question).includes(normalizedSearch);
 
-    return questions.filter((question) => getQuestionSearchText(question).includes(normalizedSearch));
-  }, [questionSearch, questions]);
+      return matchesStatus && matchesImage && matchesSearch;
+    });
+  }, [imageFilter, questionSearch, questions, statusFilter]);
 
-  function selectQuestion(question: Question) {
+  function selectQuestion(question: ImportedQuestion) {
     setSelectedQuestionId(question.id);
     setDraft(cloneQuestion(question));
     setSaveState("idle");
     setSaveError(null);
   }
 
-  function updateDraft(updater: (current: Question) => Question) {
+  function updateDraft(updater: (current: ImportedQuestion) => ImportedQuestion) {
     setDraft((current) => (current ? updater(current) : current));
     setSaveState("idle");
     setSaveError(null);
@@ -331,32 +353,9 @@ export default function QuestionEditorDashboard() {
     }));
   }
 
-  function addImageAttachment() {
-    updateDraft((current) => ({
-      ...current,
-      attachments: [...(current.attachments ?? []), { type: "image", src: "", alt: "", caption: "" }],
-    }));
-  }
-
-  function updateImageAttachment(index: number, field: "alt" | "caption" | "src", value: string) {
-    updateDraft((current) => ({
-      ...current,
-      attachments: (current.attachments ?? []).map((attachment, attachmentIndex) =>
-        attachmentIndex === index && attachment.type === "image" ? { ...attachment, [field]: value } : attachment,
-      ),
-    }));
-  }
-
-  function removeImageAttachment(index: number) {
-    updateDraft((current) => ({
-      ...current,
-      attachments: (current.attachments ?? []).filter((_, attachmentIndex) => attachmentIndex !== index),
-    }));
-  }
-
   return (
     <main className="stats-app-shell">
-      <section className="stats-dashboard" aria-label="Editor de questoes QuestMED">
+      <section className="stats-dashboard" aria-label="Validador de questoes importadas">
         <header className="stats-header">
           <a className="stats-back-link" href={getHomeHref()} aria-label="Voltar ao QuestMED">
             <ArrowLeft size={18} aria-hidden="true" />
@@ -364,11 +363,11 @@ export default function QuestionEditorDashboard() {
           </a>
           <div className="stats-title-row">
             <span className="stats-title-icon">
-              <FilePenLine size={28} aria-hidden="true" />
+              <ClipboardCheck size={28} aria-hidden="true" />
             </span>
             <div>
-              <p className="eyebrow">Banco local</p>
-              <h1>Editar questoes</h1>
+              <p className="eyebrow">Provas oficiais</p>
+              <h1>Validar questoes</h1>
             </div>
           </div>
           <button className="stats-refresh-button" disabled={!token || loadState === "loading"} onClick={() => loadQuestions()} type="button">
@@ -380,41 +379,77 @@ export default function QuestionEditorDashboard() {
         {!token && <LoginPanel authError={authError} isSubmitting={isLoggingIn} onLogin={login} />}
 
         {token && loadState === "loading" && (
-          <EditorStateCard icon={<RefreshCw className="stats-loading-icon" size={24} />} title="Carregando questoes">
-            Lendo o banco local pelo helper do editor.
-          </EditorStateCard>
+          <ValidatorStateCard icon={<RefreshCw className="stats-loading-icon" size={24} />} title="Carregando importacao">
+            Lendo o banco de questoes oficiais pelo helper local.
+          </ValidatorStateCard>
         )}
 
         {token && loadState === "error" && (
-          <EditorStateCard danger icon={<AlertCircle size={24} />} title="Nao foi possivel carregar">
+          <ValidatorStateCard danger icon={<AlertCircle size={24} />} title="Nao foi possivel carregar">
             {loadError ?? "Confira se o helper foi aberto com npm run editor."}
-          </EditorStateCard>
+          </ValidatorStateCard>
         )}
 
         {token && loadState === "ready" && (
           <>
-            <section className="question-search-panel editor-search-panel">
+            <section className="stats-card-grid validator-summary-grid">
+              <article className="stats-card">
+                <span>Pendentes</span>
+                <strong>{summary.pending}</strong>
+              </article>
+              <article className="stats-card">
+                <span>Revisar</span>
+                <strong>{summary.needsReview}</strong>
+              </article>
+              <article className="stats-card">
+                <span>Validadas</span>
+                <strong>{summary.validated}</strong>
+              </article>
+              <article className="stats-card">
+                <span>Com imagem</span>
+                <strong>{summary.withImageMention}</strong>
+              </article>
+            </section>
+
+            <section className="question-search-panel editor-search-panel validator-search-panel">
               <div className="stats-filter-title">
                 <Search size={18} aria-hidden="true" />
                 <strong>Buscar questao</strong>
               </div>
               <label>
-                <span>ID, tema, area, enunciado ou justificativa</span>
+                <span>ID, prova, tema, enunciado ou anotacao</span>
                 <input
                   onChange={(event) => setQuestionSearch(event.target.value)}
-                  placeholder="Ex.: disuria.quest16 ou pielonefrite"
+                  placeholder="Ex.: Revalida 25.1, pre-natal, q042"
                   type="search"
                   value={questionSearch}
                 />
+              </label>
+              <label>
+                <span>Status</span>
+                <select onChange={(event) => setStatusFilter(event.target.value)} value={statusFilter}>
+                  <option value="all">Todos</option>
+                  <option value="pending">Pendentes</option>
+                  <option value="needs-review">Revisar</option>
+                  <option value="validated">Validadas</option>
+                </select>
+              </label>
+              <label>
+                <span>Imagem</span>
+                <select onChange={(event) => setImageFilter(event.target.value)} value={imageFilter}>
+                  <option value="all">Todas</option>
+                  <option value="image-mentioned">Provavel imagem</option>
+                  <option value="image-added">Imagem adicionada</option>
+                </select>
               </label>
               <span className={isDirty ? "editor-dirty-pill active" : "editor-dirty-pill"}>
                 {isDirty ? "Alteracoes pendentes" : "Sem pendencias"}
               </span>
             </section>
 
-            <div className="editor-workspace-grid">
+            <div className="editor-workspace-grid validator-workspace-grid">
               <section className="stats-panel editor-question-list-panel">
-                <h2>Questoes</h2>
+                <h2>Questoes importadas</h2>
                 {searchedQuestions.length === 0 ? (
                   <p className="stats-empty-line">Nenhuma questao encontrada.</p>
                 ) : (
@@ -423,8 +458,8 @@ export default function QuestionEditorDashboard() {
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Tema</th>
-                          <th>Area</th>
+                          <th>Prova</th>
+                          <th>Status</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -435,8 +470,16 @@ export default function QuestionEditorDashboard() {
                             onClick={() => selectQuestion(question)}
                           >
                             <td>{question.id}</td>
-                            <td>{question.Tema}</td>
-                            <td>{question.area}</td>
+                            <td>{question.source ?? question.Tema}</td>
+                            <td>
+                              <span className={`validator-status-pill ${question.validationStatus ?? "pending"}`}>
+                                {question.validationStatus === "validated"
+                                  ? "Validada"
+                                  : question.validationStatus === "needs-review"
+                                    ? "Revisar"
+                                    : "Pendente"}
+                              </span>
+                            </td>
                           </tr>
                         ))}
                       </tbody>
@@ -449,7 +492,7 @@ export default function QuestionEditorDashboard() {
                 <section className="stats-panel editor-form-panel">
                   <div className="editor-form-header">
                     <div>
-                      <p className="eyebrow">Questao selecionada</p>
+                      <p className="eyebrow">{draft.source ?? "Questao importada"}</p>
                       <h2>{draft.id}</h2>
                     </div>
                     <button className="stats-refresh-button" disabled={!isDirty || saveState === "saving"} onClick={saveDraft} type="button">
@@ -458,25 +501,72 @@ export default function QuestionEditorDashboard() {
                     </button>
                   </div>
 
-                  <div className="question-detail-meta">
-                    <span>{draft.Tema}</span>
-                    <span>{draft.area}</span>
-                    <span>{draft.explanationTitle}</span>
+                  <section className="validator-preview-panel" aria-label="Previa da questao">
+                    <div className="validator-preview-statement">{draft.statement}</div>
+
+                    <div className="validator-preview-options">
+                      {normalizeOptions(draft.options).map((option) => (
+                        <div className="validator-preview-option" key={option.id}>
+                          <span>{option.id}</span>
+                          <p>{option.text}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="validator-preview-answer">
+                      <span>Gabarito</span>
+                      <strong>{draft.correctOptionId}</strong>
+                    </div>
+                  </section>
+
+                  <div className="question-detail-meta validator-meta">
+                    <span>Q{draft.sourceQuestionNumber ?? "-"}</span>
+                    <span>{draft.metadata?.originalOptionCount ?? 4} alternativas originais</span>
+                    {draft.metadata?.answerWasRelabeledFromE && <span>Gabarito E remapeado</span>}
+                    {draft.metadata?.hasImageMention && <span>Provavel imagem</span>}
                   </div>
 
                   {saveState === "saved" && (
                     <p className="editor-form-success">
                       <CheckCircle2 size={17} aria-hidden="true" />
-                      Questao salva no banco local.
+                      Questao salva no banco de validacao.
                     </p>
                   )}
                   {saveState === "error" && saveError && <p className="editor-form-error">{saveError}</p>}
+
+                  <div className="editor-options-grid">
+                    <label className="editor-field">
+                      <span>Area</span>
+                      <input onChange={(event) => updateDraft((current) => ({ ...current, area: event.target.value }))} value={draft.area} />
+                    </label>
+                    <label className="editor-field">
+                      <span>Tema</span>
+                      <input onChange={(event) => updateDraft((current) => ({ ...current, Tema: event.target.value }))} value={draft.Tema} />
+                    </label>
+                  </div>
+
+                  <label className="editor-field">
+                    <span>Status de validacao</span>
+                    <select
+                      onChange={(event) =>
+                        updateDraft((current) => ({
+                          ...current,
+                          validationStatus: event.target.value as ImportedQuestion["validationStatus"],
+                        }))
+                      }
+                      value={draft.validationStatus ?? "pending"}
+                    >
+                      <option value="pending">Pendente</option>
+                      <option value="needs-review">Precisa revisar</option>
+                      <option value="validated">Validada</option>
+                    </select>
+                  </label>
 
                   <label className="editor-field">
                     <span>Enunciado</span>
                     <textarea
                       onChange={(event) => updateDraft((current) => ({ ...current, statement: event.target.value }))}
-                      rows={7}
+                      rows={8}
                       value={draft.statement}
                     />
                   </label>
@@ -485,7 +575,7 @@ export default function QuestionEditorDashboard() {
                     {normalizeOptions(draft.options).map((option) => (
                       <label className="editor-field" key={option.id}>
                         <span>Alternativa {option.id}</span>
-                        <textarea onChange={(event) => updateOption(option.id, event.target.value)} rows={3} value={option.text} />
+                        <textarea onChange={(event) => updateOption(option.id, event.target.value)} rows={4} value={option.text} />
                       </label>
                     ))}
                   </div>
@@ -506,14 +596,23 @@ export default function QuestionEditorDashboard() {
                     </select>
                   </label>
 
-                  <label className="editor-field">
-                    <span>Dica</span>
-                    <textarea
-                      onChange={(event) => updateDraft((current) => ({ ...current, hint: event.target.value }))}
-                      rows={3}
-                      value={draft.hint}
-                    />
-                  </label>
+                  <div className="editor-options-grid">
+                    <label className="editor-field">
+                      <span>Dica</span>
+                      <textarea
+                        onChange={(event) => updateDraft((current) => ({ ...current, hint: event.target.value }))}
+                        rows={4}
+                        value={draft.hint}
+                      />
+                    </label>
+                    <label className="editor-field">
+                      <span>Titulo da justificativa</span>
+                      <input
+                        onChange={(event) => updateDraft((current) => ({ ...current, explanationTitle: event.target.value }))}
+                        value={draft.explanationTitle}
+                      />
+                    </label>
+                  </div>
 
                   <label className="editor-field">
                     <span>Justificativa</span>
@@ -524,78 +623,42 @@ export default function QuestionEditorDashboard() {
                     />
                   </label>
 
-                  <section className="editor-attachments-panel">
-                    <div className="editor-attachments-header">
-                      <div className="stats-filter-title">
-                        <Image size={18} aria-hidden="true" />
-                        <strong>Imagens anexadas</strong>
-                      </div>
-                      <button className="secondary-wide-button" onClick={addImageAttachment} type="button">
-                        <Plus size={17} aria-hidden="true" />
-                        Adicionar
-                      </button>
+                  <section className="validator-image-panel">
+                    <div className="stats-filter-title">
+                      <Image size={18} aria-hidden="true" />
+                      <strong>Imagem ou recurso associado</strong>
                     </div>
-
-                    {(draft.attachments ?? []).length === 0 && (
-                      <p className="stats-empty-line">Nenhuma imagem anexada.</p>
+                    <label className="editor-field">
+                      <span>URL ou caminho da imagem</span>
+                      <input
+                        onChange={(event) => updateDraft((current) => ({ ...current, imageUrl: event.target.value }))}
+                        placeholder="Ex.: /assets/questoes/revalida-25-1-q001.png"
+                        value={draft.imageUrl ?? ""}
+                      />
+                    </label>
+                    <label className="editor-field">
+                      <span>Descricao da imagem</span>
+                      <input
+                        onChange={(event) => updateDraft((current) => ({ ...current, imageAlt: event.target.value }))}
+                        placeholder="Descricao curta para revisao e acessibilidade"
+                        value={draft.imageAlt ?? ""}
+                      />
+                    </label>
+                    {draft.imageUrl?.trim() && (
+                      <div className="validator-image-preview">
+                        <img alt={draft.imageAlt || "Imagem associada a questao"} src={draft.imageUrl} />
+                      </div>
                     )}
-
-                    {(draft.attachments ?? []).map((attachment, index) => {
-                      if (attachment.type !== "image") {
-                        return null;
-                      }
-
-                      return (
-                        <div className="editor-attachment-card" key={index}>
-                          <div className="editor-attachment-card-header">
-                            <strong>Imagem {index + 1}</strong>
-                            <button
-                              className="editor-icon-button danger"
-                              onClick={() => removeImageAttachment(index)}
-                              type="button"
-                              aria-label={`Remover imagem ${index + 1}`}
-                            >
-                              <Trash2 size={17} aria-hidden="true" />
-                            </button>
-                          </div>
-
-                          <label className="editor-field">
-                            <span>URL ou caminho da imagem</span>
-                            <input
-                              onChange={(event) => updateImageAttachment(index, "src", event.target.value)}
-                              placeholder="/question-images/nome-do-arquivo.png"
-                              value={attachment.src}
-                            />
-                          </label>
-
-                          <div className="editor-options-grid">
-                            <label className="editor-field">
-                              <span>Descricao da imagem</span>
-                              <input
-                                onChange={(event) => updateImageAttachment(index, "alt", event.target.value)}
-                                placeholder="Descricao curta para acessibilidade"
-                                value={attachment.alt}
-                              />
-                            </label>
-                            <label className="editor-field">
-                              <span>Legenda opcional</span>
-                              <input
-                                onChange={(event) => updateImageAttachment(index, "caption", event.target.value)}
-                                placeholder="Texto exibido abaixo da imagem"
-                                value={attachment.caption ?? ""}
-                              />
-                            </label>
-                          </div>
-
-                          {attachment.src.trim() && (
-                            <div className="validator-image-preview">
-                              <img alt={attachment.alt || "Imagem associada a questao"} src={attachment.src} />
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
                   </section>
+
+                  <label className="editor-field">
+                    <span>Anotacoes de revisao</span>
+                    <textarea
+                      onChange={(event) => updateDraft((current) => ({ ...current, reviewNotes: event.target.value }))}
+                      rows={4}
+                      value={draft.reviewNotes ?? ""}
+                    />
+                  </label>
 
                   {draftErrors.length > 0 && (
                     <div className="editor-validation-list">

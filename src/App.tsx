@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { questionBank, type Option, type Question } from "./data/questions";
 import Module2App from "./module2/Module2App";
+import OfficialQuestionValidatorDashboard from "./OfficialQuestionValidatorDashboard";
+import QuestionAttachments from "./QuestionAttachments";
 import QuestionEditorDashboard from "./QuestionEditorDashboard";
 import StatisticsDashboard from "./StatisticsDashboard";
 import { flushQuestionEventQueue, trackQuestionEvent } from "./utils/analytics";
@@ -734,12 +736,12 @@ function ClassroomModule() {
           <section className="classroom-question-workspace">
             <div className="meta-row">
               <span className="id-pill">{selectedQuestion.id}</span>
-              <span className="theme-pill">{selectedQuestion.Tema}</span>
               <span className="area-pill">{selectedQuestion.area}</span>
             </div>
 
             <section className="question-card classroom-question-card">
               <p>{selectedQuestion.statement}</p>
+              <QuestionAttachments question={selectedQuestion} />
             </section>
 
             <section className="options-list classroom-options-list" aria-label="Alternativas">
@@ -913,7 +915,6 @@ function ClassroomModule() {
               <div className="classroom-discussion-content">
                 <div className="meta-row">
                   <span className="id-pill">{selectedQuestion.id}</span>
-                  <span className="theme-pill">{selectedQuestion.Tema}</span>
                   <span className="area-pill">{selectedQuestion.area}</span>
                   <span
                     className={[
@@ -1918,7 +1919,6 @@ function QuizApp() {
         <div className="question-page-scroll" ref={isActive ? activeScrollRef : undefined}>
           <div className="meta-row">
             <span className="id-pill">{targetQuestion.id}</span>
-            <span className="theme-pill">{targetQuestion.Tema}</span>
             <span className="area-pill">{targetQuestion.area}</span>
             <span className="progress-pill">{targetProgress}/{QUESTION_LIMIT} hoje</span>
             {targetState.usedHint && <span className="hint-penalty-pill">Dica: 50%</span>}
@@ -1926,6 +1926,7 @@ function QuizApp() {
 
           <section className="question-card" ref={isActive ? questionCardRef : undefined}>
             <p>{targetQuestion.statement}</p>
+            <QuestionAttachments question={targetQuestion} />
           </section>
 
           <section className="options-list" aria-label="Alternativas" ref={isActive ? optionsListRef : undefined}>
@@ -2146,6 +2147,7 @@ export default function App() {
   const normalizedPath = window.location.pathname.replace(/\/$/, "");
   const isStatsRoute = normalizedPath.endsWith("/estatisticas");
   const isQuestionEditorRoute = normalizedPath.endsWith("/editar-questoes");
+  const isQuestionValidatorRoute = normalizedPath.endsWith("/validar-questoes");
   const isClassroomRoute = normalizedPath.endsWith("/sala-de-aula") || normalizedPath.endsWith("/estudar");
   const isModule2Route = normalizedPath.endsWith("/modulo-2") || normalizedPath.includes("/modulo-2/");
 
@@ -2159,6 +2161,10 @@ export default function App() {
 
   if (isQuestionEditorRoute) {
     return <QuestionEditorDashboard />;
+  }
+
+  if (isQuestionValidatorRoute) {
+    return <OfficialQuestionValidatorDashboard />;
   }
 
   if (isClassroomRoute) {
